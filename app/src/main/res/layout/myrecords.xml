@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+        <TextView
+            android:id="@+id/title1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Repent the Lord is calling"
+            android:textSize="15sp"
+            android:textColor="@color/yellow"
+            android:textAllCaps="true"
+            android:fontFamily="sans-serif-condensed"
+            />
+
+        <TextView
+            android:id="@+id/chapter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title1"
+            android:layout_marginVertical="10dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="John 3:4-2"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/chapter"
+            >
+            <TextView
+                android:id="@+id/lesson"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="lesson:"
+                android:textColor="@color/black"
+                android:layout_below="@id/chapter"
+                />
+
+            <TextView
+                android:id="@+id/lessoncontent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif-condensed"
+                android:text="The Lord wants us all to be alive ,he will be with us" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

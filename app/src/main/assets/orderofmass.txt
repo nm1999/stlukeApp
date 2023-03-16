@@ -1,0 +1,62 @@
+
+		<p style="text-align:center;"><b>Order of Mass</b></p>
+
+  <p style="text-align:justify;">In the Roman Rite, the Mass is made up of two principal parts: the Liturgy of the Word and the Liturgy of the Eucharist. It begins with the Introductory Rites and ends with the Concluding Rites.</p>
+
+  <p style="text-align:justify;">Another way of dividing a Mass is into its "ordinary" parts—those texts which, with some variations, are part of the Mass on a daily basis—and its "proper" parts—the texts of prayers and selection of Scripture readings proper to the specific feast, feria or other occasion being observed.</p>
+
+
+
+<p style="text-align:center;"><b>Introductory Rites</b></p>
+
+<ul style="list-style-type:none;">
+	<li>Entrance</li>
+	<li>Greeting</li>
+	<li>Penitential Act</li>
+	<li>Glory to God</li>
+	<li>Collect</li>
+</ul>
+
+
+<p style="text-align:center;"><b>Liturgy of the Word</b></p>
+
+<ul style="list-style-type:none;">
+	<li>First Reading</li>
+	<li>Responsorial Psalm</li>
+	<li>Second Reading (on Sundays and solemnities)</li>
+	<li>Gospel Acclamation</li>
+	<li>Gospel</li>
+	<li>Homily</li>
+	<li>Profession of Faith (on Sundays, solemnities, and special occasions)</li>
+	<li>Universal Prayer</li>
+</ul>
+
+
+<p style="text-align:center;"><b>Liturgy of the Eucharist</b></p>
+
+<ul style="list-style-type:none;">
+	<li>Presentation of the Gifts and Preparation of the Altar</li>
+	<li>Prayer over the Offerings</li>
+	<li>Eucharistic Prayer
+	<ul style="list-style-type:none;">
+		<li>Preface</li>
+		<li>Holy, Holy, Holy</li>
+		<li>First half of prayer, including Consecration</li>
+		<li>Mystery of Faith</li>
+		<li>Second half of prayer, ending with Doxology</li>
+	</ul>
+	</li>
+	<li>The Lord's Prayer</li>
+	<li>Sign of Peace</li>
+	<li>Lamb of God</li>
+	<li>Communion</li>
+	<li>Prayer after Communion</li>
+</ul>
+
+<p style="text-align:center;"><b>Concluding Rites</b></h3>
+
+<ul style="list-style-type:none;">
+	<li>Optional announcements</li>
+	<li>Greeting and Blessing</li>
+	<li>Dismissal</li>
+</ul>

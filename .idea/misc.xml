@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/apps/new/app/src/main/res/drawable/btncolor.xml" value="0.1835" />
+        <entry key="..\:/apps/new/app/src/main/res/drawable/floatbg.xml" value="0.174" />
+        <entry key="..\:/apps/new/app/src/main/res/drawable/legiontoolbar.xml" value="0.141" />
+        <entry key="..\:/apps/new/app/src/main/res/drawable/mainlayout.xml" value="0.138" />
+        <entry key="..\:/apps/new/app/src/main/res/drawable/profile.xml" value="0.145" />
+        <entry key="..\:/apps/new/app/src/main/res/drawable/st.lukelogo_background.xml" value="0.146" />
+        <entry key="..\:/apps/new/app/src/main/res/drawable/stlukelogo_background.xml" value="0.1" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_catena.xml" value="0.33" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_dashboard.xml" value="0.22" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_entrance.xml" value="0.25" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_home.xml" value="0.22" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_legion.xml" value="0.25" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_main.xml" value="0.16" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_novena.xml" value="0.25" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_order.xml" value="0.1921875" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_profile.xml" value="0.1" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_readings.xml" value="0.22" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_single_novena.xml" value="0.25" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_splashscreen.xml" value="0.35447761194029853" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_trail2.xml" value="0.1921875" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_way_of_cross.xml" value="0.1921875" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/activity_youtube.xml" value="0.22" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/fragment_creed.xml" value="0.25" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/fragment_hymns.xml" value="0.25" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/fragment_mainmenu.xml" value="0.22" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/fragment_notes.xml" value="0.2" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/fragment_requests.xml" value="0.33" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/fragment_rosary.xml" value="0.22" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/myrecords.xml" value="0.33" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/rosary.xml" value="0.1" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/songformat.xml" value="0.5" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/takenotes.xml" value="0.25" />
+        <entry key="..\:/apps/new/app/src/main/res/layout/trial.xml" value="0.25" />
+        <entry key="..\:/apps/new/app/src/main/res/menu/bottomnav.xml" value="0.20364583333333333" />
+        <entry key="..\:/apps/new/app/src/main/res/menu/menu.xml" value="0.1921875" />
+        <entry key="..\:/apps/new/app/src/main/res/menu/search.xml" value="0.1921875" />
+        <entry key="..\:/apps/new/app/src/main/res/mipmap-anydpi-v26/logo.xml" value="0.1" />
+        <entry key="..\:/apps/new/app/src/main/res/mipmap-anydpi-v26/logo_round.xml" value="0.1" />
+        <entry key="..\:/apps/new/app/src/main/res/mipmap-anydpi-v26/mylogo.xml" value="0.1595" />
+        <entry key="..\:/apps/new/app/src/main/res/mipmap-anydpi-v26/mylogo_round.xml" value="0.127" />
+        <entry key="..\:/apps/new/app/src/main/res/mipmap-anydpi-v26/splashlogo.xml" value="0.1" />
+        <entry key="..\:/apps/new/app/src/main/res/mipmap-anydpi-v26/splashlogo_round.xml" value="0.129" />
+        <entry key="..\:/apps/new/app/src/main/res/mipmap-anydpi-v26/st.lukelogo.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

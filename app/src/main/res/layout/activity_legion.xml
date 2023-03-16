@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".Legion">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/legiontoolbar"
+        android:padding="10dp"
+        >
+     <ImageView
+         android:id="@+id/back"
+         android:layout_width="40dp"
+         android:layout_height="40dp"
+         android:src="@drawable/back"
+      />
+
+     <de.hdodenhof.circleimageview.CircleImageView
+         android:layout_width="50dp"
+         android:layout_height="50dp"
+         android:src="@drawable/mothermary"
+         android:layout_alignParentEnd="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Legionary Meeting"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="8dp"
+            >
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="1.Prayer to be said at the opening of the meeting"
+               android:textStyle="bold"
+               android:textSize="18sp"
+               android:textColor="@color/yellow"
+               />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="In the name of the father , etc "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Come , O Holy Spirit, fill the hearts of your faithful and enkindle in them the fire of our love."
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:text="V : Send forth your Spirit , and they shall be created"
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : And you shall renew the face of the earth"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="lets us pray"
+                android:layout_marginVertical="8dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="God our father, pour out the gifts of your Holy Spirit on the world.You sent the Spirit on our church to begin the teaching of the gospel :now let the spirit continue to work in the world through the hearts of all who believe.Through Christ Our Lord.Amen"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : You , O lord will open my lips."
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : And my tongue shall announce your praise."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : Incline unto m aid , O God."
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : O lord , make haste to help me."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : Glory be to the Father , etc "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : As it was in the beginning , etc"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="then follow the five decades of the rosary with the Hail , Holy Queen !"
+                android:textStyle="italic"
+                android:layout_marginVertical="8dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : Pray for us ,O Holy Mother of God. "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : That we may be made worthy of the promises of Christ."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="lets us pray"
+                android:layout_marginVertical="8dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="O God , whose onl begotten Son ,  by his life death and resurrection , has purchased for us the rewards off eternal salvation; grant we beseech you that meditating upon these mysteries in the most Holy Rosary of the Blessed Virign Mary, we may imitate what they contain and obtain what they promise, Through Christ our Lord, Amen "
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : Most Sacred Heart of Jesus. "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : Have mercy on us."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : Immaculate Heart of Mary. "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : Pray for us."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : St. Joseph. "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : Pray for us."
+                android:textSize="16sp"
+                android:layout_marginVertical="4dp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : St.John the Evangelist "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : Pray for us."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : St.Louis-Marie de Montfort. "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : Pray for us."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="In the name of the father , etc ."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                />
+
+
+
+
+
+            <!--catena-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2. The Catena Legions"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textColor="@color/purple_500"
+                android:layout_marginVertical="15dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : Who is she that comes forth as the morning raising, fair as the moon , bright as the sun terrible as an arm set in the battle array "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : My soul glorifies the Lord * "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : my spirit rejoices in God my saviour"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : He looks on his servants in her lowiness * "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : henceforth all ages will call me blessed"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : The almighty works marvels for me * "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : Holy his name"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : His mercy is from age to age * "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : on those who fear him."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : He puts forth his arm in strength * "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : and scatter the proud hearted"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : He casts the mighty from their thrones * "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : and raises the lowly"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : He protects Isreal his servant* "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R :remembering his mercy"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : The mercy promised to our fathers * "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : to Abraham and his sons forever."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Glory be to the father , and to the son and to the Holy Spirit as it was in the beginning is now and ever shall be world without end Amen."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : Who is she that comes forth as the morning raising, fair as the moon , bright as the sun terrible as an arm set in the battle array "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V :O Mary conceived without sin * "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : Pray for us who have recoursed to you."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="lets us pray"
+                android:layout_marginVertical="8dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="O Lord Jesus Christ , our mediator with the father , you have been pleased to appoint the most blessed virgin , your mother , to be our mother also and our mediatrix with you , mercifully grant that whoever comes to you seeking your favours rejoice to recieve all of them through her, Amen, "
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3. The Legion Prayer"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@color/yellow"
+                android:layout_marginVertical="15dp"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="In the name of the father etc "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="We fly to your patronage , O Holy mother of God , despise not our prayers in our
+                    necessities , but ever deliver us from all dangers , O glorious and blessed Virgin"
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : Innvocation appropriate to presidium "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : Pray for us."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : Mary Immaculate , Mediatrix of all Graces "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : Pray for us."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : Sts. Micheal, Gabriel and Raphael "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : Pray for us."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : All you heavenly powers, Mary`s Legion of Angels"
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : Pray for us."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : St. John the baptist"
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : Pray for us."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="V : Saints Peter and Paul "
+                android:layout_marginVertical="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="R : Pray for us."
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/yellow"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/end1"
+                android:layout_marginVertical="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/end2"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                 />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/end3"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/end4"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/finall"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/frankduff_title"
+                android:layout_marginVertical="15dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/yellow"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/frankprayer1"
+                android:layout_marginVertical="8dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/frankprayer2"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/frankprayer3"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/frankprayer4"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/frankprayer5"
+                android:layout_marginVertical="4dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
