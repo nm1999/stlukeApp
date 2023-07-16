@@ -1,4 +1,4 @@
-package com.example.stlukeapp;
+package com.chaplaincy.stlukeapp;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -24,7 +24,7 @@ public class DBhelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table "+TABLE_NAME+"(firstname TEXT,surname TEXT,email TEXT,contact TEXT)");
-        db.execSQL("create table "+TABLE_NOTES+"(title TEXT,versus TEXT,notes TEXT)");
+        db.execSQL("create table "+TABLE_NOTES+"(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT,versus TEXT,notes TEXT)");
     }
 
     @Override
@@ -72,7 +72,7 @@ public class DBhelper extends SQLiteOpenHelper {
 
     public Cursor getNotes(){
         SQLiteDatabase mydb = this.getWritableDatabase();
-        Cursor pointer = mydb.rawQuery("select * from "+TABLE_NOTES,null);
+        Cursor pointer = mydb.rawQuery("select * from notes ORDER BY id DESC",null);
         return pointer;
     }
 

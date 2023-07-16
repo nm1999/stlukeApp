@@ -1,4 +1,4 @@
-package com.example.stlukeapp;
+package com.chaplaincy.stlukeapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
 
 public class Dashboard extends AppCompatActivity {
 

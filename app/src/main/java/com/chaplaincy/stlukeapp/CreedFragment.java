@@ -1,4 +1,4 @@
-package com.example.stlukeapp;
+package com.chaplaincy.stlukeapp;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 
 public class CreedFragment extends Fragment {
     @Nullable

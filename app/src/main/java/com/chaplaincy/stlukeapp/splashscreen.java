@@ -1,4 +1,4 @@
-package com.example.stlukeapp;
+package com.chaplaincy.stlukeapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,10 +9,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 
 public class splashscreen extends AppCompatActivity {
 
@@ -39,7 +39,7 @@ public class splashscreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent nxt = new Intent(getApplicationContext(),Login.class);
+                Intent nxt = new Intent(getApplicationContext(),SignIn.class);
                 startActivity(nxt);
                 finish();
             }

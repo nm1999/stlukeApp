@@ -1,7 +1,6 @@
-package com.example.stlukeapp;
+package com.chaplaincy.stlukeapp;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
+
 
 import java.io.InputStream;
 

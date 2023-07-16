@@ -1,4 +1,4 @@
-package com.example.stlukeapp;
+package com.chaplaincy.stlukeapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

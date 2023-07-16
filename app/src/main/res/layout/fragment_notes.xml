@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Notes">
+    tools:context="com.chaplaincy.stlukeapp.Notes">
 
     <com.google.android.material.navigation.NavigationView
             android:layout_width="match_parent"

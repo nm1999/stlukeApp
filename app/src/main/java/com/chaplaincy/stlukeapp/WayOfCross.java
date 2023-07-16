@@ -1,4 +1,4 @@
-package com.example.stlukeapp;
+package com.chaplaincy.stlukeapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,37 +9,37 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import java.io.InputStream;
 
-public class Order extends AppCompatActivity {
+public class WayOfCross extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order);
+        setContentView(R.layout.activity_way_of_cross);
 
-        TextView content = findViewById(R.id.order);
-        String myorder = "";
-
+        TextView txt = findViewById(R.id.waycontent);
+        String data = "";
 
         try {
-            InputStream inputStream = getAssets().open("orderofmass.txt");
+            InputStream inputStream = getAssets().open("waycross.txt");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
-            myorder = new String(buffer);
-            content.setText(Html.fromHtml(myorder));
-
+            data = new String(buffer);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        txt.setText(Html.fromHtml(data));
 
         ImageView back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
-                startActivity(nxt);
+                Intent back = new Intent(getApplicationContext(),HomeActivity.class);
+                startActivity(back);
             }
         });
     }

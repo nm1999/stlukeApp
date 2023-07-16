@@ -1,4 +1,4 @@
-package com.example.stlukeapp;
+package com.chaplaincy.stlukeapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,13 +12,15 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class Youtube extends AppCompatActivity {
+
+public class Readings extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_youtube);
+        setContentView(R.layout.activity_readings);
 
+        LinearLayout linearLayout = findViewById(R.id.defaultview);
         ImageView back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,17 +29,19 @@ public class Youtube extends AppCompatActivity {
                 startActivity(nxt);
             }
         });
-        LinearLayout linearLayout = findViewById(R.id.defaultview);
+
         WebView web = findViewById(R.id.web);
-        web.loadUrl("https://www.youtube.com/results?search_query=online++catholics");
+        web.loadUrl("https://bible.usccb.org/daily-bible-reading");
         web.setWebViewClient(new WebViewClient(){
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
                 view.setVisibility(View.GONE);
                 linearLayout.setVisibility(View.VISIBLE);
+//                Toast.makeText(Readings.this, "Internet connection needed !!!", Toast.LENGTH_SHORT).show();
             }
         });
+
         web.getSettings().setJavaScriptEnabled(true);
 
         if (web.canGoBack()){

@@ -1,13 +1,11 @@
-package com.example.stlukeapp;
+package com.chaplaincy.stlukeapp;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,9 +88,9 @@ public class Notes extends Fragment {
 
             while (get.moveToNext()){
 
-                title.add(get.getString(0));
-                chapter.add(get.getString(1));
-                lesson.add(get.getString(2));
+                title.add(get.getString(1));
+                chapter.add(get.getString(2));
+                lesson.add(get.getString(3));
 
                 MyListAdapter myadapter = new MyListAdapter(getActivity(),title,chapter,lesson);
                 ListView list = view.findViewById(R.id.mylistview);
