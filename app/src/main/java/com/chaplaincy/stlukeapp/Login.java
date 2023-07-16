@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
@@ -35,6 +38,8 @@ public class Login extends AppCompatActivity {
         EditText email = findViewById(R.id.emailaddress);
         EditText contact = findViewById(R.id.contact);
         signin = findViewById(R.id.has_account);
+
+        TextInputLayout first_name = findViewById(R.id.first_name);
 
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,43 +65,44 @@ public class Login extends AppCompatActivity {
             Toast.makeText(this, "SignUp please", Toast.LENGTH_SHORT).show();
         }
 
-//        while(cursor.moveToNext()){
-//            myarr.add(cursor.getString(0));
-//
-//            ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1,myarr);
-//            listView.setAdapter(adapter);
-//        }
-
-
-
-
         register = findViewById(R.id.register);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Toast.makeText(Login.this, contact.getText().toString(), Toast.LENGTH_SHORT).show();
+                String firstname_str = firstname.getText().toString();
+                String surname_str = surname.getText().toString();
+                String email_str = email.getText().toString();
+                String contact_str = contact.getText().toString();
 
-                if (firstname.getText().toString().isEmpty() && surname.getText().toString().isEmpty() && email.getText().toString().isEmpty() && contact.getText().toString().isEmpty()){
-                    Toast.makeText(Login.this, "Inputs are Empty", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(Login.this, "Inputs filled", Toast.LENGTH_SHORT).show();
-                    Boolean res = mydbhelper.insertuser(firstname.getText().toString(),surname.getText().toString(),email.getText().toString(),contact.getText().toString());
-
-                    if (res==true){
-                        Toast.makeText(Login.this, "Inserted successfully", Toast.LENGTH_SHORT).show();
-                        Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
-                        startActivity(nxt);
-                    }else {
-                        Toast.makeText(Login.this, "NOt registered", Toast.LENGTH_SHORT).show();
-                    }
-
-                    }
-
+                if (TextUtils.isEmpty(firstname_str)){
+                    Toast.makeText(Login.this, "name is required", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(surname_str)){
+                    Toast.makeText(Login.this, "name is required", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(email_str)){
+                    Toast.makeText(Login.this, "Email is required", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(contact_str)){
+                    Toast.makeText(Login.this, "Contact is required", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
 
-//
+                Boolean res = mydbhelper.insertuser(firstname_str,surname_str,email_str,contact_str);
 
+                if (res==true){
+                    Toast.makeText(Login.this, "Inserted successfully", Toast.LENGTH_SHORT).show();
+                    Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
+                    startActivity(nxt);
+                }else {
+                    Toast.makeText(Login.this, "NOt registered", Toast.LENGTH_SHORT).show();
+                }
+
+            }
         });
     }
 
