@@ -7,19 +7,16 @@
     android:background="#FDF1F1F1"
     tools:context="com.chaplaincy.stlukeapp.Mainmenu">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         >
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:background="@drawable/floatbg"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="-9dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/greeting"
@@ -35,32 +32,39 @@
                 />
         </LinearLayout>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:background="@color/white"
             app:cardCornerRadius="10dp"
             app:cardElevation="10dp"
             app:cardBackgroundColor="@color/white"
-            android:layout_marginTop="60dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginTop="-60dp"
+            android:layout_marginHorizontal="20dp"
+            >
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/holycross"
+                />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_marginTop="10dp"
                 >
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="St.Luke App"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:textStyle="italic"
+                    android:textStyle="normal"
                     android:textColor="@color/yellow"
                     android:gravity="center"
                     android:layout_marginVertical="5dp"
-                    android:textSize="20sp" />
+                    android:textSize="25sp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -73,28 +77,24 @@
                     />
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+
+        </com.google.android.material.card.MaterialCardView>
+
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="150dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0">
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/hymns"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -102,8 +102,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
-                    app:cardCornerRadius="15dp"
                     app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="15dp"
                     app:cardElevation="5dp">
 
                     <ImageView
@@ -123,9 +123,9 @@
                         android:text="Hymns"
                         android:textColor="@color/black"
                         android:textSize="8sp" />
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/holyrosary"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -156,9 +156,9 @@
                         android:text="Holy Rosary"
                         android:textColor="@color/black"
                         android:textSize="8sp" />
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/legion"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -189,7 +189,7 @@
                         android:text="Legion of Mary"
                         android:textColor="@color/black"
                         android:textSize="8sp" />
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
             </RelativeLayout>
 
@@ -198,7 +198,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/ordermass"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -207,8 +207,8 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
                     android:background="@color/white"
-                    app:cardCornerRadius="15dp"
                     app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="15dp"
                     app:cardElevation="5dp">
 
                     <ImageView
@@ -228,9 +228,9 @@
                         android:text="Order of Mass"
                         android:textColor="@color/black"
                         android:textSize="8sp" />
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/novena"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -240,8 +240,8 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
                     android:background="@color/white"
-                    app:cardCornerRadius="15dp"
                     app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="15dp"
                     app:cardElevation="5dp">
 
                     <ImageView
@@ -261,9 +261,9 @@
                         android:text="Novena"
                         android:textColor="@color/black"
                         android:textSize="8sp" />
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/dailyreading"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -272,8 +272,8 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
                     android:background="@color/white"
-                    app:cardCornerRadius="15dp"
                     app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="15dp"
                     app:cardElevation="5dp">
 
                     <ImageView
@@ -293,7 +293,7 @@
                         android:text="Readings"
                         android:textColor="@color/black"
                         android:textSize="8sp" />
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
             </RelativeLayout>
 
@@ -302,7 +302,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/catena"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -332,9 +332,9 @@
                         android:text="catena"
                         android:textColor="@color/black"
                         android:textSize="8sp" />
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/utube"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -365,9 +365,9 @@
                         android:text="Online catholics"
                         android:textColor="@color/black"
                         android:textSize="8sp" />
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:id="@+id/wayofcross"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -377,8 +377,8 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
                     android:background="@color/white"
-                    app:cardCornerRadius="15dp"
                     app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="15dp"
                     app:cardElevation="5dp">
 
                     <ImageView
@@ -398,14 +398,14 @@
                         android:text="Way of cross"
                         android:textColor="@color/black"
                         android:textSize="8sp" />
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
             </RelativeLayout>
 
         </LinearLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 
 </ScrollView>
