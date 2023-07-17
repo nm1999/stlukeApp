@@ -1,4 +1,4 @@
-package com.chaplaincy.stlukeapp;
+package com.chaplaincy.stlukeapp.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+
+import com.chaplaincy.stlukeapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,7 @@ public class HymnsAdapter extends BaseAdapter implements Filterable {
     private List<String> originalList;
     private List<String> filteredList;
 
-    HymnsAdapter(Context context, ArrayList<String> hymn){
+    public HymnsAdapter(Context context, ArrayList<String> hymn){
         this.ctx = context;
         this.hymn = hymn.toArray(new String[0]);
         this.layoutInflater = LayoutInflater.from(ctx);

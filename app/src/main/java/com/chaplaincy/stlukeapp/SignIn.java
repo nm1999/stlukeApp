@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
+import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
+
 public class SignIn extends AppCompatActivity {
     private Button login;
     private TextView register;
@@ -27,7 +30,7 @@ public class SignIn extends AppCompatActivity {
         Cursor cursor = mydbhelper.getData();
 
         if (cursor.getCount()>0){
-            Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
+            Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(nxt);
             finish();
 

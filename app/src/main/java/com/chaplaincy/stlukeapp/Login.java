@@ -13,7 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.google.android.material.textfield.TextInputEditText;
+import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
+import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class Login extends AppCompatActivity {
         Cursor cursor = mydbhelper.getData();
         if (cursor.getCount()>0){
 //            Toast.makeText(this, "Already have an account", Toast.LENGTH_SHORT).show();
-            Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
+            Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(nxt);
             finish();
 

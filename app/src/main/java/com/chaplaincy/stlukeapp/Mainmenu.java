@@ -13,6 +13,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
+import com.chaplaincy.stlukeapp.DashboardActivities.Catena;
+import com.chaplaincy.stlukeapp.DashboardActivities.Hymns;
+import com.chaplaincy.stlukeapp.DashboardActivities.Legion;
+import com.chaplaincy.stlukeapp.DashboardActivities.Novena;
+import com.chaplaincy.stlukeapp.DashboardActivities.Order;
+import com.chaplaincy.stlukeapp.DashboardActivities.Readings;
+import com.chaplaincy.stlukeapp.DashboardActivities.Rosary;
+import com.chaplaincy.stlukeapp.DashboardActivities.WayOfCross;
+import com.chaplaincy.stlukeapp.DashboardActivities.Youtube;
+
 import java.util.ArrayList;
 
 
@@ -56,7 +67,7 @@ public class Mainmenu extends Fragment {
         wayofcross.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent nxt = new Intent(getActivity(),WayOfCross.class);
+                Intent nxt = new Intent(getActivity(), WayOfCross.class);
                 startActivity(nxt);
             }
         });
@@ -64,14 +75,14 @@ public class Mainmenu extends Fragment {
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent nxt = new Intent(getActivity(),Order.class);
+                Intent nxt = new Intent(getActivity(), Order.class);
                 startActivity(nxt);
             }
         });
         reading.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent nxt = new Intent(getActivity(),Readings.class);
+                Intent nxt = new Intent(getActivity(), Readings.class);
                 startActivity(nxt);
             }
         });
@@ -79,7 +90,7 @@ public class Mainmenu extends Fragment {
         utube.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent nxt = new Intent(getActivity(),Youtube.class);
+                Intent nxt = new Intent(getActivity(), Youtube.class);
                 startActivity(nxt);
             }
         });
@@ -87,7 +98,7 @@ public class Mainmenu extends Fragment {
         catena.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent nxt = new Intent(getActivity(),Catena.class);
+                Intent nxt = new Intent(getActivity(), Catena.class);
                 startActivity(nxt);
             }
         });
@@ -95,7 +106,7 @@ public class Mainmenu extends Fragment {
         novena.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent nxt = new Intent(getActivity(),Novena.class);
+                Intent nxt = new Intent(getActivity(), Novena.class);
                 startActivity(nxt);
             }
         });
@@ -110,7 +121,7 @@ public class Mainmenu extends Fragment {
         legion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent nxt = new Intent(getActivity(),Legion.class);
+                Intent nxt = new Intent(getActivity(), Legion.class);
                 startActivity(nxt);
             }
         });
@@ -118,7 +129,7 @@ public class Mainmenu extends Fragment {
         rosary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent nxt = new Intent(getActivity(),Rosary.class);
+                Intent nxt = new Intent(getActivity(), Rosary.class);
                 startActivity(nxt);
             }
         });

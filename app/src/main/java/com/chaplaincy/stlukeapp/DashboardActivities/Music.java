@@ -1,4 +1,4 @@
-package com.chaplaincy.stlukeapp;
+package com.chaplaincy.stlukeapp.DashboardActivities;
 
 public class Music {
     private String song;

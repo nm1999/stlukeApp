@@ -1,4 +1,4 @@
-package com.chaplaincy.stlukeapp;
+package com.chaplaincy.stlukeapp.Fragments;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -8,6 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.chaplaincy.stlukeapp.DashboardActivities.Hymns;
+import com.chaplaincy.stlukeapp.DashboardActivities.Legion;
+import com.chaplaincy.stlukeapp.R;
+import com.chaplaincy.stlukeapp.DashboardActivities.Rosary;
 
 
 public class Dashboard extends AppCompatActivity {
@@ -49,7 +54,7 @@ public class Dashboard extends AppCompatActivity {
         rosary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent nxt = new Intent(getApplicationContext(),Rosary.class);
+                Intent nxt = new Intent(getApplicationContext(), Rosary.class);
                 startActivity(nxt);
             }
         });
@@ -57,7 +62,7 @@ public class Dashboard extends AppCompatActivity {
         legion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent nxt = new Intent(getApplicationContext(),Legion.class);
+                Intent nxt = new Intent(getApplicationContext(), Legion.class);
                 startActivity(nxt);
             }
         });

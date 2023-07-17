@@ -1,4 +1,4 @@
-package com.chaplaincy.stlukeapp;
+package com.chaplaincy.stlukeapp.DashboardActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,9 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
+import com.chaplaincy.stlukeapp.R;
+
 
 public class Youtube extends AppCompatActivity {
 
@@ -24,7 +27,7 @@ public class Youtube extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
+                Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(nxt);
             }
         });

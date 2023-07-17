@@ -1,20 +1,20 @@
-package com.chaplaincy.stlukeapp;
+package com.chaplaincy.stlukeapp.DashboardActivities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
+
+import com.chaplaincy.stlukeapp.Adapter.HymnsAdapter;
+import com.chaplaincy.stlukeapp.R;
 
 import java.util.ArrayList;
 
@@ -367,7 +367,7 @@ public class Hymns extends AppCompatActivity {
         }
 
         hymnsAdapter = new HymnsAdapter(getApplicationContext(),arraylist);
-//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,mysongs);
+//        adapter = new ArrayAdapter<String>(this, R.layout.hymns_layout_format,mysongs);
         list.setTextFilterEnabled(true);
         list.setAdapter(hymnsAdapter);
 
@@ -378,7 +378,7 @@ public class Hymns extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
+                Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(nxt);
             }
         });

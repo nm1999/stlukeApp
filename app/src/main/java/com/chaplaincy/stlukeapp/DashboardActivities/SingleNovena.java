@@ -1,4 +1,4 @@
-package com.chaplaincy.stlukeapp;
+package com.chaplaincy.stlukeapp.DashboardActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.chaplaincy.stlukeapp.R;
 
 
 public class SingleNovena extends AppCompatActivity {
@@ -21,7 +23,7 @@ public class SingleNovena extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(getApplicationContext(),Novena.class);
+                Intent back = new Intent(getApplicationContext(), Novena.class);
                 startActivity(back);
             }
         });

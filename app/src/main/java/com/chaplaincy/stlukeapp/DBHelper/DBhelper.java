@@ -1,4 +1,4 @@
-package com.chaplaincy.stlukeapp;
+package com.chaplaincy.stlukeapp.DBHelper;
 
 import android.content.ContentValues;
 import android.content.Context;

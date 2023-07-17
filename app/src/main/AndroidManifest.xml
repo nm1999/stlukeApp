@@ -17,28 +17,28 @@
             android:name=".SignIn"
             android:exported="false" />
         <activity
-            android:name=".WayOfCross"
+            android:name=".DashboardActivities.WayOfCross"
             android:exported="false" />
         <activity
-            android:name=".Order"
+            android:name=".DashboardActivities.Order"
             android:exported="false" />
         <activity
-            android:name=".Readings"
+            android:name=".DashboardActivities.Readings"
             android:exported="false" />
         <activity
-            android:name=".Youtube"
+            android:name=".DashboardActivities.Youtube"
             android:exported="false" />
         <activity
-            android:name=".Catena"
+            android:name=".DashboardActivities.Catena"
             android:exported="false" />
         <activity
-            android:name=".SingleNovena"
+            android:name=".DashboardActivities.SingleNovena"
             android:exported="false" />
         <activity
-            android:name=".Novena"
+            android:name=".DashboardActivities.Novena"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".DashboardActivities.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".Login"
@@ -53,16 +53,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Legion"
+            android:name=".DashboardActivities.Legion"
             android:exported="false" />
         <activity
-            android:name=".Rosary"
+            android:name=".DashboardActivities.Rosary"
             android:exported="false" />
         <activity
-            android:name=".Dashboard"
+            android:name=".Fragments.Dashboard"
             android:exported="false" />
         <activity
-            android:name=".Hymns"
+            android:name=".DashboardActivities.Hymns"
             android:exported="false" />
     </application>
 

@@ -1,4 +1,4 @@
-package com.chaplaincy.stlukeapp;
+package com.chaplaincy.stlukeapp.DashboardActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+
+import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
+import com.chaplaincy.stlukeapp.DashboardActivities.SingleNovena;
+import com.chaplaincy.stlukeapp.R;
 
 import java.io.InputStream;
 
@@ -103,7 +107,7 @@ public class Novena extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(getApplicationContext(),HomeActivity.class);
+                Intent back = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(back);
             }
         });
@@ -144,7 +148,7 @@ public class Novena extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent open_novena = new Intent(getApplicationContext(),SingleNovena.class);
+                Intent open_novena = new Intent(getApplicationContext(), SingleNovena.class);
                 open_novena.putExtra("title",novena_name[i]);
 //                open_novena.putExtra("content",novena_content[i]);
                 if (i==0){

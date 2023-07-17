@@ -1,4 +1,4 @@
-package com.chaplaincy.stlukeapp;
+package com.chaplaincy.stlukeapp.DashboardActivities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.chaplaincy.stlukeapp.Fragments.Profile;
+import com.chaplaincy.stlukeapp.Fragments.Testimonies;
+import com.chaplaincy.stlukeapp.Mainmenu;
+import com.chaplaincy.stlukeapp.Notes;
+import com.chaplaincy.stlukeapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
@@ -28,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
                         selectedfrag = new Mainmenu();
                         break;
                     case R.id.message:
-                        selectedfrag = new Requests();
+                        selectedfrag = new Testimonies();
                         break;
                     case R.id.notes:
                         selectedfrag = new Notes();

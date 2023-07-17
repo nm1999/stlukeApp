@@ -1,4 +1,4 @@
-package com.chaplaincy.stlukeapp;
+package com.chaplaincy.stlukeapp.DashboardActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,39 +9,42 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
+import com.chaplaincy.stlukeapp.R;
+
 import java.io.InputStream;
 
-public class Catena extends AppCompatActivity {
+public class Order extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_catena);
+        setContentView(R.layout.activity_order);
 
-        TextView catena = findViewById(R.id.catena);
-        String content = "";
+        TextView content = findViewById(R.id.order);
+        String myorder = "";
+
 
         try {
-            InputStream inputStream = getAssets().open("catena.txt");
+            InputStream inputStream = getAssets().open("orderofmass.txt");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
-            content = new String(buffer);
+            myorder = new String(buffer);
+            content.setText(Html.fromHtml(myorder));
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        catena.setText(Html.fromHtml(content));
-
         ImageView back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(getApplicationContext(),HomeActivity.class);
-                startActivity(back);
+                Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(nxt);
             }
         });
-
     }
 }

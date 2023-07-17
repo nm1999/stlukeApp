@@ -1,4 +1,4 @@
-package com.chaplaincy.stlukeapp;
+package com.chaplaincy.stlukeapp.DashboardActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,38 +9,42 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
+import com.chaplaincy.stlukeapp.R;
 
 import java.io.InputStream;
 
-public class WayOfCross extends AppCompatActivity {
+public class Catena extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_way_of_cross);
+        setContentView(R.layout.activity_catena);
 
-        TextView txt = findViewById(R.id.waycontent);
-        String data = "";
+        TextView catena = findViewById(R.id.catena);
+        String content = "";
 
         try {
-            InputStream inputStream = getAssets().open("waycross.txt");
+            InputStream inputStream = getAssets().open("catena.txt");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
-            data = new String(buffer);
+            content = new String(buffer);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        txt.setText(Html.fromHtml(data));
+        catena.setText(Html.fromHtml(content));
 
         ImageView back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(getApplicationContext(),HomeActivity.class);
+                Intent back = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(back);
             }
         });
+
     }
 }

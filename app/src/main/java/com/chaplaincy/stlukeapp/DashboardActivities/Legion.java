@@ -1,4 +1,4 @@
-package com.chaplaincy.stlukeapp;
+package com.chaplaincy.stlukeapp.DashboardActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
+import com.chaplaincy.stlukeapp.R;
 
 
 public class Legion extends AppCompatActivity {
@@ -19,7 +21,7 @@ public class Legion extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
+                Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(nxt);
             }
         });
