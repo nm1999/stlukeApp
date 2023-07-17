@@ -391,6 +391,8 @@ public class Hymns extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
+                hymnsAdapter.getFilter().filter(s);
+
                 return true;
             }
         });
