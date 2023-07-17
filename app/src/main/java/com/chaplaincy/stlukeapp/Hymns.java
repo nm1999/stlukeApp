@@ -14,17 +14,20 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
+
+import java.util.ArrayList;
 
 
-public class entrance extends AppCompatActivity {
+public class Hymns extends AppCompatActivity {
     private ListView  list ;
 
     ArrayAdapter<String> adapter;
-
+    private HymnsAdapter hymnsAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_entrance);
+        setContentView(R.layout.activity_hymns);
         list = findViewById(R.id.list);
 
 
@@ -358,14 +361,19 @@ public class entrance extends AppCompatActivity {
 
 
 //        MyListAdapter adapter1 = new MyListAdapter(this,song,title);
+        ArrayList<String> arraylist = new ArrayList<>();
+        for (int i=0 ; i<mysongs.length; i++){
+            arraylist.add(mysongs[i]);
+        }
 
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,mysongs);
+        hymnsAdapter = new HymnsAdapter(getApplicationContext(),arraylist);
+//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,mysongs);
         list.setTextFilterEnabled(true);
-        list.setAdapter(adapter);
+        list.setAdapter(hymnsAdapter);
 
 
 
-        EditText search = findViewById(R.id.search);
+        SearchView search = findViewById(R.id.search);
         ImageView back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -375,21 +383,15 @@ public class entrance extends AppCompatActivity {
             }
         });
 
-
-        search.addTextChangedListener(new TextWatcher() {
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+            public boolean onQueryTextSubmit(String s) {
+                return false;
             }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                adapter.getFilter().filter(charSequence);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
+            public boolean onQueryTextChange(String s) {
+                return true;
             }
         });
 

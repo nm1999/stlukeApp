@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="com.chaplaincy.stlukeapp.entrance">
+    tools:context="com.chaplaincy.stlukeapp.Hymns">
+
     <com.google.android.material.navigation.NavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,14 +25,12 @@
                 android:src="@drawable/back"
                 android:layout_marginVertical="10dp"
                 />
-            <EditText
+            <SearchView
                 android:id="@+id/search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Search ..."
                 android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:drawableEnd="@drawable/search"
                 android:textSize="16sp"
                 android:layout_marginVertical="10dp"
                 android:layout_marginHorizontal="6dp"
@@ -52,6 +51,8 @@
             android:layout_height="wrap_content"
             android:visibility="visible"
             android:background="@color/white"
+            android:divider="@color/black"
+            android:dividerHeight="1dp"
             />
     </LinearLayout>
 

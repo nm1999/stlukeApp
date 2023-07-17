@@ -62,7 +62,7 @@
             android:name=".Dashboard"
             android:exported="false" />
         <activity
-            android:name=".entrance"
+            android:name=".Hymns"
             android:exported="false" />
     </application>
 

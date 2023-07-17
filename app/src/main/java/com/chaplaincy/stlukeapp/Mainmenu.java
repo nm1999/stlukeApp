@@ -103,7 +103,7 @@ public class Mainmenu extends Fragment {
         hymns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent nxt = new Intent(getActivity(),entrance.class);
+                Intent nxt = new Intent(getActivity(), Hymns.class);
                 startActivity(nxt);
             }
         });

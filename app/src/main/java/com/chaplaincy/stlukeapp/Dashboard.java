@@ -65,7 +65,7 @@ public class Dashboard extends AppCompatActivity {
         hymns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 Intent nxt = new Intent(getApplicationContext(),entrance.class);
+                 Intent nxt = new Intent(getApplicationContext(), Hymns.class);
                 startActivity(nxt);
 //
 
