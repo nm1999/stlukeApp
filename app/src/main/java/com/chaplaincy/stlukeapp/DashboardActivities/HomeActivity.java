@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.chaplaincy.stlukeapp.Fragments.Profile;
-import com.chaplaincy.stlukeapp.Fragments.Testimonies;
+import com.chaplaincy.stlukeapp.Fragments.Testimonies_and_prayer_requests;
 import com.chaplaincy.stlukeapp.Mainmenu;
 import com.chaplaincy.stlukeapp.Notes;
 import com.chaplaincy.stlukeapp.R;
@@ -33,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
                         selectedfrag = new Mainmenu();
                         break;
                     case R.id.message:
-                        selectedfrag = new Testimonies();
+                        selectedfrag = new Testimonies_and_prayer_requests();
                         break;
                     case R.id.notes:
                         selectedfrag = new Notes();

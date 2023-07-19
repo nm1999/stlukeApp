@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="280dp"
+        android:layout_height="200dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="10dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <LinearLayout
+                android:id="@+id/linearbg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                />
+
+            <LinearLayout
+                android:id="@+id/bottom_menu"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@id/linearbg"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hello , I thank Go for the gift of life"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentStart="true"
+                        android:src="@drawable/like" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/comment" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

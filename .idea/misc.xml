@@ -60,13 +60,17 @@
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_creed.xml" value="0.1921875" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_mainmenu.xml" value="0.14" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_notes.xml" value="0.1921875" />
+        <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_prayer_request.xml" value="0.1921875" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_profile.xml" value="0.1921875" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_requests.xml" value="0.1921875" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_rosary.xml" value="0.1921875" />
+        <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_testimonies.xml" value="0.22" />
+        <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_testimony_view.xml" value="0.1921875" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/hymns_layout_format.xml" value="0.33" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/myrecords.xml" value="0.1921875" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/songformat.xml" value="0.1921875" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/takenotes.xml" value="0.1921875" />
+        <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/toptestimonies_layout.xml" value="0.22" />
       </map>
     </option>
   </component>
