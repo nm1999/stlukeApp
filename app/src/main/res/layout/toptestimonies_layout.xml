@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="280dp"
+    android:layout_height="170dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="280dp"
-        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:cardBackgroundColor="@color/white"
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         app:cardCornerRadius="10dp"
+        android:layout_margin="12dp"
         >
         <RelativeLayout
             android:layout_width="match_parent"
@@ -20,9 +21,9 @@
                 android:id="@+id/poster_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/banner"
                 android:layout_above="@id/poster_description"
-                android:orientation="vertical"/>
+                android:background="@drawable/banner"
+                android:orientation="vertical" />
 
             <TextView
                 android:id="@+id/poster_description"
@@ -30,10 +31,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginHorizontal="5dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="Hello , I thank Go for the gift of life"
                 android:textColor="@color/black"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
         </RelativeLayout>
 
     </com.google.android.material.card.MaterialCardView>
