@@ -20,7 +20,6 @@
         app:labelVisibilityMode="labeled"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
-        app:itemTextColor="@color/black"
         app:itemIconTint="@color/black"
         >
 
