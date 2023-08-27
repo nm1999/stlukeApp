@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
@@ -60,17 +59,23 @@
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_creed.xml" value="0.1921875" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_mainmenu.xml" value="0.14" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_notes.xml" value="0.1921875" />
+        <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_prayer_request.xml" value="0.1921875" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_profile.xml" value="0.1921875" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_requests.xml" value="0.1921875" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_rosary.xml" value="0.1921875" />
+        <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_testimonies.xml" value="0.22" />
+        <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_testimonies_and_prayer_requests.xml" value="0.25" />
+        <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/fragment_testimony_view.xml" value="0.1921875" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/hymns_layout_format.xml" value="0.33" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/myrecords.xml" value="0.1921875" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/songformat.xml" value="0.1921875" />
         <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/takenotes.xml" value="0.1921875" />
+        <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/testimony_views.xml" value="0.18" />
+        <entry key="..\:/apps/stlukeApp/app/src/main/res/layout/toptestimonies_layout.xml" value="0.33" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" default="true" project-jdk-name="16" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
