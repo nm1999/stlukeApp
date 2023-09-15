@@ -3,14 +3,14 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.chaplaincy.stlukeapp"
         minSdk 22
         targetSdk 31
-        versionCode 4
-        versionName "1.0.0.3"
+        versionCode 5
+        versionName "1.0.0.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

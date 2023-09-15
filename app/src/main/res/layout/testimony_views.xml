@@ -13,8 +13,8 @@
         >
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_pic"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/mary"
             android:layout_margin="2dp"
             />
@@ -52,7 +52,6 @@
                 android:layout_height="wrap_content"
                 android:text="I was able to get better grades which i prayed for in my O level and A level..."
                 android:textSize="16sp"
-                android:fontFamily="@font/roboto_regular"
                 android:textColor="#3E3939"
                 android:layout_marginTop="10dp"
                 />

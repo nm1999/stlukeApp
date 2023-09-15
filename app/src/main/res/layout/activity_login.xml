@@ -15,21 +15,19 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SignUp"
+            android:text="SignUp,"
             android:textColor="@color/yellow"
             android:layout_gravity="center"
-            android:gravity="center"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginVertical="20dp"
-            style="@style/Widget.MaterialComponents.TextView"
             />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/first_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
+            android:layout_marginVertical="5dp"
             app:boxStrokeColor="@color/black"
             app:hintTextColor="@color/black"
             android:textColorHint="@color/black"
@@ -52,7 +50,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
+            android:layout_marginVertical="5dp"
             app:boxStrokeColor="@color/black"
             app:hintTextColor="@color/black"
             android:textColorHint="@color/black"
@@ -74,7 +72,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
+            android:layout_marginVertical="5dp"
             app:suffixText=".  @gmail.com"
             app:boxStrokeColor="@color/black"
             app:hintTextColor="@color/black"
@@ -99,7 +97,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
+            android:layout_marginVertical="5dp"
             app:prefixText="+256"
             app:hintTextColor="@color/black"
             app:prefixTextColor="@color/black"
@@ -126,13 +124,16 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/register"
             android:layout_width="match_parent"
+            app:strokeColor="@color/yellow"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_height="wrap_content"
             android:text="Register"
-            android:textColor="@color/white"
+            android:textColor="@color/yellow"
             android:textSize="16sp"
             android:padding="15dp"
             android:layout_marginVertical="10dp"
-            android:textAllCaps="false"
+            android:textAllCaps="true"
+            app:cornerRadius="10dp"
             />
 
         <TextView
@@ -142,6 +143,7 @@
             android:text="Already has an account. Login ?"
             android:textColor="@color/yellow"
             android:textSize="16sp"
+            android:gravity="center"
             android:layout_marginVertical="10dp"
             />
 
