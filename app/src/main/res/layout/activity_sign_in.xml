@@ -7,127 +7,124 @@
     android:background="@color/white"
     android:orientation="vertical"
     tools:context=".SignIn">
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="10dp"
-        >
-        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-            <ImageView
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:src="@drawable/holycross"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="-30dp"
-                />
-        </RelativeLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="-60dp"
+            android:layout_marginHorizontal="10dp"
             >
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Login,"
-                android:textColor="@color/yellow"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                />
+                >
+                <ImageView
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/holycross"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="-30dp"
+                    />
+            </RelativeLayout>
 
-            <TextView
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Get all the church programs, prayers and many more at the ease of your hand."
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:textStyle="normal"
+                android:orientation="vertical"
+                android:layout_marginTop="-60dp"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Login,"
+                    android:textColor="@color/yellow"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Get all the church programs, prayers and many more at the ease of your hand."
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="normal"
+                    android:layout_marginVertical="10dp"
+                    />
+
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
+                app:boxStrokeColor="@color/black"
+                app:hintTextColor="@color/black"
+                android:textColorHint="@color/black"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/user_email"
+                    android:hint="Email"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textColorHighlight="@color/black"
+                    android:textColorLink="@color/black"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                app:boxStrokeColor="@color/black"
+                app:passwordToggleEnabled="true"
+                app:hintTextColor="@color/black"
+                android:textColorHint="@color/black"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/user_password"
+                    android:hint="password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textColorHighlight="@color/black"
+                    android:textColorLink="@color/black"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/loginbtn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LOGIN"
+                app:strokeColor="@color/yellow"
+                android:textAllCaps="false"
+                android:layout_marginVertical="10dp"
+                android:padding="15dp"
+                android:textSize="18sp"
+                app:cornerRadius="10dp"
                 />
 
+            <TextView
+                android:id="@+id/register_link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New User ? SignUp"
+                android:textColor="@color/yellow"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                />
 
         </LinearLayout>
 
-
-
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            app:boxStrokeColor="@color/black"
-            app:hintTextColor="@color/black"
-            android:textColorHint="@color/black"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/firstName"
-                android:hint="Email"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textColorHighlight="@color/black"
-                android:textColorLink="@color/black"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            app:boxStrokeColor="@color/black"
-            app:passwordToggleEnabled="true"
-            app:hintTextColor="@color/black"
-            android:textColorHint="@color/black"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/emailaddress"
-                android:hint="password"
-                android:inputType="textPassword"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textColorHighlight="@color/black"
-                android:textColorLink="@color/black"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/loginbtn"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="LOGIN"
-            app:strokeColor="@color/yellow"
-            android:textAllCaps="false"
-            android:layout_marginVertical="10dp"
-            android:padding="15dp"
-            android:textSize="18sp"
-            app:cornerRadius="10dp"
-            />
-
-        <TextView
-            android:id="@+id/register_link"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="New User ? SignUp"
-            android:textColor="@color/yellow"
-            android:textSize="16sp"
-            android:textAlignment="center"
-            />
-
-    </LinearLayout>
 
 </LinearLayout>

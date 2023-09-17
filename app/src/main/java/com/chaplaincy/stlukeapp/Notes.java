@@ -156,7 +156,7 @@ public class Notes extends Fragment {
                         if (result != null){
                             try {
                                 JSONObject jsonObject = new JSONObject(jsonData);
-                                if (jsonObject.getBoolean("error")){
+                                if (!jsonObject.getBoolean("error")){
                                     storeNotes(header,versus,note,SYNCED);
                                     successDialog.setTitle(jsonObject.getString("status"));
                                     successDialog.setContentText(jsonObject.getString("message"));
