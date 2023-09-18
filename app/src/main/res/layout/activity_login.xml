@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginHorizontal="20dp"
+        android:layout_marginHorizontal="10dp"
         >
         <TextView
             android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:text="SignUp,"
             android:textColor="@color/yellow"
             android:layout_gravity="center"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:layout_marginVertical="20dp"
             />
@@ -73,7 +73,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
-            app:suffixText=".  @gmail.com"
             app:boxStrokeColor="@color/black"
             app:hintTextColor="@color/black"
             android:textColorHint="@color/black"
@@ -98,7 +97,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
-            app:prefixText="+256"
             app:hintTextColor="@color/black"
             app:prefixTextColor="@color/black"
             app:endIconDrawable="@drawable/call"
@@ -110,11 +108,60 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/contact"
-                android:hint="contact"
+                android:hint="Contact"
                 android:fontFamily="serif"
                 android:inputType="phone"
                 android:textColor="@color/black"
                 android:drawableEnd="@drawable/call"
+                android:textColorHint="@color/black"
+                android:textColorHighlight="@color/black"
+                android:textColorLink="@color/black"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+
+            app:hintTextColor="@color/black"
+            app:prefixTextColor="@color/black"
+            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/black"
+            app:passwordToggleEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/password"
+                android:hint="Password"
+                android:fontFamily="serif"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textColorHighlight="@color/black"
+                android:textColorLink="@color/black"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            app:hintTextColor="@color/black"
+            app:prefixTextColor="@color/black"
+            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/black"
+            app:passwordToggleEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/confirm_password"
+                android:hint="Confirm password"
+                android:fontFamily="serif"
+                android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textColorHighlight="@color/black"
                 android:textColorLink="@color/black"
@@ -164,7 +211,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Matia Mathias"
+                android:text="jcmtechug.com"
                 android:layout_marginVertical="12dp"
                 android:fontFamily="sans-serif-condensed-light"
                 android:textColor="@color/yellow"
