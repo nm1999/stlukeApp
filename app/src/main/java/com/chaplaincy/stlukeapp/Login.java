@@ -1,11 +1,15 @@
 package com.chaplaincy.stlukeapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,12 +21,28 @@ import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
 import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class Login extends AppCompatActivity {
     private Button register;
     private ArrayList<String> myarr;
     private TextView signin;
+    private DBhelper mydbhelper;
+    private SweetAlertDialog errorDialog;
 
 
 
@@ -31,16 +51,18 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-//        ListView listView = findViewById(R.id.listv);
+        mydbhelper = new DBhelper(this);
+        errorDialog = new SweetAlertDialog(Login.this,SweetAlertDialog.ERROR_TYPE);
+
         myarr = new ArrayList<>();
 
         EditText firstname = findViewById(R.id.firstName);
         EditText surname = findViewById(R.id.surName);
         EditText email = findViewById(R.id.emailaddress);
         EditText contact = findViewById(R.id.contact);
+        EditText password = findViewById(R.id.password);
+        EditText confirm = findViewById(R.id.confirm_password);
         signin = findViewById(R.id.has_account);
-
-        TextInputLayout first_name = findViewById(R.id.first_name);
 
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,11 +72,8 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        DBhelper mydbhelper = new DBhelper(this);
-
 
         // acessing the data from the database
-
         Cursor cursor = mydbhelper.getData();
         if (cursor.getCount()>0){
 //            Toast.makeText(this, "Already have an account", Toast.LENGTH_SHORT).show();
@@ -62,8 +81,6 @@ public class Login extends AppCompatActivity {
             startActivity(nxt);
             finish();
 
-        }else{
-            Toast.makeText(this, "SignUp please", Toast.LENGTH_SHORT).show();
         }
 
         register = findViewById(R.id.register);
@@ -74,40 +91,133 @@ public class Login extends AppCompatActivity {
                 String surname_str = surname.getText().toString();
                 String email_str = email.getText().toString();
                 String contact_str = contact.getText().toString();
+                String psw = password.getText().toString();
+                String conf_psw =confirm.getText().toString();
 
                 if (TextUtils.isEmpty(firstname_str)){
-                    Toast.makeText(Login.this, "name is required", Toast.LENGTH_SHORT).show();
+                    firstname.setError("Enter your Christain Name ");
+                    firstname.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(surname_str)){
-                    Toast.makeText(Login.this, "name is required", Toast.LENGTH_SHORT).show();
+                    surname.setError("Enter your Other Name ");
+                    surname.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(email_str)){
-                    Toast.makeText(Login.this, "Email is required", Toast.LENGTH_SHORT).show();
+                    email.setError("Enter your email");
+                    email.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(contact_str)){
-                    Toast.makeText(Login.this, "Contact is required", Toast.LENGTH_SHORT).show();
+                    email.setError("Enter your phone number");
+                    email.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(psw)){
+                    password.setError("Enter your password");
+                    password.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(conf_psw)){
+                    password.setError("Enter your confirm password");
+                    password.requestFocus();
                     return;
                 }
 
-
-                Boolean res = mydbhelper.insertuser(firstname_str,surname_str,email_str,contact_str);
-
-                if (res==true){
-                    Toast.makeText(Login.this, "Inserted successfully", Toast.LENGTH_SHORT).show();
-                    Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
-                    startActivity(nxt);
-                }else {
-                    Toast.makeText(Login.this, "NOt registered", Toast.LENGTH_SHORT).show();
+                if (!psw.equals(conf_psw)){
+                    password.setError("Password mismatch");
+                    password.requestFocus();
+                    return;
                 }
 
+                registerUser(firstname_str,surname_str,email_str,contact_str,psw);
             }
         });
     }
 
-    private void viewdata() {
+    private void registerUser(String firstname_str, String surname_str, String email_str, String contact_str, String psw) {
+        OkHttpClient client  = new OkHttpClient();
 
+        RequestBody data = new FormBody.Builder()
+                .add("christian_name",firstname_str)
+                .add("other_name",surname_str)
+                .add("email",email_str)
+                .add("phone_number",contact_str)
+                .add("password",psw)
+                .build();
+        Request request = new Request.Builder()
+                .url("http://192.168.18.29/stlukeApp_Api/v1/auth.php?apiCall=register")
+                .post(data)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                errorDialog.setTitle("Failure");
+                errorDialog.setContentText("Something went wrong");
+//                errorDialog.show();
+                Log.e("failure",e.toString());
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                ResponseBody responseBody = response.body();
+
+                String json = responseBody.string();
+                Log.i("data",json);
+                Login.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!json.isEmpty()){
+                            try {
+                                JSONObject jsonObject = new JSONObject(json);
+
+                                if (!jsonObject.getBoolean("error")){
+                                    Log.i("success",jsonObject.getString("message"));
+                                    SharedPreferences sharedPreferences = getSharedPreferences("stluke_app", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                                    // getting the object of the message key
+                                    JSONObject details = jsonObject.getJSONObject("message");
+
+                                    editor.putString("user_id",details.getString("id"));
+                                    editor.putString("christian_name", details.getString("christian_name"));
+                                    editor.putString("other_name",details.getString("other_name"));
+                                    editor.putString("email",details.getString("email"));
+                                    editor.putString("contact",details.getString("contact"));
+                                    editor.apply();
+
+                                    //redirect to home
+                                    Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);
+                                    startActivity(nxt);
+                                    finish();
+
+                                }else{
+                                    errorDialog.setTitle(jsonObject.getString("status"));
+                                    errorDialog.setContentText(jsonObject.getString("message"));
+                                    errorDialog.show();
+                                }
+                            } catch (JSONException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+//        SaveUserOnlocally(firstname_str,surname_str,email_str,contact_str,psw);
     }
+
+    private void SaveUserOnlocally(String firstname_str, String surname_str, String email_str, String contact_str, String psw) {
+        Boolean res = mydbhelper.insertuser(firstname_str,surname_str,email_str,contact_str);
+        if (res==true){
+            Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
+            startActivity(nxt);
+        }else {
+            Toast.makeText(Login.this, "Not registered", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

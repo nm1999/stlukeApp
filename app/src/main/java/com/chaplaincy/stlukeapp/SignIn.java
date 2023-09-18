@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -63,10 +64,7 @@ public class SignIn extends AppCompatActivity {
             startActivity(nxt);
             finish();
 
-        }else{
-            Toast.makeText(this, "SignUp please", Toast.LENGTH_SHORT).show();
         }
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,7 +124,17 @@ public class SignIn extends AppCompatActivity {
                                     // get the object from the response
                                     JSONObject message_obj = jsonObject.getJSONObject("message");
                                     if (message_obj != null){
-                                        SharedPreferences sharedPreferences = getSharedPreferences("stluke_store",MODE_PRIVATE);
+                                        // save data in sharedpreferences
+                                        SharedPreferences sharedPreferences = getSharedPreferences("stluke_app", Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                                        JSONObject details = jsonObject.getJSONObject("message");
+
+                                        editor.putString("user_id",details.getString("id"));
+                                        editor.putString("christian_name", details.getString("christian_name"));
+                                        editor.putString("other_name",details.getString("other_name"));
+                                        editor.putString("email",details.getString("email"));
+                                        editor.putString("contact",details.getString("contact"));
 
                                         Intent nxt = new Intent(getApplicationContext(),Login.class);
                                         startActivity(nxt);
