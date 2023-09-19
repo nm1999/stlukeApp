@@ -181,7 +181,7 @@ public class Login extends AppCompatActivity {
                                     // getting the object of the message key
                                     JSONObject details = jsonObject.getJSONObject("message");
 
-                                    editor.putString("user_id",details.getString("id"));
+                                    editor.putInt("user_id",details.getInt("id"));
                                     editor.putString("christian_name", details.getString("christian_name"));
                                     editor.putString("other_name",details.getString("other_name"));
                                     editor.putString("email",details.getString("email"));

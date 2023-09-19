@@ -3,17 +3,21 @@ package com.chaplaincy.stlukeapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,8 +46,10 @@ public class SignIn extends AppCompatActivity {
 
     private EditText useremail, userpassword;
     private SweetAlertDialog errorDialog,successDialog;
-    private String local_christian_name,local_other_name,localemail,localcontact;
+    private ProgressBar progressBar;
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +59,7 @@ public class SignIn extends AppCompatActivity {
         login = findViewById(R.id.loginbtn);
         register = findViewById(R.id.register_link);
         progressDialog = new ProgressDialog(SignIn.this);
+        progressBar = findViewById(R.id.progressbar);
 
         errorDialog = new SweetAlertDialog(SignIn.this,SweetAlertDialog.ERROR_TYPE);
         successDialog = new SweetAlertDialog(SignIn.this,SweetAlertDialog.SUCCESS_TYPE);
@@ -61,34 +68,27 @@ public class SignIn extends AppCompatActivity {
         Cursor cursor = mydbhelper.getData();
 
 
+
         SharedPreferences sharedPreferences = getSharedPreferences("stluke_app", Context.MODE_PRIVATE);
-        String checkmail = sharedPreferences.getString("email",null);
+        int userId = sharedPreferences.getInt("user_id",0);
 
 
         // if there is some data in the sharedpreference then that user has an account
-        if (!checkmail.isEmpty()){
+        if (userId < 1){
+            Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
+            startActivity(nxt);
+            finish();
+
+            return;
+        }
+
+        if (cursor.getCount() > 0) {
             Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
             startActivity(nxt);
             finish();
         }
 
-        //handling those who had the old version of the application.
-        // NOTE : their data is in sqlite
-        if (cursor.getCount() > 0){
 
-            //utlising the method in the login class to send user data to the server.
-            Login  login = new Login();
-
-            while (cursor.moveToFirst()){
-                local_christian_name = cursor.getString(0);
-                local_other_name = cursor.getString(1);
-                localemail = cursor.getString(2);
-                localcontact = cursor.getString(3);
-            }
-
-            // note the for old user the email is their password
-            login.registerUser(local_christian_name,local_other_name,localemail,localcontact,localemail);
-        }
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +113,12 @@ public class SignIn extends AppCompatActivity {
                 startActivity(nxt);
             }
         });
+    }
+
+    private boolean isConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected();
     }
 
     private void checkAuth(String email, String password) {
@@ -156,7 +162,7 @@ public class SignIn extends AppCompatActivity {
 
                                         JSONObject details = jsonObject.getJSONObject("message");
 
-                                        editor.putString("user_id",details.getString("id"));
+                                        editor.putInt("user_id",details.getInt("id"));
                                         editor.putString("christian_name", details.getString("christian_name"));
                                         editor.putString("other_name",details.getString("other_name"));
                                         editor.putString("email",details.getString("email"));
@@ -191,4 +197,5 @@ public class SignIn extends AppCompatActivity {
             }
         });
     }
+
 }
