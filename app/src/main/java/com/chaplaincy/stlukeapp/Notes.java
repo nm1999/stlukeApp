@@ -130,7 +130,7 @@ public class Notes extends Fragment {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://192.168.0.107/stlukeApp_Api/v1/sync_notes.php")
+                .url("http://192.168.111.95/stlukeApp_Api/v1/sync_notes.php")
                 .post(requestBody)
                 .build();
 

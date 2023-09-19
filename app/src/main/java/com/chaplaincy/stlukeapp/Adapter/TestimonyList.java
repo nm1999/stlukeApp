@@ -8,13 +8,16 @@ public class TestimonyList {
     private String like;
     private String comment;
 
-    public TestimonyList(String username, String created_at, String description, int profile_pc, String like, String comment) {
+    private String title;
+
+    public TestimonyList(String title,String username, String created_at, String description) {
         this.username = username;
         this.created_at = created_at;
         this.description = description;
         this.profile_pc = profile_pc;
         this.like = like;
         this.comment = comment;
+        this.title = title;
     }
 
     public String getUsername() {
@@ -63,5 +66,13 @@ public class TestimonyList {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

@@ -1,11 +1,14 @@
 package com.chaplaincy.stlukeapp.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +17,26 @@ import com.chaplaincy.stlukeapp.Adapter.PosterList;
 import com.chaplaincy.stlukeapp.Adapter.TestimoniesAdapter;
 import com.chaplaincy.stlukeapp.Adapter.TestimonyList;
 import com.chaplaincy.stlukeapp.Adapter.TestimonyStoriesAdapter;
+import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
 import com.chaplaincy.stlukeapp.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttp;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 
 public class Testimony_view extends Fragment {
@@ -41,18 +61,71 @@ public class Testimony_view extends Fragment {
     }
 
     private void getAllTestimonies(View view) {
+
         ArrayList<TestimonyList> arrayList = new ArrayList<>();
         int [] admin_pics = {R.drawable.banner,R.drawable.bible,R.drawable.churchlogo,R.drawable.eucharist,R.drawable.holycross};
 
-        for (int i=0;i<admin_pics.length;i++){
-            arrayList.add(new TestimonyList("Matia Mathias","12/12/2023","God is so good to me God is so good to meGod is so good to meGod is so good to meGod is so good to me",admin_pics[i],"122k","34k"));
-        }
+        // making api call for the testimonies
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url("http://192.168.111.95/stlukeApp_Api/v1/testimonies.php")
+                .build();
 
-        TestimonyList[] testimonyList = arrayList.toArray(new TestimonyList[0]);
-        TestimonyStoriesAdapter testimonyStoriesAdapter = new TestimonyStoriesAdapter(testimonyList);
-        all_testimonies.setHasFixedSize(true);
-        all_testimonies.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-        all_testimonies.setAdapter(testimonyStoriesAdapter);
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.e("err",e.toString());
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                ResponseBody responseBody = response.body();
+                String results = responseBody.string();
+                Log.i("datas",results);
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            JSONObject jsonObject = new JSONObject(results);
+
+                            if (!jsonObject.getBoolean("error")){
+
+                                JSONArray obj = jsonObject.getJSONArray("results");
+
+
+                                for (int i=0;i<obj.length();i++){
+                                    JSONObject row_obj = obj.getJSONObject(i);
+
+                                    arrayList.add(
+                                            new TestimonyList(row_obj.getString("title"),row_obj.getString("username"),row_obj.getString("created_at"),row_obj.getString("description"))
+                                    );
+                                }
+
+                                TestimonyList[] testimonyList = arrayList.toArray(new TestimonyList[0]);
+                                TestimonyStoriesAdapter testimonyStoriesAdapter = new TestimonyStoriesAdapter(testimonyList);
+                                all_testimonies.setHasFixedSize(true);
+                                all_testimonies.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+                                all_testimonies.setAdapter(testimonyStoriesAdapter);
+                            }else{
+                                new SweetAlertDialog(getActivity(),SweetAlertDialog.WARNING_TYPE)
+                                        .setContentText(jsonObject.getString("results"))
+                                        .setConfirmButton("Okay", new SweetAlertDialog.OnSweetClickListener() {
+                                            @Override
+                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                                startActivity(new Intent(getActivity(), HomeActivity.class));
+                                            }
+                                        })
+                                        .show();
+                            }
+
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                });
+            }
+        });
     }
 
     private void getPosterContent(View view) {
