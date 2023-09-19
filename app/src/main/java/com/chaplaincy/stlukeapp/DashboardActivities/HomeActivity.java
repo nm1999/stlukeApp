@@ -42,7 +42,7 @@ public class HomeActivity extends AppCompatActivity {
             SharedPreferences sharedPreferences = getSharedPreferences("stluke_app", Context.MODE_PRIVATE);
             int userId = sharedPreferences.getInt("user_id",0);
 
-            if(userId < 19){
+            if(userId < 1){
                 Intent intent = new Intent(getApplicationContext(), SyncingActivity.class);
                 startActivity(intent);
                 finish();
