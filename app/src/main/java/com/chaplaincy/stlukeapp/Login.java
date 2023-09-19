@@ -136,7 +136,7 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    private void registerUser(String firstname_str, String surname_str, String email_str, String contact_str, String psw) {
+    public void registerUser(String firstname_str, String surname_str, String email_str, String contact_str, String psw) {
         OkHttpClient client  = new OkHttpClient();
 
         RequestBody data = new FormBody.Builder()
@@ -155,8 +155,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 errorDialog.setTitle("Failure");
-                errorDialog.setContentText("Something went wrong");
-//                errorDialog.show();
+                errorDialog.setContentText("Something went wrong !");
+                errorDialog.show();
                 Log.e("failure",e.toString());
             }
 

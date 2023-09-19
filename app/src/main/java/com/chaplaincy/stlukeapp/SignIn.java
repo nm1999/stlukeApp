@@ -42,6 +42,7 @@ public class SignIn extends AppCompatActivity {
 
     private EditText useremail, userpassword;
     private SweetAlertDialog errorDialog,successDialog;
+    private String local_christian_name,local_other_name,localemail,localcontact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +60,36 @@ public class SignIn extends AppCompatActivity {
         DBhelper mydbhelper = new DBhelper(this);
         Cursor cursor = mydbhelper.getData();
 
-        if (cursor.getCount()>0){
-            Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("stluke_app", Context.MODE_PRIVATE);
+        String checkmail = sharedPreferences.getString("email",null);
+
+
+        // if there is some data in the sharedpreference then that user has an account
+        if (!checkmail.isEmpty()){
+            Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
             startActivity(nxt);
             finish();
-
         }
+
+        //handling those who had the old version of the application.
+        // NOTE : their data is in sqlite
+        if (cursor.getCount() > 0){
+
+            //utlising the method in the login class to send user data to the server.
+            Login  login = new Login();
+
+            while (cursor.moveToFirst()){
+                local_christian_name = cursor.getString(0);
+                local_other_name = cursor.getString(1);
+                localemail = cursor.getString(2);
+                localcontact = cursor.getString(3);
+            }
+
+            // note the for old user the email is their password
+            login.registerUser(local_christian_name,local_other_name,localemail,localcontact,localemail);
+        }
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,6 +149,7 @@ public class SignIn extends AppCompatActivity {
                                     // get the object from the response
                                     JSONObject message_obj = jsonObject.getJSONObject("message");
                                     if (message_obj != null){
+
                                         // save data in sharedpreferences
                                         SharedPreferences sharedPreferences = getSharedPreferences("stluke_app", Context.MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -135,9 +161,11 @@ public class SignIn extends AppCompatActivity {
                                         editor.putString("other_name",details.getString("other_name"));
                                         editor.putString("email",details.getString("email"));
                                         editor.putString("contact",details.getString("contact"));
+                                        editor.apply();
 
-                                        Intent nxt = new Intent(getApplicationContext(),Login.class);
+                                        Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
                                         startActivity(nxt);
+                                        finish();
                                     }else{
                                         errorDialog.setTitle("Failure");
                                         errorDialog.setContentText("Invalid response");
