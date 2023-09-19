@@ -147,7 +147,7 @@ public class Login extends AppCompatActivity {
                 .add("password",psw)
                 .build();
         Request request = new Request.Builder()
-                .url("http://192.168.18.29/stlukeApp_Api/v1/auth.php?apiCall=register")
+                .url("http://192.168.43.50/stlukeApp_Api/v1/auth.php?apiCall=register")
                 .post(data)
                 .build();
 

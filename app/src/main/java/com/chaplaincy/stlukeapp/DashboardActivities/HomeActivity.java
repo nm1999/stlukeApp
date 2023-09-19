@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -20,12 +21,12 @@ import com.chaplaincy.stlukeapp.Login;
 import com.chaplaincy.stlukeapp.Mainmenu;
 import com.chaplaincy.stlukeapp.Notes;
 import com.chaplaincy.stlukeapp.R;
+import com.chaplaincy.stlukeapp.SyncingActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
-    private String local_christian_name,local_other_name,localemail,localcontact;
-    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,20 +42,11 @@ public class HomeActivity extends AppCompatActivity {
             SharedPreferences sharedPreferences = getSharedPreferences("stluke_app", Context.MODE_PRIVATE);
             int userId = sharedPreferences.getInt("user_id",0);
 
-//            if (userId < 1){
-//                Login login = new Login();
-//
-//                while (cursor.moveToFirst()) {
-//                    local_christian_name = cursor.getString(0);
-//                    local_other_name = cursor.getString(1);
-//                    localemail = cursor.getString(2);
-//                    localcontact = cursor.getString(3);
-//                }
-//
-//                // note the for old user the email is their password
-//                login.registerUser(local_christian_name, local_other_name, localemail, localcontact, localemail);
-//            }
-
+            if(userId < 19){
+                Intent intent = new Intent(getApplicationContext(), SyncingActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }
 
         bottomNavigationView = findViewById(R.id.bottomnav);
