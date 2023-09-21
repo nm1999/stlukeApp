@@ -74,16 +74,14 @@ public class SignIn extends AppCompatActivity {
 
 
         // if there is some data in the sharedpreference then that user has an account
-        if (userId < 1){
+        if ((userId < 1 && cursor.getCount() > 0 ) || userId > 1){
             Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
             startActivity(nxt);
             finish();
 
             return;
-        }
-
-        if (cursor.getCount() > 0) {
-            Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
+        }else{
+            Intent nxt = new Intent(getApplicationContext(),Login.class);
             startActivity(nxt);
             finish();
         }
@@ -130,7 +128,7 @@ public class SignIn extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://192.168.0.107/stlukeApp_Api/v1/auth.php?apiCall=login")
+                .url("http://192.168.0.100/stlukeApp_Api/v1/auth.php?apiCall=login")
                 .post(requestBody)
                 .build();
         client.newCall(request).enqueue(new Callback() {

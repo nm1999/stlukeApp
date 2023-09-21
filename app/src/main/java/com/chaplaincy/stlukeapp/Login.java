@@ -147,7 +147,7 @@ public class Login extends AppCompatActivity {
                 .add("password",psw)
                 .build();
         Request request = new Request.Builder()
-                .url("http://192.168.43.50/stlukeApp_Api/v1/auth.php?apiCall=register")
+                .url("http://192.168.0.100/stlukeApp_Api/v1/auth.php?apiCall=register")
                 .post(data)
                 .build();
 
@@ -156,7 +156,7 @@ public class Login extends AppCompatActivity {
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 errorDialog.setTitle("Failure");
                 errorDialog.setContentText("Something went wrong !");
-                errorDialog.show();
+//                errorDialog.show();
                 Log.e("failure",e.toString());
             }
 

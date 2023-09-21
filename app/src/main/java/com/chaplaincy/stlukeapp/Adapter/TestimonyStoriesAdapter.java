@@ -31,9 +31,8 @@ public class TestimonyStoriesAdapter extends RecyclerView.Adapter<TestimonyStori
         holder.username.setText(testimonyLists[position].getUsername());
         holder.created_at.setText(testimonyLists[position].getCreated_at());
         holder.story.setText(testimonyLists[position].getDescription());
-        holder.like.setText(testimonyLists[position].getLike());
-        holder.comment.setText(testimonyLists[position].getComment());
-        holder.dp.setImageResource(testimonyLists[position].getProfile_pc());
+        holder.title.setText(testimonyLists[position].getTitle());
+
     }
 
     @Override
@@ -42,16 +41,14 @@ public class TestimonyStoriesAdapter extends RecyclerView.Adapter<TestimonyStori
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView username,created_at,story,like,comment;
+        private TextView username,created_at,story,title;
         private ImageView dp;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            title = itemView.findViewById(R.id.title);
             username = itemView.findViewById(R.id.username);
             created_at = itemView.findViewById(R.id.created_at);
             story = itemView.findViewById(R.id.story);
-            like = itemView.findViewById(R.id.like);
-            comment = itemView.findViewById(R.id.comments);
-            dp = itemView.findViewById(R.id.profile_pic);
         }
     }
 }

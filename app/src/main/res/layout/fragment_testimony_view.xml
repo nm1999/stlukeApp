@@ -12,6 +12,7 @@
         >
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/add_story"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             app:cornerRadius="50dp"

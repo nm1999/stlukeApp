@@ -1,6 +1,8 @@
 package com.chaplaincy.stlukeapp;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -74,7 +76,6 @@ public class Notes extends Fragment {
         //creating a dialog for create a note
         AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
         builder.setView(mydialog);
-        builder.setTitle("New Record");
         alertDialog= builder.create();
 
         getNotes(view);
@@ -120,17 +121,20 @@ public class Notes extends Fragment {
     }
 
     private void SendDataToServer(View view, String header, String versus, String note, int sync_state) {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("stluke_app", Context.MODE_PRIVATE);
+        int user_id = sharedPreferences.getInt("user_id",0);
+
         OkHttpClient client = new OkHttpClient();
 
         RequestBody requestBody = new FormBody.Builder()
                 .add("title",header)
                 .add("versus",versus)
                 .add("note",note)
-                .add("user_id","1")
+                .add("user_id", String.valueOf(user_id))
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://192.168.0.107/stlukeApp_Api/v1/sync_notes.php")
+                .url("http://192.168.0.100/stlukeApp_Api/v1/sync_notes.php")
                 .post(requestBody)
                 .build();
 
