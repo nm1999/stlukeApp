@@ -86,4 +86,19 @@ public class DBhelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
+    public boolean editnote(String id,String title, String versus,String notes){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("title",title);
+        contentValues.put("versus",versus);
+        contentValues.put("notes",notes);
+
+        long res = db.update(TABLE_NOTES,contentValues,"id=?", new String[]{id});
+        if (res ==-1){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }

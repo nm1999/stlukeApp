@@ -105,6 +105,9 @@ public class MyListAdapter extends BaseAdapter {
         edit_icon.setOnClickListener(v -> {
             Intent intent = new Intent(context, EditNote.class);
             intent.putExtra("id",id[i]);
+            intent.putExtra("title",title[i]);
+            intent.putExtra("versus",chapter[i]);
+            intent.putExtra("note",mynotes[i]);
             context.startActivity(intent);
 
         });
