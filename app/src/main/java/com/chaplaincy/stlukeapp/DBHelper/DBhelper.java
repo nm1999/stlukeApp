@@ -76,9 +76,9 @@ public class DBhelper extends SQLiteOpenHelper {
         return pointer;
     }
 
-    public boolean delete(String title){
+    public boolean delete(String id){
         SQLiteDatabase mydb = this.getWritableDatabase();
-        long res = mydb.delete(TABLE_NOTES, "title=?", new String[]{title});
+        long res = mydb.delete(TABLE_NOTES, "id=?", new String[]{id});
 
         if (res==-1){
             return false;

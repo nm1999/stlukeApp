@@ -199,17 +199,18 @@ public class Notes extends Fragment {
         ArrayList<String> title = new ArrayList();
         ArrayList<String> chapter = new ArrayList();
         ArrayList<String> lesson = new ArrayList();
+        ArrayList<String> id = new ArrayList<>();
 
         if (get.getCount()>0){
             txt.setVisibility(View.GONE);
 
             while (get.moveToNext()){
-
+                id.add(get.getString(0));
                 title.add(get.getString(1));
                 chapter.add(get.getString(2));
                 lesson.add(get.getString(3));
 
-                MyListAdapter myadapter = new MyListAdapter(getActivity(),title,chapter,lesson);
+                MyListAdapter myadapter = new MyListAdapter(getActivity(),id,title,chapter,lesson);
                 ListView list = view.findViewById(R.id.mylistview);
                 list.setAdapter(myadapter);
             }

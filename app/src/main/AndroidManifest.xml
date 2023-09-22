@@ -15,6 +15,9 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
         <activity
+            android:name=".EditNote"
+            android:exported="false" />
+        <activity
             android:name=".SyncingActivity"
             android:exported="false" />
         <activity
