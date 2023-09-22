@@ -3,10 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
-    android:orientation="vertical">
-
-
+    android:background="@color/white">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,11 +17,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Create a note"
+                android:text="Add a testimony"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 />
         </com.google.android.material.appbar.MaterialToolbar>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -42,8 +40,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/mytitle"
-                    android:hint="Record title"
+                    android:id="@+id/title"
+                    android:hint="Title"
                     android:fontFamily="serif"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
@@ -62,31 +60,10 @@
                 >
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/biblev"
-                    android:hint="Bible versus"
-                    android:fontFamily="serif"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:textColorHighlight="@color/black"
-                    android:textColorLink="@color/black"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
-                app:boxStrokeColor="@color/black"
-                app:hintTextColor="@color/black"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-                >
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:id="@+id/notes"
+                    android:layout_height="180dp"
+                    android:id="@+id/description"
                     android:gravity="start"
-                    android:hint="Take notes"
+                    android:hint="Description"
                     android:fontFamily="serif"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
@@ -98,16 +75,13 @@
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add record"
+                android:text="Publish"
                 android:textAllCaps="false"
-                android:id="@+id/addrecord"
+                android:id="@+id/publish"
                 android:padding="10dp"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 />
         </LinearLayout>
-
     </LinearLayout>
-
-
 </ScrollView>
