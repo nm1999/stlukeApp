@@ -16,9 +16,11 @@ public class DBhelper extends SQLiteOpenHelper {
     private final String surname_key = "surname";
     private final String email_key = "email";
     private final String contact_key = "contact";
+    private static final int DATABASE_VERSION = 2;
+    private static final int OLDER_VERSION = 1;
 
     public DBhelper(@Nullable Context context) {
-        super(context, "stluke",null,1);
+        super(context, "stluke",null,DATABASE_VERSION);
     }
 
     @Override
@@ -29,16 +31,25 @@ public class DBhelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("drop table if exists "+TABLE_NAME);
-        db.execSQL("drop table if exists "+TABLE_NOTES);
+        if (i < DATABASE_VERSION ){
+            db.execSQL("ALTER TABLE notes ADD COLUMN sync_state INTEGER DEFAULT 0");
+            db.execSQL("ALTER TABLE notes ADD COLUMN deleted INTEGER DEFAULT 0");
+            db.execSQL("ALTER TABLE notes ADD COLUMN editted INTEGER DEFAULT 0");
+
+//            db.execSQL("create table "+TABLE_NOTES+"(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT,versus TEXT,notes TEXT)");
+
+        }
+//        db.execSQL("drop table if exists "+TABLE_NAME);
+//        db.execSQL("drop table if exists "+TABLE_NOTES);
     }
 
-    public boolean insertnotes(String title,String versus,String notes){
+    public boolean insertnotes(String title,String versus,String notes,int sync_state){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("title",title);
         contentValues.put("versus",versus);
         contentValues.put("notes",notes);
+        contentValues.put("sync_state",sync_state);
 
         long res = db.insert(TABLE_NOTES,null,contentValues);
         if (res==-1){

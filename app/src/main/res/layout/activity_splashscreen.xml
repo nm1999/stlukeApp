@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
             android:fontFamily="sans-serif-condensed-light"
-            android:text="Matia Mathias"
+            android:text="jcmtechug.com"
             android:textColor="@color/yellow" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

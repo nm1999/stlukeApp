@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 
 
 import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
+import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
 import com.chaplaincy.stlukeapp.EditNote;
 import com.chaplaincy.stlukeapp.R;
 
@@ -91,7 +92,12 @@ public class MyListAdapter extends BaseAdapter {
                             Boolean res = mydb.delete(id[i]);
                             if (res){
                                 sweetAlertDialog.hide();
-                                new SweetAlertDialog(context,SweetAlertDialog.SUCCESS_TYPE).setTitleText("sucess").show();
+                                new SweetAlertDialog(context,SweetAlertDialog.SUCCESS_TYPE).setTitleText("sucess").setConfirmButton("Okay", new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        context.startActivity(new Intent(context, HomeActivity.class));
+                                    }
+                                }).show();
                             }else{
                                 Toast.makeText(context, "Operation failed", Toast.LENGTH_SHORT).show();
                             }

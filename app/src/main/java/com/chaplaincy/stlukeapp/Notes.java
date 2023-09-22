@@ -92,7 +92,7 @@ public class Notes extends Fragment {
             String versus = myversus.getText().toString();
             String note = notes.getText().toString();
 
-            SendDataToServer(view,header,versus,note,1);
+            SendDataToServer(view,header,versus,note,SYNCED);
             getNotes(view);
         });
 
@@ -108,7 +108,7 @@ public class Notes extends Fragment {
             errorDialog.show();
         }else {
 
-            Boolean isNoteSave = mydbhelper.insertnotes(header, versus, note);
+            Boolean isNoteSave = mydbhelper.insertnotes(header, versus, note,sync_state);
 
             if (isNoteSave) {
                 alertDialog.dismiss();
@@ -143,9 +143,10 @@ public class Notes extends Fragment {
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 Log.e("err",e.toString());
                 storeNotes(header,versus,note,NOT_SYNCED);
+
                 successDialog.setTitle("Success");
                 successDialog.setContentText("Notes saved offline successfully");
-                successDialog.show();
+//                successDialog.show();
             }
 
             @Override
