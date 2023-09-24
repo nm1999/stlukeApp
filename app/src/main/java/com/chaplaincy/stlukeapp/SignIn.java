@@ -13,6 +13,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -89,13 +90,25 @@ public class SignIn extends AppCompatActivity {
                 useremail = findViewById(R.id.user_email);
                 userpassword = findViewById(R.id.user_password);
 
-                progressDialog.setMessage("Verifying account");
-                progressDialog.show();
                 String email = useremail.getText().toString();
                 String password = userpassword.getText().toString();
 
+                if (TextUtils.isEmpty(email)){
+                    useremail.setError("Enter email address");
+                    useremail.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(password)){
+                    userpassword.setError("Enter password");
+                    userpassword.requestFocus();
+                    return;
+                }
+
+                progressDialog.setMessage("Verifying account");
+                progressDialog.show();
+
                 checkAuth(email,password);
-//
+
             }
         });
 
