@@ -98,12 +98,14 @@ public class DBhelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean editnote(String id,String title, String versus,String notes){
+    public boolean editnote(String id,String title, String versus,String notes,int sync_state){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("title",title);
         contentValues.put("versus",versus);
         contentValues.put("notes",notes);
+        contentValues.put("editted",sync_state);
+        contentValues.put("sync_state",sync_state);
 
         long res = db.update(TABLE_NOTES,contentValues,"id=?", new String[]{id});
         if (res ==-1){

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.chaplaincy.stlukeapp.Apis.Urls;
 import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
 import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
 import com.google.android.material.textfield.TextInputLayout;
@@ -147,7 +148,7 @@ public class Login extends AppCompatActivity {
                 .add("password",psw)
                 .build();
         Request request = new Request.Builder()
-                .url("http://192.168.0.100/stlukeApp_Api/v1/auth.php?apiCall=register")
+                .url(Urls.REGISTER_URL)
                 .post(data)
                 .build();
 

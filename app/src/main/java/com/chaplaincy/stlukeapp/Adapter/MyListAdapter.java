@@ -3,6 +3,7 @@ package com.chaplaincy.stlukeapp.Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 
+import com.bumptech.glide.Glide;
 import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
 import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
 import com.chaplaincy.stlukeapp.EditNote;
@@ -30,17 +32,19 @@ public class MyListAdapter extends BaseAdapter {
     private String[] chapter;
     private String[] mynotes;
     private String [] id;
+    private Integer [] sync_status;
     LayoutInflater inflater;
 
     private DBhelper mydb;
     
 
-    public MyListAdapter(Context ctx,ArrayList<String> id, ArrayList<String> title, ArrayList<String> mychapter ,ArrayList<String> note){
+    public MyListAdapter(Context ctx,ArrayList<String> id, ArrayList<String> title, ArrayList<String> mychapter ,ArrayList<String> note , ArrayList<Integer> sync){
         this.context = ctx;
         this.chapter = mychapter.toArray(new String[0]);
         this.title = title.toArray(new String[0]);
         this.mynotes = note.toArray(new String[0]);
         this.id= id.toArray(new String[0]);
+        this.sync_status = sync.toArray(new Integer[]{});
         inflater = LayoutInflater.from(ctx);
     }
     
@@ -69,10 +73,17 @@ public class MyListAdapter extends BaseAdapter {
         TextView note = view.findViewById(R.id.lessoncontent);
         ImageView edit_icon = view.findViewById(R.id.edit_note);
         ImageView delete_icon = view.findViewById(R.id.delete_note);
+        ImageView sync_icon = view.findViewById(R.id.sync_status);
 
         mynotetitle.setText(title[i]);
         mychapter.setText(chapter[i]);
         note.setText(mynotes[i]);
+        if (sync_status[i] ==1){
+            Glide.with(context).load(R.drawable.synced).into(sync_icon);
+        }else{
+            Glide.with(context).load(R.drawable.not_synced).into(sync_icon);
+        }
+
 
         delete_icon.setOnClickListener(v -> {
             new SweetAlertDialog(context,SweetAlertDialog.WARNING_TYPE)

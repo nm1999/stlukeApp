@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chaplaincy.stlukeapp.Adapter.MyListAdapter;
+import com.chaplaincy.stlukeapp.Apis.Urls;
 import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
 import com.chaplaincy.stlukeapp.Models.ApiResponse;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -134,7 +135,7 @@ public class Notes extends Fragment {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://192.168.0.100/stlukeApp_Api/v1/sync_notes.php")
+                .url(Urls.TAKE_NOTES)
                 .post(requestBody)
                 .build();
 
@@ -201,6 +202,7 @@ public class Notes extends Fragment {
         ArrayList<String> chapter = new ArrayList();
         ArrayList<String> lesson = new ArrayList();
         ArrayList<String> id = new ArrayList<>();
+        ArrayList<Integer> sync_status = new ArrayList<Integer>();
 
         if (get.getCount()>0){
             txt.setVisibility(View.GONE);
@@ -210,8 +212,10 @@ public class Notes extends Fragment {
                 title.add(get.getString(1));
                 chapter.add(get.getString(2));
                 lesson.add(get.getString(3));
+                sync_status.add(get.getInt(4));
 
-                MyListAdapter myadapter = new MyListAdapter(getActivity(),id,title,chapter,lesson);
+
+                MyListAdapter myadapter = new MyListAdapter(getActivity(),id,title,chapter,lesson,sync_status);
                 ListView list = view.findViewById(R.id.mylistview);
                 list.setAdapter(myadapter);
             }

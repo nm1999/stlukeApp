@@ -65,6 +65,7 @@
             android:textColor="@color/black" />
 
         <LinearLayout
+            android:id="@+id/lower_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -88,6 +89,20 @@
                 android:fontFamily="sans-serif-condensed"
                 android:text="The Lord wants us all to be alive ,he will be with us" />
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lower_section"
+            >
+            <ImageView
+                android:id="@+id/sync_status"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/synced"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
 
     </RelativeLayout>
 </LinearLayout>

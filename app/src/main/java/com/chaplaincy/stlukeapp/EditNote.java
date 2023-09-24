@@ -53,11 +53,12 @@ public class EditNote extends AppCompatActivity {
             String new_title = title.getText().toString();
             String new_versus = versus.getText().toString();
             String new_note = note.getText().toString();
+            int sync_state = 1;
 
             Log.i("click","clickkkkkkkkkk");
 
 
-            Boolean res = mydb.editnote(note_id,new_title,new_versus,new_note);
+            Boolean res = mydb.editnote(note_id,new_title,new_versus,new_note,sync_state);
             Log.i("res", String.valueOf(res));
 
             if (res){

@@ -21,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chaplaincy.stlukeapp.Apis.Urls;
 import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
 import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
 
@@ -128,7 +129,7 @@ public class SignIn extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://192.168.0.100/stlukeApp_Api/v1/auth.php?apiCall=login")
+                .url(Urls.LOGIN_URL)
                 .post(requestBody)
                 .build();
         client.newCall(request).enqueue(new Callback() {
