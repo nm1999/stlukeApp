@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -132,11 +134,25 @@ public class Login extends AppCompatActivity {
                     return;
                 }
 
-                registerUser(firstname_str,surname_str,email_str,contact_str,psw);
+                if (isConnected()){
+                    registerUser(firstname_str,surname_str,email_str,contact_str,psw);
+                }else{
+                    new SweetAlertDialog(Login.this,SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Failure")
+                            .setContentText("Connect to internet and Try again")
+                            .show();
+                }
+
+
             }
         });
     }
 
+    private boolean isConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected();
+    }
     public void registerUser(String firstname_str, String surname_str, String email_str, String contact_str, String psw) {
         OkHttpClient client  = new OkHttpClient();
 

@@ -22,6 +22,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chaplaincy.stlukeapp.Apis.CheckConnectivity;
 import com.chaplaincy.stlukeapp.Apis.Urls;
 import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
 import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
@@ -104,10 +105,18 @@ public class SignIn extends AppCompatActivity {
                     return;
                 }
 
-                progressDialog.setMessage("Verifying account");
-                progressDialog.show();
+                if (isConnected()){
+                    progressDialog.setMessage("Verifying account");
+                    progressDialog.show();
 
-                checkAuth(email,password);
+                    checkAuth(email,password);
+                }else{
+                    new SweetAlertDialog(SignIn.this,SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Failure")
+                            .setContentText("Connect to internet and Try again")
+                            .show();
+                }
+
 
             }
         });
