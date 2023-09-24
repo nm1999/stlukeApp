@@ -79,12 +79,6 @@ public class SignIn extends AppCompatActivity {
             Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
             startActivity(nxt);
             finish();
-
-            return;
-        }else{
-            Intent nxt = new Intent(getApplicationContext(),Login.class);
-            startActivity(nxt);
-            finish();
         }
 
 
