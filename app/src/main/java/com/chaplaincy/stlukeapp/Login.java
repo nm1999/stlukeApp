@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.chaplaincy.stlukeapp.Apis.Urls;
 import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
 import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
 import com.google.android.material.textfield.TextInputLayout;
@@ -131,11 +134,25 @@ public class Login extends AppCompatActivity {
                     return;
                 }
 
-                registerUser(firstname_str,surname_str,email_str,contact_str,psw);
+                if (isConnected()){
+                    registerUser(firstname_str,surname_str,email_str,contact_str,psw);
+                }else{
+                    new SweetAlertDialog(Login.this,SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Failure")
+                            .setContentText("Connect to internet and Try again")
+                            .show();
+                }
+
+
             }
         });
     }
 
+    private boolean isConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected();
+    }
     public void registerUser(String firstname_str, String surname_str, String email_str, String contact_str, String psw) {
         OkHttpClient client  = new OkHttpClient();
 
@@ -147,16 +164,22 @@ public class Login extends AppCompatActivity {
                 .add("password",psw)
                 .build();
         Request request = new Request.Builder()
-                .url("http://192.168.0.100/stlukeApp_Api/v1/auth.php?apiCall=register")
+                .url(Urls.REGISTER_URL)
                 .post(data)
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                errorDialog.setTitle("Failure");
-                errorDialog.setContentText("Something went wrong !");
-//                errorDialog.show();
+                Login.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        errorDialog.setTitle("Failure");
+                        errorDialog.setContentText("No Internet connection");
+                        errorDialog.show();
+                    }
+                });
+
                 Log.e("failure",e.toString());
             }
 

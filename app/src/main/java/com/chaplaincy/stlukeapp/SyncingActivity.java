@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.chaplaincy.stlukeapp.Apis.Urls;
 import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
 import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
 
@@ -63,7 +64,7 @@ public class SyncingActivity extends AppCompatActivity {
                 .add("password",password)
                 .build();
         Request request = new Request.Builder()
-                .url("http://192.168.111.95/stlukeApp_Api/v1/auth.php?apiCall=register")
+                .url(Urls.REGISTER_URL)
                 .post(data)
                 .build();
 
@@ -134,7 +135,7 @@ public class SyncingActivity extends AppCompatActivity {
                         .build();
 
                 Request request = new Request.Builder()
-                        .url("http://192.168.111.95/stlukeApp_Api/v1/sync_notes.php")
+                        .url(Urls.TAKE_NOTES)
                         .post(requestBody)
                         .build();
 

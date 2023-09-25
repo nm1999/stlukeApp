@@ -1,6 +1,8 @@
 package com.chaplaincy.stlukeapp.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -29,9 +31,12 @@ public class Profile extends Fragment {
 
         logout = view.findViewById(R.id.logout_btn);
 
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("stluke_app", Context.MODE_PRIVATE);
+        String christian_name = sharedPreferences.getString("christian_name",null);
+        String othername = sharedPreferences.getString("other_name",null);
+        String user_email =  sharedPreferences.getString("email",null);
+        String contact = sharedPreferences.getString("contact",null);
 
-        DBhelper mydbhelper = new DBhelper(getActivity());
-        Cursor cr = mydbhelper.getData();
 
         TextView first = view.findViewById(R.id.firstname);
         TextView sur = view.findViewById(R.id.surname);
@@ -39,12 +44,11 @@ public class Profile extends Fragment {
         TextView phone = view.findViewById(R.id.phonenumber);
 
 
-        while (cr.moveToNext()){
-            first.setText(cr.getString(0));
-            sur.setText(cr.getString(1));
-            email.setText(cr.getString(2));
-            phone.setText("+256 "+cr.getString(3));
-        }
+        first.setText(christian_name);
+        sur.setText(othername);
+        email.setText(user_email);
+        phone.setText(contact);
+
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

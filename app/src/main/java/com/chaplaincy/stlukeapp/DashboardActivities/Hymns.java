@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,9 +15,19 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import com.chaplaincy.stlukeapp.Adapter.HymnsAdapter;
+import com.chaplaincy.stlukeapp.Apis.Urls;
 import com.chaplaincy.stlukeapp.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 
 public class Hymns extends AppCompatActivity {
@@ -371,6 +382,8 @@ public class Hymns extends AppCompatActivity {
         list.setTextFilterEnabled(true);
         list.setAdapter(hymnsAdapter);
 
+        sendSongs(arraylist);
+
 
 
         SearchView search = findViewById(R.id.search);
@@ -399,6 +412,39 @@ public class Hymns extends AppCompatActivity {
 
     }
 
+    private void sendSongs(ArrayList<String> arraylist) {
+        OkHttpClient client = new OkHttpClient();
+
+        FormBody responseBody = new FormBody.Builder()
+                .add("songs", String.valueOf(arraylist))
+                .build();
+
+        Request request = new Request.Builder()
+                .post(responseBody)
+                .url(Urls.HYMN)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.i("error",e.toString());
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                ResponseBody resp = response.body();
+                String json = resp.string();
+
+                Hymns.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i("resp",json);
+                    }
+                });
+            }
+        });
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -415,4 +461,5 @@ public class Hymns extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

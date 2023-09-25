@@ -13,6 +13,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chaplaincy.stlukeapp.Apis.CheckConnectivity;
+import com.chaplaincy.stlukeapp.Apis.Urls;
 import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
 import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
 
@@ -78,12 +81,6 @@ public class SignIn extends AppCompatActivity {
             Intent nxt = new Intent(getApplicationContext(),HomeActivity.class);
             startActivity(nxt);
             finish();
-
-            return;
-        }else{
-            Intent nxt = new Intent(getApplicationContext(),Login.class);
-            startActivity(nxt);
-            finish();
         }
 
 
@@ -94,13 +91,33 @@ public class SignIn extends AppCompatActivity {
                 useremail = findViewById(R.id.user_email);
                 userpassword = findViewById(R.id.user_password);
 
-                progressDialog.setMessage("Verifying account");
-                progressDialog.show();
                 String email = useremail.getText().toString();
                 String password = userpassword.getText().toString();
 
-                checkAuth(email,password);
-//
+                if (TextUtils.isEmpty(email)){
+                    useremail.setError("Enter email address");
+                    useremail.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(password)){
+                    userpassword.setError("Enter password");
+                    userpassword.requestFocus();
+                    return;
+                }
+
+                if (isConnected()){
+                    progressDialog.setMessage("Verifying account");
+                    progressDialog.show();
+
+                    checkAuth(email,password);
+                }else{
+                    new SweetAlertDialog(SignIn.this,SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Failure")
+                            .setContentText("Connect to internet and Try again")
+                            .show();
+                }
+
+
             }
         });
 
@@ -128,19 +145,31 @@ public class SignIn extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://192.168.0.100/stlukeApp_Api/v1/auth.php?apiCall=login")
+                .url(Urls.LOGIN_URL)
                 .post(requestBody)
                 .build();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.e("err",e.toString());
                 progressDialog.dismiss();
+                SignIn.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        errorDialog.setTitle("Failure");
+                        errorDialog.setContentText("No Internet connection");
+                        errorDialog.show();
+                    }
+                });
+
             }
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 ResponseBody result = response.body();
                 String jsonData = result.string();
+
+                Log.i("data",jsonData);
 
                 SignIn.this.runOnUiThread(new Runnable() {
                     @Override

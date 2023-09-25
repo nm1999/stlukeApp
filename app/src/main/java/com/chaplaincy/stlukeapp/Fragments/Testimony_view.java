@@ -24,6 +24,7 @@ import com.chaplaincy.stlukeapp.Adapter.PosterList;
 import com.chaplaincy.stlukeapp.Adapter.TestimoniesAdapter;
 import com.chaplaincy.stlukeapp.Adapter.TestimonyList;
 import com.chaplaincy.stlukeapp.Adapter.TestimonyStoriesAdapter;
+import com.chaplaincy.stlukeapp.Apis.Urls;
 import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
 import com.chaplaincy.stlukeapp.R;
 import com.google.android.material.button.MaterialButton;
@@ -129,7 +130,7 @@ public class Testimony_view extends Fragment {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://192.168.0.100/stlukeApp_Api/v1/add_testimonies.php")
+                .url(Urls.TESTIMONIES)
                 .post(requestBody)
                 .build();
 
@@ -137,6 +138,20 @@ public class Testimony_view extends Fragment {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 Log.e("err",e.toString());
+                alertdialog.dismiss();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        new SweetAlertDialog(getActivity(),SweetAlertDialog.WARNING_TYPE)
+                                .setContentText("Failure")
+                                .setContentText("No Internet Connection")
+                                .setConfirmButton("OKay",sweetAlertDialog -> {
+                                    startActivity(new Intent(getActivity(), HomeActivity.class));
+                                    getActivity().finish();
+                                })
+                                .show();
+                    }
+                });
 
             }
 
@@ -163,13 +178,28 @@ public class Testimony_view extends Fragment {
         // making api call for the testimonies
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("http://192.168.0.100/stlukeApp_Api/v1/testimonies.php")
+                .url(Urls.ALL_STORIES)
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 Log.e("err",e.toString());
+                if (!e.toString().isEmpty()){
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            new SweetAlertDialog(getActivity(),SweetAlertDialog.WARNING_TYPE)
+                                    .setContentText("Failure")
+                                    .setContentText("No Internet Connection")
+                                    .setConfirmButton("OKay",sweetAlertDialog -> {
+                                        startActivity(new Intent(getActivity(), HomeActivity.class));
+                                        getActivity().finish();
+                                    })
+                                    .show();
+                        }
+                    });
+                }
             }
 
             @Override

@@ -54,7 +54,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Get all the church programs, prayers and many more at the ease of your hand."
+                    android:text="Get all the church programs, prayers and many more at the comfort of your hands."
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="normal"

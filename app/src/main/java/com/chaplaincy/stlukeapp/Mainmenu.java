@@ -1,6 +1,8 @@
 package com.chaplaincy.stlukeapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -36,16 +38,13 @@ public class Mainmenu extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_mainmenu, container, false);
 
-        DBhelper mydbhelper = new DBhelper(getActivity());
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("stluke_app", Context.MODE_PRIVATE);
+        String christian_name = sharedPreferences.getString("christian_name",null);
 
-        ArrayList<String> myarr = new ArrayList<>();
-        Cursor cr = mydbhelper.getData();
+
         TextView greetings = view.findViewById(R.id.greeting);
+        greetings.setText("Hey "+christian_name);
 
-        while (cr.moveToNext()){
-            myarr.add(cr.getString(1));
-            greetings.setText("Hey "+cr.getString(0));
-        }
 
 
         Navigate(view);
