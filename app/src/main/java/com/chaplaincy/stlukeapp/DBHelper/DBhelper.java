@@ -3,8 +3,10 @@ package com.chaplaincy.stlukeapp.DBHelper;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -27,14 +29,24 @@ public class DBhelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table "+TABLE_NAME+"(firstname TEXT,surname TEXT,email TEXT,contact TEXT)");
         db.execSQL("create table "+TABLE_NOTES+"(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT,versus TEXT,notes TEXT)");
+
+        try {
+            db.execSQL("ALTER TABLE notes ADD COLUMN sync_state INTEGER DEFAULT 0");
+            db.execSQL("ALTER TABLE notes ADD COLUMN deleted INTEGER DEFAULT 0");
+            db.execSQL("ALTER TABLE notes ADD COLUMN editted INTEGER DEFAULT 0");
+
+        } catch (SQLException e) {
+            // If the column already exists, this exception will be thrown
+            Log.e("table exist",e.toString());
+        }
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         if (i < DATABASE_VERSION ){
-            db.execSQL("ALTER TABLE notes ADD COLUMN sync_state INTEGER DEFAULT 0");
-            db.execSQL("ALTER TABLE notes ADD COLUMN deleted INTEGER DEFAULT 0");
-            db.execSQL("ALTER TABLE notes ADD COLUMN editted INTEGER DEFAULT 0");
+//            db.execSQL("ALTER TABLE notes ADD COLUMN sync_state INTEGER DEFAULT 0");
+//            db.execSQL("ALTER TABLE notes ADD COLUMN deleted INTEGER DEFAULT 0");
+//            db.execSQL("ALTER TABLE notes ADD COLUMN editted INTEGER DEFAULT 0");
 
 //            db.execSQL("create table "+TABLE_NOTES+"(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT,versus TEXT,notes TEXT)");
 

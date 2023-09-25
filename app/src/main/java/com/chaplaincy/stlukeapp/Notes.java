@@ -144,10 +144,16 @@ public class Notes extends Fragment {
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 Log.e("err",e.toString());
                 storeNotes(header,versus,note,NOT_SYNCED);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        successDialog.setTitle("Success");
+                        successDialog.setContentText("Notes saved offline successfully");
+                        successDialog.show();
+                    }
+                });
 
-                successDialog.setTitle("Success");
-                successDialog.setContentText("Notes saved offline successfully");
-//                successDialog.show();
+                getNotes(view);
             }
 
             @Override

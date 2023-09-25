@@ -171,9 +171,15 @@ public class Login extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                errorDialog.setTitle("Failure");
-                errorDialog.setContentText("Something went wrong !");
-//                errorDialog.show();
+                Login.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        errorDialog.setTitle("Failure");
+                        errorDialog.setContentText("No Internet connection");
+                        errorDialog.show();
+                    }
+                });
+
                 Log.e("failure",e.toString());
             }
 

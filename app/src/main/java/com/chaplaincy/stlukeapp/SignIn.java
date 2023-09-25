@@ -151,13 +151,25 @@ public class SignIn extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.e("err",e.toString());
                 progressDialog.dismiss();
+                SignIn.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        errorDialog.setTitle("Failure");
+                        errorDialog.setContentText("No Internet connection");
+                        errorDialog.show();
+                    }
+                });
+
             }
 
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 ResponseBody result = response.body();
                 String jsonData = result.string();
+
+                Log.i("data",jsonData);
 
                 SignIn.this.runOnUiThread(new Runnable() {
                     @Override
