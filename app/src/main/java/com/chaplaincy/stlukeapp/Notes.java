@@ -1,9 +1,11 @@
 package com.chaplaincy.stlukeapp;
 
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,12 +19,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.chaplaincy.stlukeapp.Adapter.MyListAdapter;
 import com.chaplaincy.stlukeapp.Apis.Urls;
 import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
-import com.chaplaincy.stlukeapp.Models.ApiResponse;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
@@ -30,7 +30,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.Call;
@@ -51,13 +50,19 @@ public class Notes extends Fragment {
     private EditText mytitle,myversus,notes;
     private Button addnotes;
     private AlertDialog alertDialog;
-    private int NOT_SYNCED =0 ,SYNCED =1 ;
+    private int NOT_SYNCED =0 ,SYNCED =1, user_id ;
+    private OkHttpClient client;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_notes, container, false);
+
+        client = new OkHttpClient();
+
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("stluke_app", Context.MODE_PRIVATE);
+        user_id = sharedPreferences.getInt("user_id",0);
 
         mydbhelper = new DBhelper(getActivity());
 
@@ -97,7 +102,37 @@ public class Notes extends Fragment {
             getNotes(view);
         });
 
+
+        try {
+            if (isInternetAvailable()){
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        SyncingTask task = new SyncingTask();
+                        task.execute();
+                    }
+                });
+
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         return view;
+    }
+
+    public boolean isInternetAvailable() throws IOException {
+        Runtime runtime = Runtime.getRuntime();
+        Process process = runtime.exec("ping -c 1 google.com");
+        int exitCode = 0;
+
+        try {
+            exitCode = process.waitFor();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        return exitCode == 0;
     }
 
     private void storeNotes(String header, String versus, String note, int sync_state) {
@@ -122,10 +157,6 @@ public class Notes extends Fragment {
     }
 
     private void SendDataToServer(View view, String header, String versus, String note, int sync_state) {
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("stluke_app", Context.MODE_PRIVATE);
-        int user_id = sharedPreferences.getInt("user_id",0);
-
-        OkHttpClient client = new OkHttpClient();
 
         RequestBody requestBody = new FormBody.Builder()
                 .add("title",header)
@@ -227,6 +258,88 @@ public class Notes extends Fragment {
             }
         }else{
             txt.setText("No summarises yet 🙄🙄");
+        }
+    }
+
+    private String SyncNotes(){
+        Cursor get = mydbhelper.getUnSyncedNotes();
+        if (get.getCount()>0) {
+            while (get.moveToNext()) {
+
+                Log.e("state", String.valueOf(get.getInt(4)));
+//                Log.e("id",);
+                String note_id = get.getString(0);
+
+                //checking for all notes that have not been backed up online
+                if (get.getInt(4) == 0){
+
+                    RequestBody requestBody = new FormBody.Builder()
+                            .add("title",get.getString(1))
+                            .add("versus",get.getString(2))
+                            .add("note",get.getString(3))
+                            .add("user_id", String.valueOf(user_id))
+                            .build();
+
+                    Request request = new Request.Builder()
+                            .url(Urls.TAKE_NOTES)
+                            .post(requestBody)
+                            .build();
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                            Log.e("sync_err",e.toString());
+                        }
+
+                        @Override
+                        public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                            ResponseBody responseBody = response.body();
+                            String resp = responseBody.string();
+                            Log.e("success",resp);
+
+
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Log.e("stillid",note_id);
+                                    Boolean update = mydbhelper.update_sync_state(note_id);
+                                    if (update){
+                                        Log.i("sync_report","Synced successfully");
+                                    }else{
+                                        Log.e("sync_report","Synced failed");
+                                    }
+                                }
+                            });
+
+
+                        }
+                    });
+                }
+
+            }
+        }
+        return null;
+    }
+
+    public class SyncingTask extends AsyncTask<Void, Integer, String> {
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            return SyncNotes();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            // Update the UI before the long-running operation starts.
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // Update the UI with the result of the long-running operation.
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            // Update the UI with the progress of the long-running operation.
         }
     }
 

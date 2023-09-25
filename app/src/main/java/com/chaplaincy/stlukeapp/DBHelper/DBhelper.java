@@ -99,6 +99,12 @@ public class DBhelper extends SQLiteOpenHelper {
         return pointer;
     }
 
+    public Cursor getUnSyncedNotes(){
+        SQLiteDatabase mydb = this.getWritableDatabase();
+        Cursor pointer = mydb.rawQuery("select * from notes WHERE sync_state = 0 ORDER BY id DESC",null);
+        return pointer;
+    }
+
     public boolean delete(String id){
         SQLiteDatabase mydb = this.getWritableDatabase();
         long res = mydb.delete(TABLE_NOTES, "id=?", new String[]{id});
@@ -120,6 +126,20 @@ public class DBhelper extends SQLiteOpenHelper {
         contentValues.put("sync_state",sync_state);
 
         long res = db.update(TABLE_NOTES,contentValues,"id=?", new String[]{id});
+        if (res ==-1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public boolean update_sync_state(String note_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("editted","0");
+        contentValues.put("sync_state","1");
+        long res = db.update(TABLE_NOTES,contentValues,"id=?", new String[]{note_id});
+
         if (res ==-1){
             return false;
         }else{
