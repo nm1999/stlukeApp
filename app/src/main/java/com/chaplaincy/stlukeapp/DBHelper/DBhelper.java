@@ -126,4 +126,24 @@ public class DBhelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
+    public void createColumnDoNotExist(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        if (!columnExists(db, TABLE_NOTES, "sync_state")) {
+            db.execSQL("ALTER TABLE notes ADD COLUMN sync_state INTEGER DEFAULT 0");
+            db.execSQL("ALTER TABLE notes ADD COLUMN deleted INTEGER DEFAULT 0");
+            db.execSQL("ALTER TABLE notes ADD COLUMN editted INTEGER DEFAULT 0");
+        }
+    }
+
+    public static boolean columnExists(SQLiteDatabase db, String table, String column) {
+        Cursor cursor = db.rawQuery("PRAGMA table_info(" + table + ")", null);
+        while (cursor.moveToNext()) {
+            if (column.equals(cursor.getString(1))) {
+                return true;
+            }
+        }
+        cursor.close();
+        return false;
+    }
 }

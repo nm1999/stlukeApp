@@ -38,6 +38,10 @@ public class SyncingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_syncing);
 
         mydbhelper = new DBhelper(this);
+
+        // for old users create a new columns i.e sync_state, editted, deleted
+        mydbhelper.createColumnDoNotExist();
+
         Cursor cr = mydbhelper.getData();
 //
         while (cr.moveToNext()){
@@ -160,4 +164,6 @@ public class SyncingActivity extends AppCompatActivity {
         startActivity(nxt);
         finish();
     }
+
+
 }
