@@ -415,12 +415,18 @@ public class Hymns extends AppCompatActivity {
     private void sendSongs(ArrayList<String> arraylist) {
         OkHttpClient client = new OkHttpClient();
 
-        FormBody responseBody = new FormBody.Builder()
-                .add("songs", String.valueOf(arraylist))
-                .build();
+//        FormBody responseBody = new FormBody.Builder()
+//                .add("songs", String.valueOf(arraylist))
+//                .build();
+
+        FormBody.Builder formBodyBuilder = new FormBody.Builder();
+        for (String song : arraylist) {
+            formBodyBuilder.addEncoded("songs[]", song);
+        }
+        FormBody formBody = formBodyBuilder.build();
 
         Request request = new Request.Builder()
-                .post(responseBody)
+                .post(formBody)
                 .url(Urls.HYMN)
                 .build();
 
