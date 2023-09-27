@@ -179,10 +179,6 @@ public class DBhelper extends SQLiteOpenHelper {
     public boolean saveHymnsLocally(String hymn_number, String title, String song){
 
         SQLiteDatabase mydb = this.getWritableDatabase();
-        if (!columnExists(mydb,HYMNS_TABLE,"title")){
-            mydb.execSQL("create table "+HYMNS_TABLE+"(id INTEGER PRIMARY KEY AUTOINCREMENT,song_number TEXT,title TEXT,song TEXT)");
-        }
-
         ContentValues contentValues = new ContentValues();
         contentValues.put("song_number",hymn_number);
         contentValues.put("title",title);
@@ -199,6 +195,10 @@ public class DBhelper extends SQLiteOpenHelper {
 
     public Cursor fetchHymns(){
         SQLiteDatabase mydb = this.getWritableDatabase();
+        //incase the old user having not this table
+        if (!columnExists(mydb,HYMNS_TABLE,"title")){
+            mydb.execSQL("create table "+HYMNS_TABLE+"(id INTEGER PRIMARY KEY AUTOINCREMENT,song_number TEXT,title TEXT,song TEXT)");
+        }
         Cursor cursor = mydb.rawQuery("select * from "+HYMNS_TABLE+" ORDER BY id ASC",null);
         return cursor;
     }

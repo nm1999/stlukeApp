@@ -61,8 +61,8 @@
             android:layout_height="wrap_content"
             android:visibility="visible"
             android:background="@color/white"
-            android:divider="@color/black"
-            android:dividerHeight="1dp"
+            android:divider="#6A6969"
+            android:dividerHeight="0.5dp"
             />
     </LinearLayout>
 
