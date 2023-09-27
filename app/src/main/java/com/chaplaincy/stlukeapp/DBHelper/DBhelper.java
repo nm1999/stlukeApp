@@ -14,6 +14,7 @@ public class DBhelper extends SQLiteOpenHelper {
 
     private final String TABLE_NAME = "user";
     private final String TABLE_NOTES = "notes";
+    private final String HYMNS_TABLE = "hymns";
     private final String firstname_key = "firstname";
     private final String surname_key = "surname";
     private final String email_key = "email";
@@ -29,6 +30,7 @@ public class DBhelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table "+TABLE_NAME+"(firstname TEXT,surname TEXT,email TEXT,contact TEXT)");
         db.execSQL("create table "+TABLE_NOTES+"(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT,versus TEXT,notes TEXT)");
+        db.execSQL("create table "+HYMNS_TABLE+"(id INTEGER PRIMARY KEY AUTOINCREMENT,song_number TEXT,title TEXT,song TEXT)");
 
         try {
             db.execSQL("ALTER TABLE notes ADD COLUMN sync_state INTEGER DEFAULT 0");
@@ -99,6 +101,12 @@ public class DBhelper extends SQLiteOpenHelper {
         return pointer;
     }
 
+    public Cursor getUnSyncedNotes(){
+        SQLiteDatabase mydb = this.getWritableDatabase();
+        Cursor pointer = mydb.rawQuery("select * from notes WHERE sync_state = 0 ORDER BY id DESC",null);
+        return pointer;
+    }
+
     public boolean delete(String id){
         SQLiteDatabase mydb = this.getWritableDatabase();
         long res = mydb.delete(TABLE_NOTES, "id=?", new String[]{id});
@@ -125,5 +133,46 @@ public class DBhelper extends SQLiteOpenHelper {
         }else{
             return true;
         }
+    }
+
+    public boolean update_sync_state(String note_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("editted","0");
+        contentValues.put("sync_state","1");
+        long res = db.update(TABLE_NOTES,contentValues,"id=?", new String[]{note_id});
+
+        if (res ==-1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public void createColumnDoNotExist(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        if (!columnExists(db, TABLE_NOTES, "sync_state")) {
+            db.execSQL("ALTER TABLE notes ADD COLUMN sync_state INTEGER DEFAULT 0");
+            db.execSQL("ALTER TABLE notes ADD COLUMN deleted INTEGER DEFAULT 0");
+            db.execSQL("ALTER TABLE notes ADD COLUMN editted INTEGER DEFAULT 0");
+            db.execSQL("create table "+HYMNS_TABLE+"(id INTEGER PRIMARY KEY AUTOINCREMENT,song_number TEXT,title TEXT,song TEXT)");
+        }
+    }
+
+    public static boolean columnExists(SQLiteDatabase db, String table, String column) {
+        Cursor cursor = db.rawQuery("PRAGMA table_info(" + table + ")", null);
+        while (cursor.moveToNext()) {
+            if (column.equals(cursor.getString(1))) {
+                return true;
+            }
+        }
+        cursor.close();
+        return false;
+    }
+
+    public Cursor getLastHymnNumber(){
+        SQLiteDatabase mydb = this.getWritableDatabase();
+        Cursor pointer = mydb.rawQuery("select song_number from "+HYMNS_TABLE+" ORDER BY id DESC LIMIT 1",null);
+        return pointer;
     }
 }

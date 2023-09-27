@@ -16,14 +16,16 @@ import java.util.List;
 
 public class HymnsAdapter extends BaseAdapter implements Filterable {
     private String[] hymn;
+    private String[] title;
     private Context ctx;
     private LayoutInflater layoutInflater;
     private List<String> originalList;
     private List<String> filteredList;
 
-    public HymnsAdapter(Context context, ArrayList<String> hymn){
+    public HymnsAdapter(Context context, ArrayList<String> title, ArrayList<String> hymn){
         this.ctx = context;
         this.hymn = hymn.toArray(new String[0]);
+        this.title = title.toArray(new String[0]);
         this.layoutInflater = LayoutInflater.from(ctx);
         this.originalList = new ArrayList<>(hymn);
         this.filteredList = new ArrayList<>(hymn);
@@ -48,7 +50,9 @@ public class HymnsAdapter extends BaseAdapter implements Filterable {
         view = layoutInflater.inflate(R.layout.hymns_layout_format,null);
 
         TextView music = view.findViewById(R.id.music);
+        TextView hymn_txt = view.findViewById(R.id.title);
         music.setText(hymn[i]);
+        hymn_txt.setText(title[i]);
 
         return view;
     }
