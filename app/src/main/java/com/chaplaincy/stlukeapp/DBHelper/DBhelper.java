@@ -169,4 +169,10 @@ public class DBhelper extends SQLiteOpenHelper {
         cursor.close();
         return false;
     }
+
+    public Cursor getLastHymnNumber(){
+        SQLiteDatabase mydb = this.getWritableDatabase();
+        Cursor pointer = mydb.rawQuery("select song_number from "+HYMNS_TABLE+" ORDER BY id DESC LIMIT 1",null);
+        return pointer;
+    }
 }

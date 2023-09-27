@@ -38,6 +38,7 @@
                 android:textColor="@color/white"
                 android:textSize="16sp" />
             <ImageView
+                android:id="@+id/syncing_hymn"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/sync_icon"
