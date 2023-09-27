@@ -382,12 +382,10 @@ public class Hymns extends AppCompatActivity {
         list.setTextFilterEnabled(true);
         list.setAdapter(hymnsAdapter);
 
-        sendSongs(arraylist);
-
-
 
         SearchView search = findViewById(R.id.search);
         ImageView back = findViewById(R.id.back);
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -407,6 +405,30 @@ public class Hymns extends AppCompatActivity {
                 hymnsAdapter.getFilter().filter(s);
 
                 return true;
+            }
+        });
+
+        getLatestHymns();
+
+    }
+
+    private void getLatestHymns() {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(Urls.HYMN)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                Log.e("errr",e.toString());
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                ResponseBody responseBody = response.body();
+                String json = responseBody.string();
+
+                Log.i("ddata",json);
             }
         });
 
@@ -450,6 +472,8 @@ public class Hymns extends AppCompatActivity {
             }
         });
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

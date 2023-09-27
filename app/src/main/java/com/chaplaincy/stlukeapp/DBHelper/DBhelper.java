@@ -14,6 +14,7 @@ public class DBhelper extends SQLiteOpenHelper {
 
     private final String TABLE_NAME = "user";
     private final String TABLE_NOTES = "notes";
+    private final String HYMNS_TABLE = "hymns";
     private final String firstname_key = "firstname";
     private final String surname_key = "surname";
     private final String email_key = "email";
@@ -29,6 +30,7 @@ public class DBhelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table "+TABLE_NAME+"(firstname TEXT,surname TEXT,email TEXT,contact TEXT)");
         db.execSQL("create table "+TABLE_NOTES+"(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT,versus TEXT,notes TEXT)");
+        db.execSQL("create table "+HYMNS_TABLE+"(id INTEGER PRIMARY KEY AUTOINCREMENT,song_number TEXT,title TEXT,song TEXT)");
 
         try {
             db.execSQL("ALTER TABLE notes ADD COLUMN sync_state INTEGER DEFAULT 0");
@@ -153,6 +155,7 @@ public class DBhelper extends SQLiteOpenHelper {
             db.execSQL("ALTER TABLE notes ADD COLUMN sync_state INTEGER DEFAULT 0");
             db.execSQL("ALTER TABLE notes ADD COLUMN deleted INTEGER DEFAULT 0");
             db.execSQL("ALTER TABLE notes ADD COLUMN editted INTEGER DEFAULT 0");
+            db.execSQL("create table "+HYMNS_TABLE+"(id INTEGER PRIMARY KEY AUTOINCREMENT,song_number TEXT,title TEXT,song TEXT)");
         }
     }
 
