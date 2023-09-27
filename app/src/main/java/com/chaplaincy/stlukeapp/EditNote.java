@@ -53,7 +53,7 @@ public class EditNote extends AppCompatActivity {
             String new_title = title.getText().toString();
             String new_versus = versus.getText().toString();
             String new_note = note.getText().toString();
-            int sync_state = 1;
+            int sync_state = 0;
 
             Log.i("click","clickkkkkkkkkk");
 

@@ -64,6 +64,23 @@ public class Hymns extends AppCompatActivity {
         ImageView back = findViewById(R.id.back);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView sync_hymns = findViewById(R.id.syncing_hymn);
 
+        loadHymns();
+
+        back.setOnClickListener(view -> {
+            Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(nxt);
+        });
+
+        sync_hymns.setOnClickListener(view ->{
+            startSyncing();
+        });
+
+
+
+
+    }
+
+    private void loadHymns() {
         // load hymns
         ArrayList<String> arraylist = new ArrayList<>();
         ArrayList<String> arraytitle = new ArrayList<>();
@@ -101,18 +118,6 @@ public class Hymns extends AppCompatActivity {
 
 
         //end loading hymns
-        back.setOnClickListener(view -> {
-            Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(nxt);
-        });
-
-        sync_hymns.setOnClickListener(view ->{
-            startSyncing();
-        });
-
-
-
-
     }
 
     private void startSyncing() {
@@ -190,8 +195,13 @@ public class Hymns extends AppCompatActivity {
                                         String song = obj.getString("song");
 
                                         Boolean result = dBhelper.saveHymnsLocally(hymn_no,title,song);
-
+                                        if (result){
+                                            Log.i("success","hymn stored locally");
+                                        }else{
+                                            Log.e("error","Failed saving hymns locally");
+                                        }
                                     }
+                                    loadHymns();
                                 }else{
                                     new SweetAlertDialog(Hymns.this,SweetAlertDialog.SUCCESS_TYPE)
                                             .setTitleText("Synced")
