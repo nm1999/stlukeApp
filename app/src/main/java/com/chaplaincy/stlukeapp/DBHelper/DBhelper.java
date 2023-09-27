@@ -175,4 +175,26 @@ public class DBhelper extends SQLiteOpenHelper {
         Cursor pointer = mydb.rawQuery("select song_number from "+HYMNS_TABLE+" ORDER BY id DESC LIMIT 1",null);
         return pointer;
     }
+
+    public boolean saveHymnsLocally(String hymn_number, String title, String song){
+        SQLiteDatabase mydb = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("song_number",hymn_number);
+        contentValues.put("title",title);
+        contentValues.put("song",song);
+
+        long result =  mydb.insert(HYMNS_TABLE,null,contentValues);
+
+        if (result ==-1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public Cursor fetchHymns(){
+        SQLiteDatabase mydb = this.getWritableDatabase();
+        Cursor cursor = mydb.rawQuery("select * from "+HYMNS_TABLE+" ORDER BY id ASC",null);
+        return cursor;
+    }
 }

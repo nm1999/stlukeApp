@@ -64,6 +64,39 @@ public class Hymns extends AppCompatActivity {
         ImageView back = findViewById(R.id.back);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView sync_hymns = findViewById(R.id.syncing_hymn);
 
+        // load hymns
+        ArrayList<String> arraylist = new ArrayList<>();
+        ArrayList<String> arraytitle = new ArrayList<>();
+
+        Cursor cursor = dBhelper.fetchHymns();
+        if (cursor.getCount() > 0){
+            while (cursor.moveToFirst()){
+                String song_no = cursor.getString(0);
+                String title = cursor.getString(1);
+                String song = cursor.getString(2);
+
+                arraylist.add(song);
+                arraytitle.add(title);
+
+                hymnsAdapter = new HymnsAdapter(getApplicationContext(),arraytitle,arraylist);
+                list.setTextFilterEnabled(true);
+                list.setAdapter(hymnsAdapter);
+            }
+
+        }else{
+            new SweetAlertDialog(Hymns.this,SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("No Hymns")
+                    .setContentText("Do you want latest hymns ?")
+                    .setConfirmButton("Yes", sweetAlertDialog -> {
+                        startSyncing();
+                        sweetAlertDialog.dismiss();
+                    }).show();
+        }
+
+
+
+
+        //end loading hymns
         back.setOnClickListener(view -> {
             Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(nxt);
@@ -115,8 +148,6 @@ public class Hymns extends AppCompatActivity {
                 .url(Urls.HYMN+hymn_id)
                 .build();
 
-        ArrayList<String> arraylist = new ArrayList<>();
-        ArrayList<String> arraytitle = new ArrayList<>();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
@@ -145,17 +176,23 @@ public class Hymns extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(json);
                             if (!jsonObject.getBoolean("error")){
                                 JSONArray result_obj =  jsonObject.getJSONArray("results");
-                                for (int i =0; i< result_obj.length();i++){
-                                    JSONObject obj = result_obj.getJSONObject(i);
 
-                                    String title = obj.getString("title");
-                                    String song = obj.getString("song");
-                                    arraylist.add(song);
-                                    arraytitle.add(title);
+                                // check for length of the array
+                                if(result_obj.length() > 0){
+                                    for (int i =0; i< result_obj.length();i++){
+                                        JSONObject obj = result_obj.getJSONObject(i);
+                                        String hymn_no = obj.getString("id");
+                                        String title = obj.getString("title");
+                                        String song = obj.getString("song");
 
-                                    hymnsAdapter = new HymnsAdapter(getApplicationContext(),arraytitle,arraylist);
-                                    list.setTextFilterEnabled(true);
-                                    list.setAdapter(hymnsAdapter);
+                                        Boolean result = dBhelper.saveHymnsLocally(hymn_no,title,song);
+
+                                    }
+                                }else{
+                                    new SweetAlertDialog(Hymns.this,SweetAlertDialog.SUCCESS_TYPE)
+                                            .setTitleText("Synced")
+                                            .setContentText("No New Hymn found !")
+                                            .show();
                                 }
 
                                 progressDialog.dismiss();
