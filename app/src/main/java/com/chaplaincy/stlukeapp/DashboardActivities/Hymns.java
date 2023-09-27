@@ -112,11 +112,8 @@ public class Hymns extends AppCompatActivity {
                         startSyncing();
                         sweetAlertDialog.dismiss();
                     }).show();
+
         }
-
-
-
-
         //end loading hymns
     }
 
@@ -167,6 +164,10 @@ public class Hymns extends AppCompatActivity {
                         new SweetAlertDialog(Hymns.this, SweetAlertDialog.WARNING_TYPE)
                                 .setTitleText("Failure")
                                 .setContentText("Something went wrong !")
+                                .setConfirmButton("Okay", sweetAlertDialog -> {
+                                    startActivity(new Intent(Hymns.this,HomeActivity.class));
+                                    finish();
+                                })
                                 .show();
                     }
                 });
@@ -206,6 +207,10 @@ public class Hymns extends AppCompatActivity {
                                     new SweetAlertDialog(Hymns.this,SweetAlertDialog.SUCCESS_TYPE)
                                             .setTitleText("Synced")
                                             .setContentText("No New Hymn found !")
+                                            .setConfirmButton("Okay", sweetAlertDialog -> {
+                                                startActivity(new Intent(Hymns.this,HomeActivity.class));
+                                                finish();
+                                            })
                                             .show();
                                 }
 
