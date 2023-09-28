@@ -55,6 +55,7 @@
                android:text="1.Prayer to be said at the opening of the meeting"
                android:textStyle="bold"
                android:textSize="18sp"
+               android:layout_marginVertical="10dp"
                android:textColor="@color/yellow"
                />
             <TextView
@@ -88,7 +89,6 @@
                 android:text="R : And you shall renew the face of the earth"
                 android:layout_marginVertical="4dp"
                 android:textSize="16sp"
-                android:textStyle="italic"
                 android:textColor="@color/yellow"
                 />
 
@@ -99,7 +99,7 @@
                 android:layout_marginVertical="8dp"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/yellow"
                 android:textSize="16sp"
                 />
             <TextView
@@ -199,16 +199,16 @@
                 android:layout_marginVertical="8dp"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/yellow"
                 android:textSize="16sp"
                 />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="O God , whose onl begotten Son ,  by his life death and resurrection , has purchased for us the rewards off eternal salvation; grant we beseech you that meditating upon these mysteries in the most Holy Rosary of the Blessed Virign Mary, we may imitate what they contain and obtain what they promise, Through Christ our Lord, Amen "
+                android:text="O God , whose only begotten Son ,  by his life death and resurrection , has purchased for us the rewards off eternal salvation; grant we beseech you that meditating upon these mysteries in the most Holy Rosary of the Blessed Virign Mary, we may imitate what they contain and obtain what they promise, Through Christ our Lord, Amen "
                 android:layout_marginVertical="4dp"
                 android:textSize="16sp"
-                android:textColor="@color/black"
+                android:textColor="@color/yellow"
                 />
 
             <TextView
@@ -322,7 +322,7 @@
                 android:textStyle="bold"
                 android:gravity="center"
                 android:textSize="18sp"
-                android:textColor="@color/purple_500"
+                android:textColor="@color/yellow"
                 android:layout_marginVertical="15dp"
                 />
 
@@ -524,7 +524,7 @@
                 android:layout_marginVertical="8dp"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/yellow"
                 android:textSize="16sp"
                 />
             <TextView
@@ -533,7 +533,7 @@
                 android:text="O Lord Jesus Christ , our mediator with the father , you have been pleased to appoint the most blessed virgin , your mother , to be our mother also and our mediatrix with you , mercifully grant that whoever comes to you seeking your favours rejoice to recieve all of them through her, Amen, "
                 android:layout_marginVertical="4dp"
                 android:textSize="16sp"
-                android:textColor="@color/black"
+                android:textColor="@color/yellow"
                 />
 
             <TextView

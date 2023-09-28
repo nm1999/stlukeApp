@@ -99,10 +99,13 @@ public class Hymns extends AppCompatActivity {
 //                hymnsAdapter = new HymnsAdapter(getApplicationContext(),arraytitle,arraylist);
 //                list.setTextFilterEnabled(true);
 //                list.setAdapter(hymnsAdapter);
+                ArrayAdapter<String> adpt = new ArrayAdapter<>(Hymns.this, android.R.layout.simple_list_item_1,arraylist);
+                list.setAdapter(adpt);
             }
 
-            ArrayAdapter<String> adpt = new ArrayAdapter<>(Hymns.this, android.R.layout.simple_list_item_1,arraylist);
-            list.setAdapter(adpt);
+
+
+
 
         }else{
             new SweetAlertDialog(Hymns.this,SweetAlertDialog.WARNING_TYPE)

@@ -3,6 +3,7 @@ package com.chaplaincy.stlukeapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -46,6 +47,7 @@ public class Login extends AppCompatActivity {
     private TextView signin;
     private DBhelper mydbhelper;
     private SweetAlertDialog errorDialog;
+    private ProgressDialog progressDialog;
 
 
 
@@ -56,6 +58,7 @@ public class Login extends AppCompatActivity {
 
         mydbhelper = new DBhelper(this);
         errorDialog = new SweetAlertDialog(Login.this,SweetAlertDialog.ERROR_TYPE);
+        progressDialog = new ProgressDialog(Login.this);
 
         myarr = new ArrayList<>();
 
@@ -155,6 +158,7 @@ public class Login extends AppCompatActivity {
     }
     public void registerUser(String firstname_str, String surname_str, String email_str, String contact_str, String psw) {
         OkHttpClient client  = new OkHttpClient();
+        progressDialog.setTitle("Processing ....");
 
         RequestBody data = new FormBody.Builder()
                 .add("christian_name",firstname_str)
@@ -174,6 +178,7 @@ public class Login extends AppCompatActivity {
                 Login.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        progressDialog.dismiss();
                         errorDialog.setTitle("Failure");
                         errorDialog.setContentText("No Internet connection");
                         errorDialog.show();
@@ -211,12 +216,14 @@ public class Login extends AppCompatActivity {
                                     editor.putString("contact",details.getString("contact"));
                                     editor.apply();
 
+                                    progressDialog.dismiss();
                                     //redirect to home
                                     Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);
                                     startActivity(nxt);
                                     finish();
 
                                 }else{
+                                    progressDialog.dismiss();
                                     errorDialog.setTitle(jsonObject.getString("status"));
                                     errorDialog.setContentText(jsonObject.getString("message"));
                                     errorDialog.show();

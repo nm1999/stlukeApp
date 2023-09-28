@@ -1,5 +1,5 @@
 
-		<p style="text-align:center;"><b>Order of Mass</b></p>
+		<p style="text-align:center;color:#104FCC"><b>Order of Mass</b></p>
 
   <p style="text-align:justify;">In the Roman Rite, the Mass is made up of two principal parts: the Liturgy of the Word and the Liturgy of the Eucharist. It begins with the Introductory Rites and ends with the Concluding Rites.</p>
 
@@ -7,7 +7,7 @@
 
 
 
-<p style="text-align:center;"><b>Introductory Rites</b></p>
+<p style="text-align:center;color:#104FCC"><b>Introductory Rites</b></p>
 
 <ul style="list-style-type:none;">
 	<li>Entrance</li>
@@ -18,7 +18,7 @@
 </ul>
 
 
-<p style="text-align:center;"><b>Liturgy of the Word</b></p>
+<p style="text-align:center;color:#104FCC"><b>Liturgy of the Word</b></p>
 
 <ul style="list-style-type:none;">
 	<li>First Reading</li>
@@ -32,7 +32,7 @@
 </ul>
 
 
-<p style="text-align:center;"><b>Liturgy of the Eucharist</b></p>
+<p style="text-align:center;color:#104FCC"><b>Liturgy of the Eucharist</b></p>
 
 <ul style="list-style-type:none;">
 	<li>Presentation of the Gifts and Preparation of the Altar</li>
@@ -53,7 +53,7 @@
 	<li>Prayer after Communion</li>
 </ul>
 
-<p style="text-align:center;"><b>Concluding Rites</b></h3>
+<p style="text-align:center;color:#104FCC"><b>Concluding Rites</b></h3>
 
 <ul style="list-style-type:none;">
 	<li>Optional announcements</li>

@@ -200,11 +200,13 @@ public class SignIn extends AppCompatActivity {
                                         startActivity(nxt);
                                         finish();
                                     }else{
+                                        progressDialog.dismiss();
                                         errorDialog.setTitle("Failure");
                                         errorDialog.setContentText("Invalid response");
                                         errorDialog.show();
                                     }
                                 }else{
+                                    progressDialog.dismiss();
                                     errorDialog.setTitle(jsonObject.getString("status"));
                                     errorDialog.setContentText(jsonObject.getString("message"));
                                     errorDialog.show();
@@ -213,6 +215,7 @@ public class SignIn extends AppCompatActivity {
                                 throw new RuntimeException(e);
                             }
                         }else{
+                            progressDialog.dismiss();
                             // no jsondata
                             Log.e("No server response","No data in the server response");
                             errorDialog.setTitle("Failure");

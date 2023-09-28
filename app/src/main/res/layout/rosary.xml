@@ -165,6 +165,7 @@
                             android:layout_gravity="center"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="5dp"
+                            android:textColor="@color/black"
                             android:text=" 1. The Agony of Our Lord in the Garden"
                             android:textSize="16sp" />
 

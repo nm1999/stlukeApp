@@ -1,12 +1,12 @@
  <div class="">
-        <h3 style="text-align:center;">9 DAY DIVINE MERCY NOVENA</h3>
+        <h3 style="text-align:center;color:#104FCC">9 DAY DIVINE MERCY NOVENA</h3>
     <h4>First Day</h4>
     <p style="font-weight:bold;text-align: justify;">Jesus said: "Today bring to me all mankind, especially
         all sinners, and immerse them in the ocean of my
         mercy. In this way you will console me in the bitter
         grief into which the loss of souls plunges me."</p>
 
-    <p style="text-align: justify;">Most merciful Jesus, whose very nature it is to have
+    <p style="text-align: justify;color:#104FCC">Most merciful Jesus, whose very nature it is to have
         compassion on us to forgive us, do not look upon our
         sins, but upon our trust which we place in Your
         infinite goodness. Receive us all into the abode of
@@ -21,12 +21,12 @@
     </div>
 
     <div class="">
-    <h4>Second Day</h4>
+    <h4 style=""color:#104FCC>Second Day</h4>
     <p style="font-weight:bold;text-align: justify;">Jesus said: "Today bring to me the souls of Priests and Religious and immerse them in my
         unfathomable mercy. It was they who gave me strength to endure my bitter passion.
         Through them, as though channels, my mercy flows out upon mankind."</p>
 
-    <p style="text-align: justify;">Most Merciful Jesus, from whom comes all that is good, increase Your grace in men and
+    <p style="text-align: justify;color:#104FCC">Most Merciful Jesus, from whom comes all that is good, increase Your grace in men and
         women consecrated to Your service that they perform worthy works of mercy, and that all
         who see them may glorify the Father of Mercy who is in Heaven. Eternal Father, turn Your
         merciful gaze upon the company of chosen ones in Your vineyard - upon the souls of
@@ -38,12 +38,12 @@
     </div>
 
     <div class="">
-    <h4>Third Day</h4>
+    <h4 style="color:#104FCC">Third Day</h4>
     <p style="font-weight:bold;text-align: justify;">Jesus said: "Today bring to me all devout and faithful souls and immerse them in the ocean
         of my mercy. These souls brought me consolation on the Way of the Cross. They were that
         drop of consolation in the midst of an ocean of bitterness."</p>
 
-    <p style="text-align: justify;">Most Merciful Jesus, from the treasury of Your Mercy, You impart Your graces in great
+    <p style="text-align: justify;color:#104FCC">Most Merciful Jesus, from the treasury of Your Mercy, You impart Your graces in great
         abundance to each and all. Receive us into the abode of Your Most Compassionate Heart
         and never let us escape from it. We beg this grace of You by that most wondrous love for
         the heavenly Father with which Your Heart burns so fiercely. Eternal Father, turn Your
@@ -56,12 +56,12 @@
     </div>
 
     <div class="">
-    <h4>Fourth Day</h4>
+    <h4 style="color:#104FCC">Fourth Day</h4>
     <p style="font-weight:bold;text-align: justify;">Jesus said: "Today bring to me those who do not believe in God and those who do not yet
         know me. I was thinking also of them during my bitter passion, and their future zeal
         comforted my heart. Immerse them in the ocean of my mercy."</p>
 
-    <p style="text-align: justify;">Most Compassionate Jesus, You are the Light of the whole world. Receive into the abode
+    <p style="text-align: justify;color:#104FCC;">Most Compassionate Jesus, You are the Light of the whole world. Receive into the abode
         of Your Most Compassionate Heart the souls of those who as yet do not believe in You or
         do not know You. Let the rays of Your Grace enlighten them that they, too, together with
         us, may extol Your wonderful Mercy, and do not let them escape from the abode which is
@@ -74,7 +74,7 @@
     </div>
 
     <div class="">
-    <h4>Fifth Day </h4>
+    <h4 style="color:#104FCC">Fifth Day </h4>
     <p style="font-weight:bold;text-align: justify;">Jesus said: "Today bring to me the souls who have separated from my Church and immerse
         them in the ocean of my mercy. During my bitter passion they tore at my body and Heart,
         that is, my Church. As they return to unity with the Church, my wounds heal, and in this
@@ -96,14 +96,14 @@
     </div>
 
     <div class="">
-    <h4>Sixth Day </h4>
+    <h4 style="color:#104FCC">Sixth Day </h4>
     <p style="font-weight:bold;text-align: justify;">Jesus said: "Today bring to me the meek and humble souls and the souls of little children
         and immerse them in my mercy. These souls most closely resemble my Heart. They
         strengthened me during my bitter agony. I saw them as earthly angels, who will keep vigil
         at my altars. I pour out upon them whole torrents of grace. Only the humble souls are
         capable of receiving my grace. I favour humble souls with my confidence."</p>
 
-    <p style="text-align: justify;">Most Merciful Jesus, You Yourself have said "Learn from Me for I am meek and humble of
+    <p style="text-align: justify;color:#104FCC">Most Merciful Jesus, You Yourself have said "Learn from Me for I am meek and humble of
         heart". Receive into the abode of Your Most Compassionate Heart all meek and humble
         souls and the souls of little children. These souls send all Heaven into ecstasy, and they are
         the Heavenly Father's favourites. They are a sweet-smelling bouquet before the Throne of
