@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context="com.chaplaincy.stlukeapp.Fragments.Testimonies_and_prayer_requests">
+    tools:context="com.jcmtechug.stlukeapp.Fragments.Testimonies_and_prayer_requests">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/tool_bar"

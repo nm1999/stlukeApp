@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FDF1F1F1"
-    tools:context="com.chaplaincy.stlukeapp.Mainmenu">
+    tools:context="com.jcmtechug.stlukeapp.Mainmenu">
 
     <LinearLayout
         android:layout_width="match_parent"

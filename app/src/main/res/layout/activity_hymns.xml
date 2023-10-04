@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="com.chaplaincy.stlukeapp.DashboardActivities.Hymns">
+    tools:context="com.jcmtechug.stlukeapp.DashboardActivities.Hymns">
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="match_parent"

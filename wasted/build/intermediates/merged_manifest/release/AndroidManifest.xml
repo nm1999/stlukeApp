@@ -21,43 +21,43 @@
         android:theme="@style/Theme.StLukeApp"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name="com.chaplaincy.stlukeapp.EditNote"
+            android:name="com.jcmtechug.stlukeapp.EditNote"
             android:exported="false" />
         <activity
-            android:name="com.chaplaincy.stlukeapp.SyncingActivity"
+            android:name="com.jcmtechug.stlukeapp.SyncingActivity"
             android:exported="false" />
         <activity
-            android:name="com.chaplaincy.stlukeapp.SignIn"
+            android:name="com.jcmtechug.stlukeapp.SignIn"
             android:exported="false" />
         <activity
-            android:name="com.chaplaincy.stlukeapp.DashboardActivities.WayOfCross"
+            android:name="com.jcmtechug.stlukeapp.DashboardActivities.WayOfCross"
             android:exported="false" />
         <activity
-            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Order"
+            android:name="com.jcmtechug.stlukeapp.DashboardActivities.Order"
             android:exported="false" />
         <activity
-            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Readings"
+            android:name="com.jcmtechug.stlukeapp.DashboardActivities.Readings"
             android:exported="false" />
         <activity
-            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Youtube"
+            android:name="com.jcmtechug.stlukeapp.DashboardActivities.Youtube"
             android:exported="false" />
         <activity
-            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Catena"
+            android:name="com.jcmtechug.stlukeapp.DashboardActivities.Catena"
             android:exported="false" />
         <activity
-            android:name="com.chaplaincy.stlukeapp.DashboardActivities.SingleNovena"
+            android:name="com.jcmtechug.stlukeapp.DashboardActivities.SingleNovena"
             android:exported="false" />
         <activity
-            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Novena"
+            android:name="com.jcmtechug.stlukeapp.DashboardActivities.Novena"
             android:exported="false" />
         <activity
-            android:name="com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity"
+            android:name="com.jcmtechug.stlukeapp.DashboardActivities.HomeActivity"
             android:exported="false" />
         <activity
-            android:name="com.chaplaincy.stlukeapp.Login"
+            android:name="com.jcmtechug.stlukeapp.Login"
             android:exported="false" />
         <activity
-            android:name="com.chaplaincy.stlukeapp.splashscreen"
+            android:name="com.jcmtechug.stlukeapp.splashscreen"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -66,21 +66,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Legion"
+            android:name="com.jcmtechug.stlukeapp.DashboardActivities.Legion"
             android:exported="false" />
         <activity
-            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Rosary"
+            android:name="com.jcmtechug.stlukeapp.DashboardActivities.Rosary"
             android:exported="false" />
         <activity
-            android:name="com.chaplaincy.stlukeapp.Fragments.Dashboard"
+            android:name="com.jcmtechug.stlukeapp.Fragments.Dashboard"
             android:exported="false" />
         <activity
-            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Hymns"
+            android:name="com.jcmtechug.stlukeapp.DashboardActivities.Hymns"
             android:exported="false" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.chaplaincy.stlukeapp.androidx-startup"
+            android:authorities="com.jcmtechug.stlukeapp.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"
