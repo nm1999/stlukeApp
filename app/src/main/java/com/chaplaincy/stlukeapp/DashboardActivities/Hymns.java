@@ -62,6 +62,7 @@ public class Hymns extends AppCompatActivity {
 
 //        uncomment when the data has successfully loaded in sqlite
 //        loadHymns();
+        getLatestHymns("0");
 
         back.setOnClickListener(view -> {
             Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);
@@ -183,6 +184,8 @@ public class Hymns extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
+                            ArrayList<String> arraylist = new ArrayList<>();
+
                             JSONObject jsonObject = new JSONObject(json);
                             if (!jsonObject.getBoolean("error")){
                                 JSONArray result_obj =  jsonObject.getJSONArray("results");
@@ -194,15 +197,19 @@ public class Hymns extends AppCompatActivity {
                                         String hymn_no = obj.getString("id");
                                         String title = obj.getString("title");
                                         String song = obj.getString("song");
+                                        arraylist.add(hymn_no+". "+song);
 
-                                        Boolean result = dBhelper.saveHymnsLocally(hymn_no,title,song);
-                                        if (result){
-                                            Log.i("success","hymn stored locally");
-                                        }else{
-                                            Log.e("error","Failed saving hymns locally");
-                                        }
+                                        ArrayAdapter<String> adpt = new ArrayAdapter<>(Hymns.this, android.R.layout.simple_list_item_1,arraylist);
+                                        list.setAdapter(adpt);
+
+//                                        Boolean result = dBhelper.saveHymnsLocally(hymn_no,title,song);
+//                                        if (result){
+//                                            Log.i("success","hymn stored locally");
+//                                        }else{
+//                                            Log.e("error","Failed saving hymns locally");
+//                                        }
                                     }
-                                    loadHymns();
+//                                    loadHymns();
                                 }else{
                                     new SweetAlertDialog(Hymns.this,SweetAlertDialog.SUCCESS_TYPE)
                                             .setTitleText("Synced")

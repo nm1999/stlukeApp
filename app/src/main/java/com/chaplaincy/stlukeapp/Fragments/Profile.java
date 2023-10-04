@@ -46,12 +46,13 @@ public class Profile extends Fragment {
         phone.setText(contact);
 
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), SignIn.class);
-                startActivity(intent);
-            }
+        logout.setOnClickListener(view1 -> {
+            // remove all values in sharedpreferences
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear();
+            editor.commit();
+            Intent intent = new Intent(getActivity(), SignIn.class);
+            startActivity(intent);
         });
         return view;
     }
