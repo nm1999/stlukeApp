@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="black">#FF000000</color>
+    <color name="churchlogo_background">#FFFFFF</color>
+    <color name="deepblue">#00bfff</color>
+    <color name="logo_background">#FFFFFF</color>
+    <color name="mylogo_background">#FFFFFF</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="splashlogo_background">#FFFFFF</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#104FCC</color>
+    <string name="amen">Amen</string>
+    <string name="app_name">St.LukeApp</string>
+    <string name="creed">
+        I believe in God the father Almighty creator of Heaven and Earth and in Jesus Christ the his onl son our Lord who was conceieved by the Holy Spirit
+        born of the virgin Mary suffered under Pontinus Pilate , was buired , he descended into Hell , on the third he rose again
+        from the dead , He is seated at the right hand of God , the Father almighty , He shall come again to judge the living and the dead
+        , I believe in the Holy spirit the Holy Catholic Church , the communion of saints the forgiveness of sins , the resurrection of the boy and life everlasting,
+    </string>
+    <string name="end1">
+        Confer , O Lord on us , who serve beneath the standard of Mary , that fullness of faith in you and trust in her
+        To which is given to conquer the world. Grant us a lively faith, animated by charity, which will enable us to perform
+        perform our actions from the motive of pure love of you.
+    </string>
+    <string name="end2">
+        And ever to see you and serve you in our neighbour, a faith firm and immovable as a rock , through which we shall rest tranquil and steadyfast
+        Amid the crosses , toils and disappointments of life , a courageous faith which will inspire us to undertake and carryout without hesitation
+        great things for your glory and for the salvation of souls.
+    </string>
+    <string name="end3">
+        A faith which will be our legion`s pillar of fire to lead us forth united , To kindle everywhere the fires of divine love
+        To englighten those who are in darkness and in the shadow of death , to inflame those who are lukewarm , TO bring back to thse dead in sin
+        And which will guide our own fit in the way of peace so that the battle of life is over.
+    </string>
+    <string name="end4">
+        Our legion ma reassemble, without the loss of anyone , in the kingdom of your love and glory. Amen
+    </string>
+    <string name="finall">
+        May the souls of our departed legionaries and the souls of all the faithful departed through the mercy of God rest in peace. Amen
+        In the name of the father etc ....
+    </string>
+    <string name="frankduff_title">
+        Prayer for the beautification of the servant of God Frank Duff
+    </string>
+    <string name="frankprayer1">
+        God Our father, You inspired your servant Frank Duff with a profound insight into te mystery of your church the Body of Christ and in the place of Mary the mother of Christ
+    </string>
+    <string name="frankprayer2">
+        In his immense desire to share this insight with others and in filial dependence on Mary he formed the legion to be a sign of her maternal love for the world
+        and means of enlisting all her children in the church`s evangelising work.
+    </string>
+    <string name="frankprayer3">
+        We thank you father for the grace conferred on him and for the benefits occruing to the church from his courageous and shining faith.
+        With confidence we beg that you grant the petition we lay before you .......
+    </string>
+    <string name="frankprayer4">
+        We ask too that if it be in accordance with your will , the holiness of his life my be acknowledged by the church for
+        the glory of your name
+    </string>
+    <string name="frankprayer5">
+        Through Christ Our Lord , Amen
+    </string>
+    <string name="gloriousmystery">
+            <br>Glorious mystery (wed / Sun)</br>
+            <i> 1. the Glorious Resurrection of Our Lord</i>
+            <i> 2. The Ascension of Our Lord</i>
+            <i> 3. The Descent of the Holy Spirit</i>
+            <i> 4. The Assumption of Mary into Heaven</i>
+            <i> 5. The Coronation of Mary as Queen of Heaven and Earth</i>
+        </string>
+    <string name="h">
+             <i> 3. The Birth of Our Lord </i>
+             <i> 4. The presentation of Our Lord </i>
+             <i> 5. The fining of Our in the temple</i>
+         </string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="joyfulmystery">
+             <b>Joyful  Mystries (Mon / Sat)</b>
+         </string>
+    <string name="joyfulone">
+                     <i> 2. Visitation of Mary to Elizabeth</i>
+             <i> 2. Visitation of Mary to Elizabeth</i>
+
+    </string>
+    <string name="lightmystery">
+            <br>Light mystery (Thur)</br>
+            <i> 1. The baptism of Our Lord  in the river Jordan</i>
+            <i> 2. The Wedding at Cana</i>
+            <i> 3. The Proclamation of kingdom of God</i>
+            <i> 4. The Transfiguration of Our Lord </i>
+            <i> 5. The institution of the Holy Eucharist</i>
+        </string>
+    <string name="sorrowfulmystery">
+            <br>Sorrowful Mysteries (Tue /Fri)</br>
+            <i> 1. The Agony of Our Lord in the Garden</i>
+            <i> 2. Our Lord is scourge at the pillar</i>
+            <i> 3. Our Lord is crowned with thorns</i>
+            <i> 4. Our Lord carries the cross to calvary</i>
+            <i> 5. The crucifixion of Our Lord</i>
+        </string>
+    <style name="Theme.StLukeApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        
+        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorPrimaryVariant">@color/yellow</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        
+        <item name="android:statusBarColor" ns1:targetApi="l">?attr/colorPrimaryVariant</item>
+        
+    </style>
+</resources>

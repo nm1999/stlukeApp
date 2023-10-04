@@ -1,8 +1,5 @@
 package com.chaplaincy.stlukeapp.Adapter;
 
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class PosterList {
     private int poster_image;
     private String poster_description;

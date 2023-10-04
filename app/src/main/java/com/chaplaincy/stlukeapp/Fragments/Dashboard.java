@@ -1,17 +1,17 @@
 package com.chaplaincy.stlukeapp.Fragments;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
+import com.chaplaincy.stlukeapp.R;
 import com.chaplaincy.stlukeapp.DashboardActivities.Hymns;
 import com.chaplaincy.stlukeapp.DashboardActivities.Legion;
-import com.chaplaincy.stlukeapp.R;
 import com.chaplaincy.stlukeapp.DashboardActivities.Rosary;
 
 

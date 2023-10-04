@@ -3,7 +3,6 @@ package com.chaplaincy.stlukeapp.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -11,8 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chaplaincy.stlukeapp.R;
-
-import org.w3c.dom.Text;
 
 public class TestimoniesAdapter extends RecyclerView.Adapter<TestimoniesAdapter.viewHolder> {
     private PosterList[] posterLists;

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/header"
+            android:layout_marginBottom="10dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12.2.2023"
+                android:textColor="#787777"
+                android:textSize="14sp"
+                android:layout_alignParentStart="true"
+                />
+
+            <ImageView
+                android:id="@+id/edit_note"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/edit"
+                android:layout_toLeftOf="@id/delete_note"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="25dp"
+                />
+            <ImageView
+                android:id="@+id/delete_note"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/delete"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/title1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Repent the Lord is calling"
+            android:textSize="15sp"
+            android:textColor="@color/yellow"
+            android:textAllCaps="true"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_below="@id/header"
+            />
+
+        <TextView
+            android:id="@+id/chapter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title1"
+            android:layout_marginVertical="10dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="John 3:4-2"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/lower_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/chapter"
+            >
+            <TextView
+                android:id="@+id/lesson"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="lesson:"
+                android:textColor="@color/black"
+                android:layout_below="@id/chapter"
+                />
+
+            <TextView
+                android:id="@+id/lessoncontent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif-condensed"
+                android:text="The Lord wants us all to be alive ,he will be with us" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lower_section"
+            >
+            <ImageView
+                android:id="@+id/sync_status"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/synced"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</LinearLayout>

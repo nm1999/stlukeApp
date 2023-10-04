@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.chaplaincy.stlukeapp"
+    android:versionCode="12"
+    android:versionName="2.0.0.0" >
+
+    <uses-sdk
+        android:minSdkVersion="22"
+        android:targetSdkVersion="33" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:icon="@drawable/mysplashlogo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.StLukeApp"
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name="com.chaplaincy.stlukeapp.EditNote"
+            android:exported="false" />
+        <activity
+            android:name="com.chaplaincy.stlukeapp.SyncingActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.chaplaincy.stlukeapp.SignIn"
+            android:exported="false" />
+        <activity
+            android:name="com.chaplaincy.stlukeapp.DashboardActivities.WayOfCross"
+            android:exported="false" />
+        <activity
+            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Order"
+            android:exported="false" />
+        <activity
+            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Readings"
+            android:exported="false" />
+        <activity
+            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Youtube"
+            android:exported="false" />
+        <activity
+            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Catena"
+            android:exported="false" />
+        <activity
+            android:name="com.chaplaincy.stlukeapp.DashboardActivities.SingleNovena"
+            android:exported="false" />
+        <activity
+            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Novena"
+            android:exported="false" />
+        <activity
+            android:name="com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.chaplaincy.stlukeapp.Login"
+            android:exported="false" />
+        <activity
+            android:name="com.chaplaincy.stlukeapp.splashscreen"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Legion"
+            android:exported="false" />
+        <activity
+            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Rosary"
+            android:exported="false" />
+        <activity
+            android:name="com.chaplaincy.stlukeapp.Fragments.Dashboard"
+            android:exported="false" />
+        <activity
+            android:name="com.chaplaincy.stlukeapp.DashboardActivities.Hymns"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="com.chaplaincy.stlukeapp.androidx-startup"
+            android:exported="false" >
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup" />
+        </provider>
+    </application>
+
+</manifest>

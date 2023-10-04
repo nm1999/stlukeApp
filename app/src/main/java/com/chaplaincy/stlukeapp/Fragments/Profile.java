@@ -3,21 +3,17 @@ package com.chaplaincy.stlukeapp.Fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
-import com.chaplaincy.stlukeapp.Login;
+import androidx.fragment.app.Fragment;
+
 import com.chaplaincy.stlukeapp.R;
-import com.chaplaincy.stlukeapp.SignIn;
 import com.google.android.material.button.MaterialButton;
+import com.chaplaincy.stlukeapp.SignIn;
 
 
 public class Profile extends Fragment {

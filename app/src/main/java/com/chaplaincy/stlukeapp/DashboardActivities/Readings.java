@@ -1,8 +1,5 @@
 package com.chaplaincy.stlukeapp.DashboardActivities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -13,7 +10,9 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.chaplaincy.stlukeapp.R;
 
 

@@ -1,28 +1,24 @@
 package com.chaplaincy.stlukeapp.DashboardActivities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.chaplaincy.stlukeapp.R;
 import com.chaplaincy.stlukeapp.Adapter.HymnsAdapter;
 import com.chaplaincy.stlukeapp.Apis.CheckConnectivity;
 import com.chaplaincy.stlukeapp.Apis.Urls;
 import com.chaplaincy.stlukeapp.DBHelper.DBhelper;
-import com.chaplaincy.stlukeapp.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -64,7 +60,8 @@ public class Hymns extends AppCompatActivity {
         ImageView back = findViewById(R.id.back);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView sync_hymns = findViewById(R.id.syncing_hymn);
 
-        loadHymns();
+//        uncomment when the data has successfully loaded in sqlite
+//        loadHymns();
 
         back.setOnClickListener(view -> {
             Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);

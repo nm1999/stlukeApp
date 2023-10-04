@@ -1,7 +1,5 @@
 package com.chaplaincy.stlukeapp.DashboardActivities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,9 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AppCompatActivity;
 
-import com.chaplaincy.stlukeapp.DashboardActivities.HomeActivity;
-import com.chaplaincy.stlukeapp.DashboardActivities.SingleNovena;
 import com.chaplaincy.stlukeapp.R;
 
 import java.io.InputStream;

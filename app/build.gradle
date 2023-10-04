@@ -8,9 +8,9 @@ android {
     defaultConfig {
         applicationId "com.chaplaincy.stlukeapp"
         minSdk 22
-        targetSdk 31
-        versionCode 5
-        versionName "1.0.0.4"
+        targetSdk 33
+        versionCode 12
+        versionName "2.0.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
