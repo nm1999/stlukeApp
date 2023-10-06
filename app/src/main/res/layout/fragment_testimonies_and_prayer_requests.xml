@@ -30,14 +30,14 @@
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/prayer_requests"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="Prayer requests"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/prayer_requests"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:text="Prayer requests"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="16sp" />-->
 
         </RelativeLayout>
     </com.google.android.material.appbar.MaterialToolbar>

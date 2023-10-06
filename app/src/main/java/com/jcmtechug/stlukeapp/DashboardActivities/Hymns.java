@@ -14,11 +14,11 @@ import android.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.jcmtechug.stlukeapp.R;
 import com.jcmtechug.stlukeapp.Adapter.HymnsAdapter;
 import com.jcmtechug.stlukeapp.Apis.CheckConnectivity;
 import com.jcmtechug.stlukeapp.Apis.Urls;
 import com.jcmtechug.stlukeapp.DBHelper.DBhelper;
+import com.jcmtechug.stlukeapp.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,6 +45,7 @@ public class Hymns extends AppCompatActivity {
     private CheckConnectivity checkConnectivity;
     private ProgressDialog progressDialog;
     private DBhelper dBhelper;
+    private ArrayAdapter<String> adpt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +74,21 @@ public class Hymns extends AppCompatActivity {
             startSyncing();
         });
 
+
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adpt.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+        // incase a hymn is selected
 
 
 
@@ -185,6 +201,9 @@ public class Hymns extends AppCompatActivity {
                     public void run() {
                         try {
                             ArrayList<String> arraylist = new ArrayList<>();
+                            ArrayList<String> hymn = new ArrayList<>();
+                            ArrayList<String> _title = new ArrayList<>();
+                            ArrayList<String> hymnNo = new ArrayList<>();
 
                             JSONObject jsonObject = new JSONObject(json);
                             if (!jsonObject.getBoolean("error")){
@@ -197,10 +216,23 @@ public class Hymns extends AppCompatActivity {
                                         String hymn_no = obj.getString("id");
                                         String title = obj.getString("title");
                                         String song = obj.getString("song");
-                                        arraylist.add(hymn_no+". "+song);
 
-                                        ArrayAdapter<String> adpt = new ArrayAdapter<>(Hymns.this, android.R.layout.simple_list_item_1,arraylist);
+                                        arraylist.add(hymn_no+". "+title);
+                                        hymn.add(song);
+                                        _title.add(title);
+                                        hymnNo.add(hymn_no);
+
+
+                                        adpt = new ArrayAdapter<>(Hymns.this, android.R.layout.simple_list_item_1,arraylist);
                                         list.setAdapter(adpt);
+
+                                        list.setOnItemClickListener((parent, view, position, id) -> {
+                                            Intent intent = new Intent(Hymns.this,SelectedHymn.class);
+                                            intent.putExtra("hymn_no",hymnNo.get((int) id));
+                                            intent.putExtra("song",hymn.get((int) id));
+                                            intent.putExtra("title",_title.get((int) id));
+                                            startActivity(intent);
+                                        });
 
 //                                        Boolean result = dBhelper.saveHymnsLocally(hymn_no,title,song);
 //                                        if (result){

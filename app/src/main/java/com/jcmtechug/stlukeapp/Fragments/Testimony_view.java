@@ -60,7 +60,7 @@ public class Testimony_view extends Fragment {
         View view = inflater.inflate(R.layout.fragment_testimony_view, container, false);
 
         // getting the posters cards content
-        poster_view = view.findViewById(R.id.posters);
+//        poster_view = view.findViewById(R.id.posters);
         getPosterContent(view);
 
         //getting the testimonies
@@ -260,8 +260,8 @@ public class Testimony_view extends Fragment {
 
         PosterList[] posterLists = post.toArray(new PosterList[0]);
         TestimoniesAdapter testimoniesAdapter = new TestimoniesAdapter(posterLists);
-        poster_view.setHasFixedSize(true);
-        poster_view.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        poster_view.setAdapter(testimoniesAdapter);
+//        poster_view.setHasFixedSize(true);
+//        poster_view.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+//        poster_view.setAdapter(testimoniesAdapter);
     }
 }

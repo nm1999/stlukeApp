@@ -11,7 +11,7 @@
         android:iconTint="@color/black"
         />
     <item android:id="@+id/message"
-        android:title="Requests"
+        android:title="Testimonies"
         android:iconTint="@color/black"
         android:icon="@drawable/message2"
         />
