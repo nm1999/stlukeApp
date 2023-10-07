@@ -3,21 +3,17 @@
     <item android:id="@+id/home"
         android:title="Home"
         android:icon="@drawable/home"
-        android:iconTint="@color/black"
         />
     <item android:id="@+id/notes"
         android:title="Notes"
         android:icon="@drawable/book"
-        android:iconTint="@color/black"
         />
     <item android:id="@+id/message"
         android:title="Testimonies"
-        android:iconTint="@color/black"
         android:icon="@drawable/message2"
         />
     <item android:id="@+id/profile"
         android:title="Profile"
-        android:iconTint="@color/black"
         android:icon="@drawable/profile"
         />
 

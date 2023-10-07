@@ -19,10 +19,9 @@
         android:layout_above="@id/frame"
         app:labelVisibilityMode="labeled"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        app:itemIconTint="@color/black"
         app:itemTextAppearanceActive="@color/yellow"
-
+        app:itemBackground="@color/grey"
+        app:elevation="5dp"
         >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
