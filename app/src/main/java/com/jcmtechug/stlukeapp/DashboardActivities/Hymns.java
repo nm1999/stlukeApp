@@ -223,7 +223,7 @@ public class Hymns extends AppCompatActivity {
                                         hymnNo.add(hymn_no);
 
 
-                                        adpt = new ArrayAdapter<>(Hymns.this, android.R.layout.simple_list_item_1,arraylist);
+                                        adpt = new ArrayAdapter<>(Hymns.this, R.layout.song_layout,arraylist);
                                         list.setAdapter(adpt);
 
                                         list.setOnItemClickListener((parent, view, position, id) -> {
