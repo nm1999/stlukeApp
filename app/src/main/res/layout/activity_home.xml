@@ -21,6 +21,8 @@
         android:layout_alignParentBottom="true"
         android:background="@color/white"
         app:itemIconTint="@color/black"
+        app:itemTextAppearanceActive="@color/yellow"
+
         >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>

@@ -13,10 +13,10 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/add_story"
-            android:layout_width="140dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             app:cornerRadius="50dp"
-            android:text="+ Add story"
+            android:text="+ Add"
             android:textColor="@color/white"
             android:elevation="10dp"
             android:padding="10dp"
@@ -33,11 +33,11 @@
             android:background="@color/white"
             android:orientation="vertical"
             >
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/posters"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/posters"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                />-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/all_testimonies"

@@ -20,7 +20,7 @@ public class Testimonies_and_prayer_requests extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_testimonies_and_prayer_requests, container, false);
         testimonies = view.findViewById(R.id.testimonies);
-        prayer_requests = view.findViewById(R.id.prayer_requests);
+//        prayer_requests = view.findViewById(R.id.prayer_requests);
 
         handleClickEvents(view);
         return view;
@@ -36,11 +36,11 @@ public class Testimonies_and_prayer_requests extends Fragment {
             }
         });
 
-        prayer_requests.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,new Prayer_request()).commit();
-            }
-        });
+//        prayer_requests.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,new Prayer_request()).commit();
+//            }
+//        });
     }
 }

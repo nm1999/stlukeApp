@@ -1,5 +1,6 @@
 package com.jcmtechug.stlukeapp;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,9 +48,11 @@ public class Login extends AppCompatActivity {
     private DBhelper mydbhelper;
     private SweetAlertDialog errorDialog;
     private ProgressDialog progressDialog;
+    private ProgressBar progressBar;
 
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +61,7 @@ public class Login extends AppCompatActivity {
         mydbhelper = new DBhelper(this);
         errorDialog = new SweetAlertDialog(Login.this,SweetAlertDialog.ERROR_TYPE);
         progressDialog = new ProgressDialog(Login.this);
+        progressBar = findViewById(R.id.progressbar);
 
         myarr = new ArrayList<>();
 
@@ -136,6 +141,7 @@ public class Login extends AppCompatActivity {
                 }
 
                 if (isConnected()){
+//                    progressBar.setVisibility(View.VISIBLE);
                     registerUser(firstname_str,surname_str,email_str,contact_str,psw);
                 }else{
                     new SweetAlertDialog(Login.this,SweetAlertDialog.WARNING_TYPE)
@@ -156,7 +162,8 @@ public class Login extends AppCompatActivity {
     }
     public void registerUser(String firstname_str, String surname_str, String email_str, String contact_str, String psw) {
         OkHttpClient client  = new OkHttpClient();
-        progressDialog.setTitle("Processing ....");
+        progressDialog.setTitle("Registering ....");
+        progressDialog.show();
 
         RequestBody data = new FormBody.Builder()
                 .add("christian_name",firstname_str)
@@ -177,6 +184,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void run() {
                         progressDialog.dismiss();
+
                         errorDialog.setTitle("Failure");
                         errorDialog.setContentText("No Internet connection");
                         errorDialog.show();
