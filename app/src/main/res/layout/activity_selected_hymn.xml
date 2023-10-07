@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DashboardActivities.SelectedHymn">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        >
+        <TextView
+            android:id="@+id/hymn_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:textSize="18sp"
+            android:text="djksdksdn ds sddsd"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_bold"
+            />
+    </com.google.android.material.appbar.MaterialToolbar>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white"
+            >
+            <TextView
+                android:id="@+id/song"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:textSize="16sp"
+                android:text="wddddddd"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
