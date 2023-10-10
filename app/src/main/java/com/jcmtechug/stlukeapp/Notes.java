@@ -180,10 +180,11 @@ public class Notes extends Fragment {
                         successDialog.setTitle("Success");
                         successDialog.setContentText("Notes saved offline successfully");
                         successDialog.show();
+                        getNotes(view);
                     }
                 });
 
-                getNotes(view);
+
             }
 
             @Override
