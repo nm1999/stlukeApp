@@ -199,7 +199,7 @@ public class DBhelper extends SQLiteOpenHelper {
         if (!columnExists(mydb,HYMNS_TABLE,"title")){
             mydb.execSQL("create table "+HYMNS_TABLE+"(id INTEGER PRIMARY KEY AUTOINCREMENT,song_number TEXT,title TEXT,song TEXT)");
         }
-        Cursor cursor = mydb.rawQuery("select * from "+HYMNS_TABLE+" ORDER BY id ASC",null);
+        Cursor cursor = mydb.rawQuery("select * from "+HYMNS_TABLE+" ORDER BY id DESC LIMIT 1",null);
         return cursor;
     }
 }
