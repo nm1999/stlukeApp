@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -62,8 +64,8 @@ public class Hymns extends AppCompatActivity {
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView sync_hymns = findViewById(R.id.syncing_hymn);
 
 //        uncomment when the data has successfully loaded in sqlite
-//        loadHymns();
-        getLatestHymns("0");
+        loadHymns();
+//        getLatestHymns("0");
 
         back.setOnClickListener(view -> {
             Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);
@@ -83,7 +85,7 @@ public class Hymns extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                adpt.getFilter().filter(newText);
+                hymnsAdapter.getFilter().filter(newText);
                 return false;
             }
         });
@@ -97,43 +99,62 @@ public class Hymns extends AppCompatActivity {
     private void loadHymns() {
         // load hymns
         ArrayList<String> arraylist = new ArrayList<>();
-        ArrayList<String> arraytitle = new ArrayList<>();
+        ArrayList<String> arraySongs = new ArrayList<>();
+
+        String str_array = null;
 
         Cursor cursor = dBhelper.fetchHymns();
-        if (cursor.getCount() > 0){
-            while (cursor.moveToFirst()){
-                String song_no = cursor.getString(0);
-                String title = cursor.getString(1);
-                String song = cursor.getString(2);
-
-                arraylist.add(song_no+". "+song);
-//                arraytitle.add(title);
-
-
-//                hymnsAdapter = new HymnsAdapter(getApplicationContext(),arraytitle,arraylist);
-//                list.setTextFilterEnabled(true);
-//                list.setAdapter(hymnsAdapter);
-                ArrayAdapter<String> adpt = new ArrayAdapter<>(Hymns.this, android.R.layout.simple_list_item_1,arraylist);
-                list.setAdapter(adpt);
+        Log.e("ddata", String.valueOf(cursor.getCount()));
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                Log.i("son", cursor.getString(3));
+                str_array = cursor.getString(3);
+                break;
             }
 
+            try {
+                JSONObject jsonObject = new JSONObject(str_array);
+                JSONArray result_obj = jsonObject.getJSONArray("results");
+                Log.e("length", String.valueOf(result_obj.length()));
+                if (result_obj.length() > 0) {
+                    for (int i = 0; i < result_obj.length(); i++) {
+                        JSONObject obj = result_obj.getJSONObject(i);
+                        String hymn_no = obj.getString("id");
+                        String title = obj.getString("title");
+                        String song = obj.getString("song");
 
+                        arraylist.add(hymn_no+". "+title);
+                        arraySongs.add(song);
 
+                        adpt = new ArrayAdapter<>(Hymns.this, R.layout.song_layout, arraylist);
 
+                        hymnsAdapter = new HymnsAdapter(getApplicationContext(),arraylist,arraySongs);
+                        list.setAdapter(hymnsAdapter);
 
-        }else{
-            new SweetAlertDialog(Hymns.this,SweetAlertDialog.WARNING_TYPE)
-                    .setTitleText("No Hymns")
-                    .setContentText("Do you want latest hymns ?")
-                    .setConfirmButton("Yes", sweetAlertDialog -> {
-                        startSyncing();
-                        sweetAlertDialog.dismiss();
-                    }).show();
-
+//                        list.setOnItemClickListener((parent, view, position, id) -> {
+//                            Intent intent = new Intent(Hymns.this, SelectedHymn.class);
+////                            intent.putExtra("hymn_no",hymnNo.get((int) id));
+////                            intent.putExtra("song",hymn.get((int) id));
+////                            intent.putExtra("title",_title.get((int) id));
+//                            startActivity(intent);
+//                        });
+                    }
+                }
+                list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(Hymns.this, SelectedHymn.class);
+                        intent.putExtra("hymn_no","");
+                        intent.putExtra("song",arraySongs.get(position));
+                        intent.putExtra("title",arraylist.get(position));
+                        startActivity(intent);
+                    }
+                });
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
         }
-        //end loading hymns
     }
-
     private void startSyncing() {
         try {
             if (checkConnectivity.isInternetAvailable()){
@@ -147,7 +168,7 @@ public class Hymns extends AppCompatActivity {
                 Cursor local_song_number = dBhelper.getLastHymnNumber();
                 if (local_song_number.moveToFirst()){
                     String hymn_id = local_song_number.getString(0);
-                    getLatestHymns(hymn_id);
+                    getLatestHymns("0");
                 }else{
                     getLatestHymns("0");
                 }
@@ -209,30 +230,41 @@ public class Hymns extends AppCompatActivity {
                             if (!jsonObject.getBoolean("error")){
                                 JSONArray result_obj =  jsonObject.getJSONArray("results");
 
+                                // store an full string of an array in one cell
+                                Boolean result = dBhelper.saveHymnsLocally("hdh d dhdhd d","tid dhdhdh title",json);
+                                if (result){
+                                    Log.i("success","hymn stored locally");
+                                }else{
+                                    Log.e("error","Failed saving hymns locally");
+                                }
+
+                                // end of new method
+
+
                                 // check for length of the array
-                                if(result_obj.length() > 0){
-                                    for (int i =0; i< result_obj.length();i++){
-                                        JSONObject obj = result_obj.getJSONObject(i);
-                                        String hymn_no = obj.getString("id");
-                                        String title = obj.getString("title");
-                                        String song = obj.getString("song");
+//                                if(result_obj.length() > 0){
+//                                    for (int i =0; i< result_obj.length();i++){
+//                                        JSONObject obj = result_obj.getJSONObject(i);
+//                                        String hymn_no = obj.getString("id");
+//                                        String title = obj.getString("title");
+//                                        String song = obj.getString("song");
+//
+//                                        arraylist.add(hymn_no+". "+title);
+//                                        hymn.add(song);
+//                                        _title.add(title);
+//                                        hymnNo.add(hymn_no);
 
-                                        arraylist.add(hymn_no+". "+title);
-                                        hymn.add(song);
-                                        _title.add(title);
-                                        hymnNo.add(hymn_no);
 
+//                                        adpt = new ArrayAdapter<>(Hymns.this, R.layout.song_layout,arraylist);
+//                                        list.setAdapter(adpt);
 
-                                        adpt = new ArrayAdapter<>(Hymns.this, R.layout.song_layout,arraylist);
-                                        list.setAdapter(adpt);
-
-                                        list.setOnItemClickListener((parent, view, position, id) -> {
-                                            Intent intent = new Intent(Hymns.this,SelectedHymn.class);
-                                            intent.putExtra("hymn_no",hymnNo.get((int) id));
-                                            intent.putExtra("song",hymn.get((int) id));
-                                            intent.putExtra("title",_title.get((int) id));
-                                            startActivity(intent);
-                                        });
+//                                        list.setOnItemClickListener((parent, view, position, id) -> {
+//                                            Intent intent = new Intent(Hymns.this,SelectedHymn.class);
+//                                            intent.putExtra("hymn_no",hymnNo.get((int) id));
+//                                            intent.putExtra("song",hymn.get((int) id));
+//                                            intent.putExtra("title",_title.get((int) id));
+//                                            startActivity(intent);
+//                                        });
 
 //                                        Boolean result = dBhelper.saveHymnsLocally(hymn_no,title,song);
 //                                        if (result){
@@ -240,18 +272,18 @@ public class Hymns extends AppCompatActivity {
 //                                        }else{
 //                                            Log.e("error","Failed saving hymns locally");
 //                                        }
-                                    }
+//                                    }
 //                                    loadHymns();
-                                }else{
-                                    new SweetAlertDialog(Hymns.this,SweetAlertDialog.SUCCESS_TYPE)
-                                            .setTitleText("Synced")
-                                            .setContentText("No New Hymn found !")
-                                            .setConfirmButton("Okay", sweetAlertDialog -> {
-                                                startActivity(new Intent(Hymns.this,HomeActivity.class));
-                                                finish();
-                                            })
-                                            .show();
-                                }
+//                                }else{
+//                                    new SweetAlertDialog(Hymns.this,SweetAlertDialog.SUCCESS_TYPE)
+//                                            .setTitleText("Synced")
+//                                            .setContentText("No New Hymn found !")
+//                                            .setConfirmButton("Okay", sweetAlertDialog -> {
+//                                                startActivity(new Intent(Hymns.this,HomeActivity.class));
+//                                                finish();
+//                                            })
+//                                            .show();
+//                                }
 
                                 progressDialog.dismiss();
                             }else{

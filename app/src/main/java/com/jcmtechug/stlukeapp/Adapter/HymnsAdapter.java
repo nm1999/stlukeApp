@@ -49,15 +49,16 @@ public class HymnsAdapter extends BaseAdapter implements Filterable {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = layoutInflater.inflate(R.layout.hymns_layout_format,null);
 
-        TextView music = view.findViewById(R.id.music);
+//        TextView music = view.findViewById(R.id.music);
         TextView hymn_txt = view.findViewById(R.id.title);
-        music.setText(hymn[i]);
+//        music.setText(hymn[i]);
         hymn_txt.setText(title[i]);
 
         return view;
     }
 
     @Override
+
     public Filter getFilter() {
         return new ItemFilter();
     }

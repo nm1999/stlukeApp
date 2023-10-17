@@ -19,13 +19,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jcmtechug.stlukeapp.Adapter.MyListAdapter;
 import com.jcmtechug.stlukeapp.Apis.Urls;
 import com.jcmtechug.stlukeapp.DBHelper.DBhelper;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -157,75 +154,98 @@ public class Notes extends Fragment {
 
     private void SendDataToServer(View view, String header, String versus, String note, int sync_state) {
 
-        RequestBody requestBody = new FormBody.Builder()
-                .add("title",header)
-                .add("versus",versus)
-                .add("note",note)
-                .add("user_id", String.valueOf(user_id))
-                .build();
 
-        Request request = new Request.Builder()
-                .url(Urls.TAKE_NOTES)
-                .post(requestBody)
-                .build();
+        // changing the strategy to store all notes in sqlite first and later sync them in the background
+            storeNotes(header,versus,note,NOT_SYNCED);
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    successDialog.setTitle("Success");
+                    successDialog.setContentText("Notes saved successfully");
+                    successDialog.show();
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                Log.e("err",e.toString());
-                storeNotes(header,versus,note,NOT_SYNCED);
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        successDialog.setTitle("Success");
-                        successDialog.setContentText("Notes saved offline successfully");
-                        successDialog.show();
-                        getNotes(view);
-                    }
-                });
+                    getNotes(view);
+
+                    SyncingTask task = new SyncingTask();
+                    task.execute();
+                }
+
+            });
 
 
-            }
+        //
 
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                ResponseBody result = response.body();
-                String jsonData = result.string();
+//        RequestBody requestBody = new FormBody.Builder()
+//                .add("title",header)
+//                .add("versus",versus)
+//                .add("note",note)
+//                .add("user_id", String.valueOf(user_id))
+//                .build();
+//
+//
+//
+//        Request request = new Request.Builder()
+//                .url(Urls.TAKE_NOTES)
+//                .post(requestBody)
+//                .build();
 
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Log.e("ddata",jsonData);
-                        if (result != null){
-                            try {
-                                JSONObject jsonObject = new JSONObject(jsonData);
-                                if (!jsonObject.getBoolean("error")){
-                                    storeNotes(header,versus,note,SYNCED);
-                                    successDialog.setTitle(jsonObject.getString("status"));
-                                    successDialog.setContentText(jsonObject.getString("message"));
-                                    successDialog.show();
-
-                                }else{
-                                    storeNotes(header,versus,note,NOT_SYNCED);
-                                    successDialog.setTitle(jsonObject.getString("status"));
-                                    successDialog.setContentText(jsonObject.getString("message"));
-                                    successDialog.show();
-                                }
-
-                            } catch (JSONException e) {
-                                Log.e("sxxx",e.toString());
-                                throw new RuntimeException(e);
-                            }
-                        }else{
-                            // Empty result
-                            Log.e("er","result empty");
-                        }
-
-                        getNotes(view);
-                    }
-                });
-            }
-        });
+//        client.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+//                Log.e("err",e.toString());
+//                storeNotes(header,versus,note,NOT_SYNCED);
+//                getActivity().runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        successDialog.setTitle("Success");
+//                        successDialog.setContentText("Notes saved offline successfully");
+//                        successDialog.show();
+//                        getNotes(view);
+//                    }
+//                });
+//
+//
+//            }
+//
+//            @Override
+//            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+//                ResponseBody result = response.body();
+//                String jsonData = result.string();
+//
+//                getActivity().runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Log.e("ddata",jsonData);
+//                        if (result != null){
+//                            try {
+//                                JSONObject jsonObject = new JSONObject(jsonData);
+//                                if (!jsonObject.getBoolean("error")){
+//                                    storeNotes(header,versus,note,SYNCED);
+//                                    successDialog.setTitle(jsonObject.getString("status"));
+//                                    successDialog.setContentText(jsonObject.getString("message"));
+//                                    successDialog.show();
+//
+//                                }else{
+//                                    storeNotes(header,versus,note,NOT_SYNCED);
+//                                    successDialog.setTitle(jsonObject.getString("status"));
+//                                    successDialog.setContentText(jsonObject.getString("message"));
+//                                    successDialog.show();
+//                                }
+//
+//                            } catch (JSONException e) {
+//                                Log.e("sxxx",e.toString());
+//                                throw new RuntimeException(e);
+//                            }
+//                        }else{
+//                            // Empty result
+//                            Log.e("er","result empty");
+//                        }
+//
+//                        getNotes(view);
+//                    }
+//                });
+//            }
+//        });
 
 
 
