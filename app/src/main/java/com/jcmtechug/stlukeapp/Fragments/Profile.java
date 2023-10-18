@@ -53,6 +53,7 @@ public class Profile extends Fragment {
             editor.commit();
             Intent intent = new Intent(getActivity(), SignIn.class);
             startActivity(intent);
+            getActivity().finish();
         });
         return view;
     }

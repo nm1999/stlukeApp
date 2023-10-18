@@ -15,6 +15,9 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
         <activity
+            android:name=".Read_more_Testimonies"
+            android:exported="false" />
+        <activity
             android:name=".DashboardActivities.SelectedHymn"
             android:exported="false" />
         <activity

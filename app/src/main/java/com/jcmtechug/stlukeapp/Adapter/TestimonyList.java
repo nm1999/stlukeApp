@@ -1,5 +1,7 @@
 package com.jcmtechug.stlukeapp.Adapter;
 
+import android.content.Context;
+
 public class TestimonyList {
     private String username;
     private String created_at;
@@ -9,8 +11,9 @@ public class TestimonyList {
     private String comment;
 
     private String title;
+    private Context context;
 
-    public TestimonyList(String title,String username, String created_at, String description) {
+    public TestimonyList(String title,String username, String created_at, String description, Context context) {
         this.username = username;
         this.created_at = created_at;
         this.description = description;
@@ -18,6 +21,7 @@ public class TestimonyList {
         this.like = like;
         this.comment = comment;
         this.title = title;
+        this.context = context;
     }
 
     public String getUsername() {
@@ -74,5 +78,13 @@ public class TestimonyList {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 }

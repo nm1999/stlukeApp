@@ -81,36 +81,34 @@ public class Testimony_view extends Fragment {
         alertDialog.setView(dialog);
         alertdialog = alertDialog.create();
 
-        submit_testimony.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String title_str = title.getText().toString();
-                String desc_str = description.getText().toString();
+        submit_testimony.setOnClickListener(v -> {
+            String title_str = title.getText().toString();
+            String desc_str = description.getText().toString();
 
-                if (TextUtils.isEmpty(title_str)){
-                    title.requestFocus();
-                    title.setError("Title is required");
-                    return;
-                }
-                if (TextUtils.isEmpty(desc_str)){
-                    description.requestFocus();
-                    description.setError("Description is required");
-                    return;
-                }
-
-                sendTestimony(title_str,desc_str);
+            if (TextUtils.isEmpty(title_str)){
+                title.requestFocus();
+                title.setError("Title is required");
+                return;
             }
+            if (TextUtils.isEmpty(desc_str)){
+                description.requestFocus();
+                description.setError("Description is required");
+                return;
+            }
+
+            sendTestimony(title_str,desc_str);
         });
 
-        add_story.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addStoryDialog(v);
-            }
-        });
+        add_story.setOnClickListener(v -> addStoryDialog(v));
 
         getAllTestimonies(view);
 
+        all_testimonies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         return view;
     }
 
@@ -220,7 +218,13 @@ public class Testimony_view extends Fragment {
                                     JSONObject row_obj = obj.getJSONObject(i);
 
                                     arrayList.add(
-                                            new TestimonyList(row_obj.getString("title"),row_obj.getString("username"),row_obj.getString("created_at"),row_obj.getString("description"))
+                                            new TestimonyList(
+                                                    row_obj.getString("title"),
+                                                    row_obj.getString("username"),
+                                                    row_obj.getString("created_at"),
+                                                    row_obj.getString("description"),
+                                                    getActivity()
+                                            )
                                     );
                                 }
 
@@ -232,12 +236,7 @@ public class Testimony_view extends Fragment {
                             }else{
                                 new SweetAlertDialog(getActivity(),SweetAlertDialog.WARNING_TYPE)
                                         .setContentText(jsonObject.getString("results"))
-                                        .setConfirmButton("Okay", new SweetAlertDialog.OnSweetClickListener() {
-                                            @Override
-                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                                startActivity(new Intent(getActivity(), HomeActivity.class));
-                                            }
-                                        })
+                                        .setConfirmButton("Okay", sweetAlertDialog -> startActivity(new Intent(getActivity(), HomeActivity.class)))
                                         .show();
                             }
 

@@ -63,9 +63,7 @@ public class Hymns extends AppCompatActivity {
         ImageView back = findViewById(R.id.back);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView sync_hymns = findViewById(R.id.syncing_hymn);
 
-//        uncomment when the data has successfully loaded in sqlite
         loadHymns();
-//        getLatestHymns("0");
 
         back.setOnClickListener(view -> {
             Intent nxt = new Intent(getApplicationContext(), HomeActivity.class);
@@ -85,8 +83,10 @@ public class Hymns extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                Log.i("inpt", newText);
                 hymnsAdapter.getFilter().filter(newText);
-                return false;
+                hymnsAdapter.notifyDataSetChanged();
+                return true;
             }
         });
 
@@ -129,15 +129,9 @@ public class Hymns extends AppCompatActivity {
                         adpt = new ArrayAdapter<>(Hymns.this, R.layout.song_layout, arraylist);
 
                         hymnsAdapter = new HymnsAdapter(getApplicationContext(),arraylist,arraySongs);
+                        hymnsAdapter.notifyDataSetChanged();
                         list.setAdapter(hymnsAdapter);
 
-//                        list.setOnItemClickListener((parent, view, position, id) -> {
-//                            Intent intent = new Intent(Hymns.this, SelectedHymn.class);
-////                            intent.putExtra("hymn_no",hymnNo.get((int) id));
-////                            intent.putExtra("song",hymn.get((int) id));
-////                            intent.putExtra("title",_title.get((int) id));
-//                            startActivity(intent);
-//                        });
                     }
                 }
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
