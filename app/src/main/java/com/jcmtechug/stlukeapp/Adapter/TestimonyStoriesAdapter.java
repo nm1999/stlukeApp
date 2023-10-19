@@ -1,9 +1,11 @@
 package com.jcmtechug.stlukeapp.Adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,12 +28,18 @@ public class TestimonyStoriesAdapter extends RecyclerView.Adapter<TestimonyStori
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TestimonyStoriesAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TestimonyStoriesAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.username.setText(testimonyLists[position].getUsername());
         holder.created_at.setText(testimonyLists[position].getCreated_at());
         holder.story.setText(testimonyLists[position].getDescription());
         holder.title.setText(testimonyLists[position].getTitle());
 
+        holder.story.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                // to move to the next page with data
+            }
+        });
     }
 
     @Override
@@ -41,6 +49,7 @@ public class TestimonyStoriesAdapter extends RecyclerView.Adapter<TestimonyStori
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView username,created_at,story,title;
+        private LinearLayout test_item;
         private ImageView dp;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -48,6 +57,7 @@ public class TestimonyStoriesAdapter extends RecyclerView.Adapter<TestimonyStori
             username = itemView.findViewById(R.id.username);
             created_at = itemView.findViewById(R.id.created_at);
             story = itemView.findViewById(R.id.story);
+            test_item = itemView.findViewById(R.id.test_item);
         }
     }
 }

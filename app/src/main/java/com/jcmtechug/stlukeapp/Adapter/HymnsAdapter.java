@@ -1,6 +1,7 @@
 package com.jcmtechug.stlukeapp.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,12 +28,13 @@ public class HymnsAdapter extends BaseAdapter implements Filterable {
         this.hymn = hymn.toArray(new String[0]);
         this.title = title.toArray(new String[0]);
         this.layoutInflater = LayoutInflater.from(ctx);
-        this.originalList = new ArrayList<>(hymn);
-        this.filteredList = new ArrayList<>(hymn);
+        this.originalList = title;
+        this.filteredList = title;
     }
+
     @Override
     public int getCount() {
-        return this.hymn.length;
+        return this.title.length;
     }
 
     @Override
@@ -54,11 +56,11 @@ public class HymnsAdapter extends BaseAdapter implements Filterable {
 //        music.setText(hymn[i]);
         hymn_txt.setText(title[i]);
 
+
         return view;
     }
 
     @Override
-
     public Filter getFilter() {
         return new ItemFilter();
     }
@@ -68,13 +70,14 @@ public class HymnsAdapter extends BaseAdapter implements Filterable {
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
             FilterResults results = new FilterResults();
+            Log.e("msg", charSequence.toString());
             if (charSequence == null || charSequence.length() == 0) {
                 results.count = originalList.size();
                 results.values = new ArrayList<>(originalList);
             } else {
-                String filterString = charSequence.toString().toLowerCase();
+                String filterString = charSequence.toString().toLowerCase().trim();
 
-                final List<String> filteredData = new ArrayList<>();
+                final ArrayList<String> filteredData = new ArrayList<>();
 
                 for (String item : originalList) {
                     if (item.toLowerCase().contains(filterString)) {
@@ -82,6 +85,7 @@ public class HymnsAdapter extends BaseAdapter implements Filterable {
                     }
                 }
 
+                Log.i("filtereddata",filteredData.toString());
                 results.count = filteredData.size();
                 results.values = filteredData;
             }
@@ -91,8 +95,15 @@ public class HymnsAdapter extends BaseAdapter implements Filterable {
 
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            filteredList = (List<String>) filterResults.values;
+            Log.i("publist",filterResults.values.toString());
+            originalList = (List<String>) filterResults.values;
             notifyDataSetChanged();
+        }
+
+        @Override
+        public CharSequence convertResultToString(Object resultValue) {
+            Log.i("str",resultValue.toString());
+            return (String) resultValue;
         }
     }
 }
