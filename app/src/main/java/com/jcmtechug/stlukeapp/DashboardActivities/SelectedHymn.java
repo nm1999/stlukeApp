@@ -23,12 +23,17 @@ public class SelectedHymn extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String hymn = intent.getStringExtra("song");
-        String hymn_no = intent.getStringExtra("hymn_no");
         String title = intent.getStringExtra("title");
+        String songBody = intent.getStringExtra("song");
 
-        hymn_title.setText(hymn_no+". "+title);
-        song.setText(hymn);
+        hymn_title.setText(title);
+        song.setText(songBody);
+
+
+
+
+
+
 
     }
 }

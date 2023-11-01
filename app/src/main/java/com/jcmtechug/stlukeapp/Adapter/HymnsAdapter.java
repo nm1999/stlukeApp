@@ -28,8 +28,8 @@ public class HymnsAdapter extends BaseAdapter implements Filterable {
         this.hymn = hymn.toArray(new String[0]);
         this.title = title.toArray(new String[0]);
         this.layoutInflater = LayoutInflater.from(ctx);
-        this.originalList = title;
-        this.filteredList = title;
+        this.originalList = new ArrayList<>(title);
+        this.filteredList = new ArrayList<>(title);
     }
 
     @Override
@@ -62,48 +62,36 @@ public class HymnsAdapter extends BaseAdapter implements Filterable {
 
     @Override
     public Filter getFilter() {
-        return new ItemFilter();
-    }
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                FilterResults results = new FilterResults();
+                List<String> filteredTitles = new ArrayList<>();
 
-    private class ItemFilter extends Filter {
-
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            FilterResults results = new FilterResults();
-            Log.e("msg", charSequence.toString());
-            if (charSequence == null || charSequence.length() == 0) {
-                results.count = originalList.size();
-                results.values = new ArrayList<>(originalList);
-            } else {
-                String filterString = charSequence.toString().toLowerCase().trim();
-
-                final ArrayList<String> filteredData = new ArrayList<>();
-
-                for (String item : originalList) {
-                    if (item.toLowerCase().contains(filterString)) {
-                        filteredData.add(item);
+                if (charSequence == null || charSequence.length() == 0) {
+                    filteredTitles.addAll(originalList);
+                } else {
+                    String filterPattern = charSequence.toString().toLowerCase().trim();
+                    for (String title : originalList) {
+                        if (title.toLowerCase().contains(filterPattern)) {
+                            filteredTitles.add(title);
+                        }
                     }
                 }
 
-                Log.i("filtereddata",filteredData.toString());
-                results.count = filteredData.size();
-                results.values = filteredData;
+                Log.i("newlist", String.valueOf(filteredTitles));
+
+                results.values = filteredTitles;
+                results.count = filteredTitles.size();
+                return results;
             }
 
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            Log.i("publist",filterResults.values.toString());
-            originalList = (List<String>) filterResults.values;
-            notifyDataSetChanged();
-        }
-
-        @Override
-        public CharSequence convertResultToString(Object resultValue) {
-            Log.i("str",resultValue.toString());
-            return (String) resultValue;
-        }
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                filteredList.clear();
+                filteredList.addAll((List<String>) filterResults.values);
+                notifyDataSetChanged();
+            }
+        };
     }
 }

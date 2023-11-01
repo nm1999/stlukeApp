@@ -48,6 +48,7 @@ public class Hymns extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private DBhelper dBhelper;
     private ArrayAdapter<String> adpt;
+    private SearchView search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +60,7 @@ public class Hymns extends AppCompatActivity {
         checkConnectivity = new CheckConnectivity();
         progressDialog = new ProgressDialog(this);
 
-        SearchView search = findViewById(R.id.search);
+        search = findViewById(R.id.search);
         ImageView back = findViewById(R.id.back);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView sync_hymns = findViewById(R.id.syncing_hymn);
 
@@ -74,21 +75,6 @@ public class Hymns extends AppCompatActivity {
             startSyncing();
         });
 
-
-        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                Log.i("inpt", newText);
-                hymnsAdapter.getFilter().filter(newText);
-                hymnsAdapter.notifyDataSetChanged();
-                return true;
-            }
-        });
 
         // incase a hymn is selected
 
@@ -128,19 +114,26 @@ public class Hymns extends AppCompatActivity {
 
                         adpt = new ArrayAdapter<>(Hymns.this, R.layout.song_layout, arraylist);
 
-                        hymnsAdapter = new HymnsAdapter(getApplicationContext(),arraylist,arraySongs);
-                        hymnsAdapter.notifyDataSetChanged();
-                        list.setAdapter(hymnsAdapter);
+//                        hymnsAdapter = new HymnsAdapter(getApplicationContext(),arraylist,arraySongs);
+//                        hymnsAdapter.notifyDataSetChanged();
+                        list.setAdapter(adpt);
 
                     }
                 }
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String get_selected_title = adpt.getItem(position);
+
+                        // get the selected title index in the array
+                        // its index is searched through the song body
+                        // since their indices correspond well.
+                        int index = arraylist.indexOf(get_selected_title);
+                        String songAtIndex = arraySongs.get(index);
+
                         Intent intent = new Intent(Hymns.this, SelectedHymn.class);
-                        intent.putExtra("hymn_no","");
-                        intent.putExtra("song",arraySongs.get(position));
-                        intent.putExtra("title",arraylist.get(position));
+                        intent.putExtra("song",songAtIndex);
+                        intent.putExtra("title",get_selected_title);
                         startActivity(intent);
                     }
                 });
@@ -148,6 +141,23 @@ public class Hymns extends AppCompatActivity {
                 throw new RuntimeException(e);
             }
         }
+
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.i("inpt", newText);
+                adpt.getFilter().filter(newText);
+
+//                adpt.notifyDataSetChanged();
+//                Log.i("sss",hymnsAdapter.getFilter().toString());
+                return true;
+            }
+        });
     }
     private void startSyncing() {
         try {
