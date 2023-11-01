@@ -1,6 +1,8 @@
 package com.jcmtechug.stlukeapp.Adapter;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,14 +12,18 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.jcmtechug.stlukeapp.*;
 
 import com.jcmtechug.stlukeapp.R;
 
 public class TestimonyStoriesAdapter extends RecyclerView.Adapter<TestimonyStoriesAdapter.ViewHolder> {
     private TestimonyList [] testimonyLists;
+    private Context context;
 
-    public TestimonyStoriesAdapter(TestimonyList [] testimonyLists) {
+
+    public TestimonyStoriesAdapter(Context context,TestimonyList [] testimonyLists) {
         this.testimonyLists = testimonyLists;
+        this.context = context;
     }
 
     @NonNull
@@ -33,6 +39,18 @@ public class TestimonyStoriesAdapter extends RecyclerView.Adapter<TestimonyStori
         holder.created_at.setText(testimonyLists[position].getCreated_at());
         holder.story.setText(testimonyLists[position].getDescription());
         holder.title.setText(testimonyLists[position].getTitle());
+
+        holder.story.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,Read_more_Testimonies.class);
+                intent.putExtra("username",testimonyLists[position].getUsername());
+                intent.putExtra("created_at",testimonyLists[position].getCreated_at());
+                intent.putExtra("story",testimonyLists[position].getDescription());
+                intent.putExtra("title",testimonyLists[position].getTitle());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -229,10 +229,18 @@ public class Testimony_view extends Fragment {
                                 }
 
                                 TestimonyList[] testimonyList = arrayList.toArray(new TestimonyList[0]);
-                                TestimonyStoriesAdapter testimonyStoriesAdapter = new TestimonyStoriesAdapter(testimonyList);
+                                TestimonyStoriesAdapter testimonyStoriesAdapter = new TestimonyStoriesAdapter(getActivity(),testimonyList);
                                 all_testimonies.setHasFixedSize(true);
                                 all_testimonies.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
                                 all_testimonies.setAdapter(testimonyStoriesAdapter);
+
+                                all_testimonies.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+
+                                    }
+                                });
+
                             }else{
                                 new SweetAlertDialog(getActivity(),SweetAlertDialog.WARNING_TYPE)
                                         .setContentText(jsonObject.getString("results"))
