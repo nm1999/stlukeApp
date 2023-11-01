@@ -28,6 +28,7 @@ public class TestimoniesAdapter extends RecyclerView.Adapter<TestimoniesAdapter.
     public void onBindViewHolder(@NonNull TestimoniesAdapter.viewHolder holder, int position) {
         holder.description.setText(posterLists[position].getPoster_description());
         holder.poster.setBackgroundResource(posterLists[position].getPoster_image());
+
     }
 
     @Override
