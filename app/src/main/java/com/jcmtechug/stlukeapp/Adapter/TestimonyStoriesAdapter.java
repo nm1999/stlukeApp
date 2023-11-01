@@ -33,13 +33,6 @@ public class TestimonyStoriesAdapter extends RecyclerView.Adapter<TestimonyStori
         holder.created_at.setText(testimonyLists[position].getCreated_at());
         holder.story.setText(testimonyLists[position].getDescription());
         holder.title.setText(testimonyLists[position].getTitle());
-
-        holder.story.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                // to move to the next page with data
-            }
-        });
     }
 
     @Override
