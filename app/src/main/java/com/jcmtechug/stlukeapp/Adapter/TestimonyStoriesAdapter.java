@@ -40,16 +40,22 @@ public class TestimonyStoriesAdapter extends RecyclerView.Adapter<TestimonyStori
         holder.story.setText(testimonyLists[position].getDescription());
         holder.title.setText(testimonyLists[position].getTitle());
 
-        holder.story.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context,Read_more_Testimonies.class);
-                intent.putExtra("username",testimonyLists[position].getUsername());
-                intent.putExtra("created_at",testimonyLists[position].getCreated_at());
-                intent.putExtra("story",testimonyLists[position].getDescription());
-                intent.putExtra("title",testimonyLists[position].getTitle());
-                context.startActivity(intent);
-            }
+        holder.title.setOnClickListener(v -> {
+            Intent intent = new Intent(context,Read_more_Testimonies.class);
+            intent.putExtra("username",testimonyLists[position].getUsername());
+            intent.putExtra("created_at",testimonyLists[position].getCreated_at());
+            intent.putExtra("story",testimonyLists[position].getDescription());
+            intent.putExtra("title",testimonyLists[position].getTitle());
+            context.startActivity(intent);
+        });
+
+        holder.story.setOnClickListener(v -> {
+            Intent intent = new Intent(context,Read_more_Testimonies.class);
+            intent.putExtra("username",testimonyLists[position].getUsername());
+            intent.putExtra("created_at",testimonyLists[position].getCreated_at());
+            intent.putExtra("story",testimonyLists[position].getDescription());
+            intent.putExtra("title",testimonyLists[position].getTitle());
+            context.startActivity(intent);
         });
     }
 
