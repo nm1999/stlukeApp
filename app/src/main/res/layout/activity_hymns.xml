@@ -50,10 +50,12 @@
     </com.google.android.material.navigation.NavigationView>
     
     <LinearLayout
+        android:id="@+id/hymns_present"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/white"
+        android:visibility="gone"
         >
         <ListView
             android:id="@+id/list"
@@ -65,6 +67,46 @@
             android:dividerHeight="0.5dp"
             />
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/not_synced_hymns"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        >
+        <ImageView
+            android:id="@+id/syncing_icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/consider_syncing"
+            android:layout_centerInParent="true"
+            />
+        <TextView
+            android:id="@+id/no_sync"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="No hymns synced yet"
+            android:textColor="@color/yellow"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_below="@id/syncing_icon"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sync_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/no_sync"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp"
+            android:background="@color/yellow"
+            android:text="Sync Now" />
+
+    </RelativeLayout>
+
 
 
 </LinearLayout>

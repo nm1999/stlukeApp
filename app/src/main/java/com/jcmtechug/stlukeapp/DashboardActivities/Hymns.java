@@ -12,10 +12,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.button.MaterialButton;
 import com.jcmtechug.stlukeapp.Adapter.HymnsAdapter;
 import com.jcmtechug.stlukeapp.Apis.CheckConnectivity;
 import com.jcmtechug.stlukeapp.Apis.Urls;
@@ -49,6 +51,8 @@ public class Hymns extends AppCompatActivity {
     private DBhelper dBhelper;
     private ArrayAdapter<String> adpt;
     private SearchView search;
+    private MaterialButton sync_button;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +63,7 @@ public class Hymns extends AppCompatActivity {
 
         checkConnectivity = new CheckConnectivity();
         progressDialog = new ProgressDialog(this);
+        sync_button = findViewById(R.id.sync_button);
 
         search = findViewById(R.id.search);
         ImageView back = findViewById(R.id.back);
@@ -72,6 +77,10 @@ public class Hymns extends AppCompatActivity {
         });
 
         sync_hymns.setOnClickListener(view ->{
+            startSyncing();
+        });
+
+        sync_button.setOnClickListener(view->{
             startSyncing();
         });
 
@@ -142,6 +151,8 @@ public class Hymns extends AppCompatActivity {
             }
         }
 
+
+
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -151,10 +162,13 @@ public class Hymns extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 Log.i("inpt", newText);
-                adpt.getFilter().filter(newText);
+                if (arraylist.size() > 0){
+                    adpt.getFilter().filter(newText);
+                }else{
+                    Toast.makeText(getApplicationContext(),"No hymns found !!",Toast.LENGTH_LONG);
+                }
 
-//                adpt.notifyDataSetChanged();
-//                Log.i("sss",hymnsAdapter.getFilter().toString());
+
                 return true;
             }
         });
@@ -177,7 +191,8 @@ public class Hymns extends AppCompatActivity {
                     getLatestHymns("0");
                 }
 
-
+                // call the hymns again to get the updated ones
+                loadHymns();
             }else{
                 new SweetAlertDialog(Hymns.this, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Failure")
@@ -241,53 +256,6 @@ public class Hymns extends AppCompatActivity {
                                 }else{
                                     Log.e("error","Failed saving hymns locally");
                                 }
-
-                                // end of new method
-
-
-                                // check for length of the array
-//                                if(result_obj.length() > 0){
-//                                    for (int i =0; i< result_obj.length();i++){
-//                                        JSONObject obj = result_obj.getJSONObject(i);
-//                                        String hymn_no = obj.getString("id");
-//                                        String title = obj.getString("title");
-//                                        String song = obj.getString("song");
-//
-//                                        arraylist.add(hymn_no+". "+title);
-//                                        hymn.add(song);
-//                                        _title.add(title);
-//                                        hymnNo.add(hymn_no);
-
-
-//                                        adpt = new ArrayAdapter<>(Hymns.this, R.layout.song_layout,arraylist);
-//                                        list.setAdapter(adpt);
-
-//                                        list.setOnItemClickListener((parent, view, position, id) -> {
-//                                            Intent intent = new Intent(Hymns.this,SelectedHymn.class);
-//                                            intent.putExtra("hymn_no",hymnNo.get((int) id));
-//                                            intent.putExtra("song",hymn.get((int) id));
-//                                            intent.putExtra("title",_title.get((int) id));
-//                                            startActivity(intent);
-//                                        });
-
-//                                        Boolean result = dBhelper.saveHymnsLocally(hymn_no,title,song);
-//                                        if (result){
-//                                            Log.i("success","hymn stored locally");
-//                                        }else{
-//                                            Log.e("error","Failed saving hymns locally");
-//                                        }
-//                                    }
-//                                    loadHymns();
-//                                }else{
-//                                    new SweetAlertDialog(Hymns.this,SweetAlertDialog.SUCCESS_TYPE)
-//                                            .setTitleText("Synced")
-//                                            .setContentText("No New Hymn found !")
-//                                            .setConfirmButton("Okay", sweetAlertDialog -> {
-//                                                startActivity(new Intent(Hymns.this,HomeActivity.class));
-//                                                finish();
-//                                            })
-//                                            .show();
-//                                }
 
                                 progressDialog.dismiss();
                             }else{
