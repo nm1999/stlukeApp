@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -52,6 +54,8 @@ public class Hymns extends AppCompatActivity {
     private ArrayAdapter<String> adpt;
     private SearchView search;
     private MaterialButton sync_button;
+    private LinearLayout hymns_present;
+    private RelativeLayout not_synced_hymns;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,8 @@ public class Hymns extends AppCompatActivity {
         list = findViewById(R.id.list);
 
         dBhelper = new DBhelper(getApplicationContext());
+        hymns_present = findViewById(R.id.hymns_present);
+        not_synced_hymns = findViewById(R.id.not_synced_hymns);
 
         checkConnectivity = new CheckConnectivity();
         progressDialog = new ProgressDialog(this);
@@ -101,6 +107,8 @@ public class Hymns extends AppCompatActivity {
         Cursor cursor = dBhelper.fetchHymns();
         Log.e("ddata", String.valueOf(cursor.getCount()));
         if (cursor.getCount() > 0) {
+            not_synced_hymns.setVisibility(View.GONE);
+
             while (cursor.moveToNext()) {
                 Log.i("son", cursor.getString(3));
                 str_array = cursor.getString(3);
@@ -112,6 +120,8 @@ public class Hymns extends AppCompatActivity {
                 JSONArray result_obj = jsonObject.getJSONArray("results");
                 Log.e("length", String.valueOf(result_obj.length()));
                 if (result_obj.length() > 0) {
+                    not_synced_hymns.setVisibility(View.GONE);
+
                     for (int i = 0; i < result_obj.length(); i++) {
                         JSONObject obj = result_obj.getJSONObject(i);
                         String hymn_no = obj.getString("id");
@@ -128,6 +138,9 @@ public class Hymns extends AppCompatActivity {
                         list.setAdapter(adpt);
 
                     }
+                }else{
+                    hymns_present.setVisibility(View.GONE);
+                    not_synced_hymns.setVisibility(View.VISIBLE);
                 }
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -149,6 +162,9 @@ public class Hymns extends AppCompatActivity {
             } catch (JSONException e) {
                 throw new RuntimeException(e);
             }
+        }else{
+            hymns_present.setVisibility(View.GONE);
+            not_synced_hymns.setVisibility(View.VISIBLE);
         }
 
 
@@ -192,6 +208,7 @@ public class Hymns extends AppCompatActivity {
                 }
 
                 // call the hymns again to get the updated ones
+                loadHymns();
                 loadHymns();
             }else{
                 new SweetAlertDialog(Hymns.this, SweetAlertDialog.WARNING_TYPE)
@@ -258,6 +275,20 @@ public class Hymns extends AppCompatActivity {
                                 }
 
                                 progressDialog.dismiss();
+
+                                new SweetAlertDialog(Hymns.this, SweetAlertDialog.SUCCESS_TYPE)
+                                        .setTitleText("Success")
+                                        .setContentText("Hymns loaded successfully")
+                                        .setConfirmButton("Okay", sweetAlertDialog -> {
+                                            Intent intent = new Intent(getApplicationContext(),Hymns.class);
+                                            finish();
+                                            overridePendingTransition(0,0);
+                                            startActivity(intent);
+                                            overridePendingTransition(0,0);
+                                            sweetAlertDialog.dismiss();
+                                        })
+                                        .show();
+
                             }else{
                                 Log.i("report","An error occured when fetching json data");
                             }
@@ -265,6 +296,8 @@ public class Hymns extends AppCompatActivity {
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
+
+                        loadHymns();
                     }
                 });
             }
