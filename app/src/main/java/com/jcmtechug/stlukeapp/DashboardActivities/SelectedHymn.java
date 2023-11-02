@@ -3,6 +3,7 @@ package com.jcmtechug.stlukeapp.DashboardActivities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,7 +30,7 @@ public class SelectedHymn extends AppCompatActivity {
         String songBody = intent.getStringExtra("song");
 
         hymn_title.setText(title);
-        song.setText(songBody);
+        song.setText(Html.fromHtml(songBody));
 
         back.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),Hymns.class)));
 

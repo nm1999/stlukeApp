@@ -209,7 +209,6 @@ public class Hymns extends AppCompatActivity {
 
                 // call the hymns again to get the updated ones
                 loadHymns();
-                loadHymns();
             }else{
                 new SweetAlertDialog(Hymns.this, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Failure")
